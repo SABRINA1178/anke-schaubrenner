@@ -19,7 +19,7 @@
     /* ---- Hero ---- */
     .play-hero {
       position: relative;
-      height: 78vh;
+      height: 70vh;
       min-height: 480px;
       max-height: 720px;
       overflow: hidden;
@@ -31,9 +31,9 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 40%;
+      object-position: center 65%;
       transform: scale(1.4);
-      transform-origin: center 40%;
+      transform-origin: center 65%;
     }
 
     .play-hero-overlay {
@@ -52,7 +52,7 @@
     /* PLAY! Titel — Mitte links, goldener Kasten */
     .play-hero-title {
       position: absolute;
-      top: 38%;
+      top: 44%;
       left: 12.5%;
       display: inline-block;
       background: var(--gold);
@@ -73,23 +73,23 @@
       transform: translateY(calc(-50% + 45px));
       right: 12.5%;
       background: rgba(8, 8, 8, 0.94);
-      padding: 1.6rem 1.8rem;
-      width: 290px;
+      padding: 2rem 2.2rem;
+      width: 340px;
     }
 
     .play-hero-infobox h2 {
       font-family: var(--font-body);
-      font-size: 1.05rem;
+      font-size: 1.2rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       color: var(--white);
       text-transform: uppercase;
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.1rem;
     }
 
     .play-hero-infobox p {
-      font-size: 0.92rem;
+      font-size: 1.05rem;
       color: var(--white);
       line-height: 2;
       text-align: center;
@@ -98,22 +98,22 @@
     /* Highlight-Zeilen im Infobox-Text */
     .play-hero-infobox p span {
       background: var(--gold);
-      color: var(--black);
+      color: var(--white);
       padding: 0 2px;
     }
 
     /* Tagline — direkt unter PLAY! Label */
     .play-hero-tagline {
       position: absolute;
-      top: calc(38% + 5.5rem + 80px);
+      top: 74%;
       left: 12.5%;
       font-family: 'Playfair Display', serif;
-      font-style: italic;
+      font-style: normal;
       font-size: 48px;
       font-weight: 400;
       color: var(--white);
       letter-spacing: 0.01em;
-      background: linear-gradient(to right, rgba(74,59,40,0.85) 0%, rgba(74,59,40,0.45) 60%, transparent 100%);
+      background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 65%, transparent 100%);
       padding: 0.3rem 3rem 0.3rem 0;
       margin: 0;
     }
