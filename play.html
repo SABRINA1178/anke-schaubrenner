@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PLAY! — Anke Schaubrenner | Kaluna Fee</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ============================================================
+       PLAY PAGE — Page-specific styles
+       ============================================================ */
+
+    /* ---- Hero ---- */
+    .play-hero {
+      position: relative;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .play-hero-image {
+      width: 100%;
+      height: 100%;
+      min-height: 100vh;
+      object-fit: cover;
+      object-position: center top;
+      position: absolute;
+      inset: 0;
+    }
+
+    .play-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+    }
+
+    .play-hero-inner {
+      position: relative;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 0 4rem 4rem;
+      padding-top: 110px; /* below fixed nav */
+    }
+
+    /* Top-left: PLAY! title */
+    .play-hero-title {
+      font-family: var(--font-body);
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      line-height: 1;
+      margin-bottom: auto;
+    }
+
+    /* Top-right: Info box */
+    .play-hero-infobox {
+      position: absolute;
+      top: 110px;
+      right: 4rem;
+      background: rgba(16, 14, 45, 0.85);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 2rem 2.2rem;
+      max-width: 340px;
+      border-left: 2px solid var(--gold);
+    }
+
+    .play-hero-infobox h2 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .play-hero-infobox p {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1.75;
+      opacity: 1;
+    }
+
+    /* Bottom area */
+    .play-hero-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding-top: 4rem;
+    }
+
+    .play-hero-tagline {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--white);
+      opacity: 0.92;
+    }
+
+    .play-hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin: 0 auto;
+    }
+
+    .btn-play-hero {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      border: 2px solid var(--gold);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      transition: all 0.3s;
+      background: transparent;
+    }
+    .btn-play-hero:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .arrow-down {
+      color: var(--white);
+      font-size: 1.8rem;
+      opacity: 0.7;
+      display: block;
+      text-align: center;
+      animation: bounce 2s infinite;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* ---- Section 2: Tickets & Veranstaltungen ---- */
+    .play-tickets {
+      background: var(--cream);
+      padding: 6rem 2rem 5rem;
+    }
+
+    .play-tickets-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .play-tickets-header h2 {
+      color: var(--brown);
+      margin-bottom: 1.2rem;
+    }
+
+    .badge-pill {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--brown);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      padding: 0.45rem 1.4rem;
+      border-radius: 50px;
+      text-transform: uppercase;
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+
+    .event-card {
+      background: var(--white);
+      box-shadow: 0 4px 20px rgba(74, 59, 40, 0.08);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .event-card-image {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .event-card-body {
+      padding: 1.6rem 1.6rem 2rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .event-card-icon {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .event-card-title {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 0.3rem;
+    }
+
+    .event-card-subtitle {
+      font-size: 0.78rem;
+      color: var(--brown);
+      opacity: 0.6;
+      margin-bottom: 1rem;
+    }
+
+    .event-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .event-card-meta span {
+      font-size: 0.8rem;
+      color: var(--brown);
+      opacity: 0.75;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .event-card-meta .meta-venue::before { content: "📍 "; }
+    .event-card-meta .meta-date::before  { content: "📅 "; }
+
+    .event-card-category {
+      display: inline-block;
+      border: 1px solid rgba(74, 59, 40, 0.25);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.8rem;
+      color: var(--brown);
+      margin-bottom: 1.4rem;
+      width: fit-content;
+    }
+
+    .btn-event {
+      margin-top: auto;
+      display: block;
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: var(--brown);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-align: center;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-event:hover { background: var(--black); }
+
+    .section-arrow {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+
+    /* ---- Section 3: Musik ---- */
+    .play-musik {
+      background: var(--dark);
+      padding: 6rem 2rem 5rem;
+    }
+
+    .play-musik-header {
+      text-align: right;
+      margin-bottom: 3.5rem;
+      padding-right: 1rem;
+    }
+
+    .play-musik-header h2 {
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .music-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .music-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .music-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .music-card-image {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+    }
+
+    .music-card-body {
+      padding: 1.2rem 1.2rem 1.6rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .music-card-icon {
+      font-size: 1.3rem;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+
+    .music-card-title {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .music-card-subtitle {
+      font-size: 0.75rem;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+      font-style: italic;
+    }
+
+    .music-card-desc {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.6;
+      margin-bottom: 0.6rem;
+      opacity: 1;
+    }
+
+    .music-card-producer {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.4);
+      margin-bottom: 1.2rem;
+      opacity: 1;
+    }
+
+    .btn-music {
+      margin-top: auto;
+      display: block;
+      width: 100%;
+      padding: 0.75rem 0.8rem;
+      background: var(--brown);
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-align: center;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-music:hover { background: var(--gold); color: var(--brown); }
+
+    /* ---- Section 4: Hinweis/Legal ---- */
+    .play-legal {
+      background: var(--dark);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 4rem 3rem;
+    }
+
+    .play-legal-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .play-legal p {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.8;
+      opacity: 1;
+    }
+
+    .play-legal p strong {
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 600;
+    }
+
+    /* ---- Footer (dark variant) ---- */
+    .footer-dark {
+      background: var(--dark);
+      color: var(--cream);
+      padding: 4rem 3rem 2rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .footer-dark .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(250, 247, 242, 0.1);
+    }
+
+    .footer-dark .footer-brand h3 {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+      color: var(--cream);
+    }
+
+    .footer-dark .footer-brand p {
+      font-size: 0.8rem;
+      color: var(--cream);
+      opacity: 0.55;
+      max-width: 300px;
+      line-height: 1.75;
+    }
+
+    .footer-dark h4 {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.2rem;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .footer-dark ul { list-style: none; }
+    .footer-dark ul li { margin-bottom: 0.7rem; }
+    .footer-dark ul li a {
+      font-size: 0.82rem;
+      color: var(--cream);
+      opacity: 0.65;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .footer-dark ul li a:hover { opacity: 1; }
+
+    .footer-dark .footer-contact-col p {
+      font-size: 0.82rem;
+      color: var(--cream);
+      opacity: 0.65;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-dark .footer-bottom {
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--cream);
+      opacity: 0.35;
+    }
+
+    /* ---- Nav active state ---- */
+    .nav-links a.active {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 1024px) {
+      .music-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .play-hero-inner { padding: 90px 2rem 3rem; }
+      .play-hero-infobox { position: relative; top: auto; right: auto; margin-top: 2rem; max-width: 100%; }
+      .event-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+      .music-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-dark .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .play-legal { padding: 3rem 1.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .music-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav>
+    <a href="index.html" class="nav-logo">ANKE SCHAUBRENNER</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">ABOUT</a></li>
+      <li><a href="business.html">BUSINESS</a></li>
+      <li><a href="soul.html">SOUL</a></li>
+      <li><a href="play.html" class="active">PLAY</a></li>
+    </ul>
+    <div class="nav-social">
+      <!-- Instagram -->
+      <a href="#" aria-label="Instagram">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+        </svg>
+      </a>
+      <!-- TikTok -->
+      <a href="#" aria-label="TikTok">
+        <svg width="14" height="16" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.81 1.54V6.78a4.85 4.85 0 01-1.04-.09z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ========== SECTION 1: HERO ========== -->
+  <section class="play-hero">
+    <img class="play-hero-image" src="images/play-hero.png" alt="PLAY! — Anke Schaubrenner">
+    <div class="play-hero-overlay"></div>
+
+    <!-- Info box top-right -->
+    <div class="play-hero-infobox">
+      <h2>PLAY!</h2>
+      <p>PLAY ist der Raum, in dem wir uns austoben – laut, hell und lebendig. Erlebe Anke live, sicher dir den Sound zum Moment oder hol dir ein Stück dieser Kraft nach Hause – alles im Shop.</p>
+    </div>
+
+    <div class="play-hero-inner">
+      <!-- Top-left title -->
+      <div class="play-hero-title">PLAY!</div>
+
+      <!-- Bottom area -->
+      <div class="play-hero-bottom">
+        <p class="play-hero-tagline">Wo Energie Gestalt annimmt..!</p>
+        <div class="play-hero-cta-group">
+          <a href="#tickets" class="btn-play-hero">ZUM PLAY! SHOP</a>
+          <span class="arrow-down">↓</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 2: TICKETS & VERANSTALTUNGEN ========== -->
+  <section class="play-tickets" id="tickets">
+    <div class="play-tickets-header">
+      <h2>Tickets &amp; Veranstaltungen</h2>
+      <span class="badge-pill">Resonanz &amp; Begegnung</span>
+    </div>
+
+    <div class="event-grid">
+
+      <!-- Card 1: Cosmic Cine -->
+      <article class="event-card">
+        <img class="event-card-image" src="images/event-cosmic.png" alt="Cosmic Cine Festival">
+        <div class="event-card-body">
+          <div class="event-card-icon">🎫</div>
+          <p class="event-card-title">TICKET FÜR COSMIC CINE FESTIVAL</p>
+          <p class="event-card-subtitle">(Main Event)</p>
+          <div class="event-card-meta">
+            <span class="meta-venue">Mathaeser Filmpalast München</span>
+            <span class="meta-date">16.–18.2026</span>
+          </div>
+          <span class="event-card-category">Hauptprogramm</span>
+          <a href="#" class="btn-event">Inspiration eintüten</a>
+        </div>
+      </article>
+
+      <!-- Card 2: Workshop Karen Sailer -->
+      <article class="event-card">
+        <img class="event-card-image" src="images/event-karen.png" alt="Workshop mit Karen Sailer">
+        <div class="event-card-body">
+          <div class="event-card-icon">🎫</div>
+          <p class="event-card-title">WORKSHOP MIT KAREN SAILER</p>
+          <p class="event-card-subtitle">(im Rahmen von Cosmic Cine)</p>
+          <div class="event-card-meta">
+            <span class="meta-venue">Mathaeser Filmpalast München</span>
+            <span class="meta-date">18.04.2026</span>
+          </div>
+          <span class="event-card-category">Vertiefung</span>
+          <a href="#" class="btn-event">Platz im Rudel sichern</a>
+        </div>
+      </article>
+
+      <!-- Card 3: Laura Malina Seiler -->
+      <article class="event-card">
+        <img class="event-card-image" src="images/event-laura.png" alt="Laura Malina Seiler">
+        <div class="event-card-body">
+          <div class="event-card-icon">🎫</div>
+          <p class="event-card-title">TICKET FÜR LAURA MALINA SEILER</p>
+          <p class="event-card-subtitle">(happy, holy &amp; confident)</p>
+          <div class="event-card-meta">
+            <span class="meta-venue">Olympiahalle München</span>
+            <span class="meta-date">11.04.2026</span>
+          </div>
+          <span class="event-card-category">Gast-Impuls</span>
+          <a href="#" class="btn-event">Magische Momente sichern</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="section-arrow">
+      <span class="arrow-down" style="color:var(--brown); opacity:0.4;">↓</span>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 3: MUSIK ========== -->
+  <section class="play-musik" id="musik">
+    <div class="play-musik-header">
+      <h2>Musik</h2>
+      <span class="badge-pill">Frequenz &amp; Wort</span>
+    </div>
+
+    <div class="music-grid">
+
+      <!-- Music 1: Love Gate -->
+      <article class="music-card">
+        <img class="music-card-image" src="images/music-lovegate.png" alt="Love Gate">
+        <div class="music-card-body">
+          <div class="music-card-icon">♪</div>
+          <p class="music-card-title">Love Gate</p>
+          <p class="music-card-subtitle">Original Motion Picture Soundtrack</p>
+          <p class="music-card-desc">Songs, die die Protagonistinnen auf ihrer Reise zurück zu sich selbst begleiten.</p>
+          <p class="music-card-producer">Prod.: Anke Schaubrenner, Hanno, Karen Sailer</p>
+          <a href="#" class="btn-music">Soundtrack erwerben</a>
+        </div>
+      </article>
+
+      <!-- Music 2: Wild Hearts -->
+      <article class="music-card">
+        <img class="music-card-image" src="images/music-wildhearts.png" alt="Wild Hearts">
+        <div class="music-card-body">
+          <div class="music-card-icon">♪</div>
+          <p class="music-card-title">Wild Hearts</p>
+          <p class="music-card-subtitle">Song Wild Hearts by Anke</p>
+          <p class="music-card-desc">Songs, die die Protagonistinnen auf ihrer Reise zurück zu sich selbst begleiten.</p>
+          <p class="music-card-producer">Prod.: Anke Schaubrenner, Hanno, Karen Sailer</p>
+          <a href="#" class="btn-music">hol ich mir!</a>
+        </div>
+      </article>
+
+      <!-- Music 3: Earth Child -->
+      <article class="music-card">
+        <img class="music-card-image" src="images/music-earthchild.png" alt="Earth Child">
+        <div class="music-card-body">
+          <div class="music-card-icon">♪</div>
+          <p class="music-card-title">Earth Child</p>
+          <p class="music-card-subtitle">Song Earth Child by Anke</p>
+          <p class="music-card-desc">Songs, die die Protagonistinnen auf ihrer Reise zurück zu sich selbst begleiten.</p>
+          <p class="music-card-producer">Prod.: Anke Schaubrenner, Hanno, Karen Sailer</p>
+          <a href="#" class="btn-music">will ich!</a>
+        </div>
+      </article>
+
+      <!-- Music 4: Holy Holy -->
+      <article class="music-card">
+        <img class="music-card-image" src="images/music-holy.png" alt="Holy Holy">
+        <div class="music-card-body">
+          <div class="music-card-icon">♪</div>
+          <p class="music-card-title">Holy Holy</p>
+          <p class="music-card-subtitle">Song Holy Holy by Anke</p>
+          <p class="music-card-desc">Songs, die die Protagonistinnen auf ihrer Reise zurück zu sich selbst begleiten.</p>
+          <p class="music-card-producer">Prod.: Anke Schaubrenner, Hanno, Karen Sailer</p>
+          <a href="#" class="btn-music">aber sowas von!</a>
+        </div>
+      </article>
+
+      <!-- Music 5: I Remember -->
+      <article class="music-card">
+        <img class="music-card-image" src="images/music-iremember.png" alt="I Remember">
+        <div class="music-card-body">
+          <div class="music-card-icon">♪</div>
+          <p class="music-card-title">I Remember</p>
+          <p class="music-card-subtitle">Song I Remember by Anke</p>
+          <p class="music-card-desc">Songs, die die Protagonistinnen auf ihrer Reise zurück zu sich selbst begleiten.</p>
+          <p class="music-card-producer">Prod.: Anke Schaubrenner, Hanno, Karen Sailer</p>
+          <a href="#" class="btn-music">hier damit!</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ========== SECTION 4: HINWEIS / LEGAL ========== -->
+  <section class="play-legal">
+    <div class="play-legal-inner">
+      <p>
+        <strong>Hinweis zu deiner Bestellung:</strong> Die auf dieser Seite angebotenen Erlebnisse, Musiktitel und Produkte werden über unsere Partner (z. B. Digistore24 oder spezifische Ticket-Plattformen) abgewickelt. Mit Klick auf den Kauf-Button wirst du auf die Seite des jeweiligen Anbieters weitergeleitet. Dort gelten die entsprechenden Allgemeinen Geschäftsbedingungen (AGB), Widerrufsbelehrungen und Datenschutzbestimmungen des Verkäufers. Anke Schaubrenner tritt hierbei als Vermittlerin auf.
+      </p>
+      <p>
+        <strong>Wichtiger Hinweis für Tickets:</strong> Bitte beachte, dass für termingebundene Veranstaltungen gemäß § 312g Abs. 2 Nr. 9 BGB in der Regel kein Widerrufsrecht besteht.
+      </p>
+      <p>
+        <strong>Datenschutz:</strong> Durch die Weiterleitung an unsere Partner werden personenbezogene Daten zur Vertragsabwicklung verarbeitet. Details dazu findest du in unserer <a href="datenschutz.html" style="color:var(--gold); text-decoration:underline; text-underline-offset:3px;">Datenschutzerklärung</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer-dark">
+    <div class="footer-inner">
+
+      <!-- Left: Brand -->
+      <div class="footer-brand">
+        <h3>ANKE SCHAUBRENNER</h3>
+        <p>Seit 1999 entwickeln wir mit viel Engagement und Liebe Ideen, die Brücken bauen. Zwischen Kulturen, Generationen, Geschlechtern und in Uns. Um Menschen zu helfen ihr ureigenes Potenzial zu entfalten.</p>
+      </div>
+
+      <!-- Center: Business links -->
+      <div>
+        <h4>Business</h4>
+        <ul>
+          <li><a href="business.html">Business Coaching</a></li>
+          <li><a href="soul.html">Unsere Playshops</a></li>
+          <li><a href="play.html">Tickets &amp; Events</a></li>
+          <li><a href="soul.html">Bloom Commune</a></li>
+          <li><a href="index.html#about">Über Anke</a></li>
+        </ul>
+      </div>
+
+      <!-- Right: Rechtsdokumente + Kontakt -->
+      <div>
+        <h4>Rechtsdokumente</h4>
+        <ul>
+          <li><a href="haftungsausschluss.html">Haftungsausschluss</a></li>
+          <li><a href="datenschutz.html">Datenschutzrichtlinie</a></li>
+        </ul>
+        <br>
+        <h4>Kontakte</h4>
+        <div class="footer-contact-col">
+          <p>Sabrina Meguellati</p>
+          <p>Assistentin</p>
+          <p style="margin-top:0.6rem;">
+            <a href="mailto:info@anke-schaubrenner.com" style="color:var(--gold); font-size:0.8rem; text-decoration:underline; text-underline-offset:3px;">info@anke-schaubrenner.com</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Anke Schaubrenner. Diese Website ist nicht Teil der Facebook-Website oder von Facebook Inc.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

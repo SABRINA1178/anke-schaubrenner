@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOUL — Anke Schaubrenner | Kaluna Fee</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Shared Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* ============================================================
+       SOUL PAGE — Page-specific styles
+       ============================================================ */
+
+    /* ---- Intro Section ---- */
+    .soul-intro {
+      background: var(--cream);
+      padding: 10rem 2rem 5rem;
+      text-align: center;
+    }
+
+    .soul-intro h1 {
+      font-family: var(--font-heading);
+      color: var(--brown);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .soul-intro p {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      color: var(--brown);
+      opacity: 0.7;
+      line-height: 1.8;
+    }
+
+    /* ---- Workshop Section ---- */
+    .soul-workshops {
+      background: var(--cream);
+      padding: 4rem 2rem 7rem;
+    }
+
+    .workshop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+
+    .workshop-card {
+      background: var(--white);
+      box-shadow: 0 4px 24px rgba(74, 59, 40, 0.09);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Roman numeral badge */
+    .workshop-badge {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      z-index: 2;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--brown);
+      letter-spacing: 0.05em;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    .workshop-card-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .workshop-card-body {
+      padding: 1.8rem 1.8rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .workshop-location-date {
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .workshop-card-body h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      color: var(--brown);
+      margin-bottom: 1rem;
+    }
+
+    .workshop-card-body .workshop-desc {
+      font-size: 0.85rem;
+      color: var(--brown);
+      opacity: 0.7;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Checklist */
+    .workshop-checklist {
+      list-style: none;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .workshop-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.84rem;
+      color: var(--brown);
+      opacity: 0.85;
+    }
+
+    .workshop-checklist li::before {
+      content: "✓";
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    .btn-workshop {
+      margin-top: auto;
+      display: block;
+      width: 100%;
+      padding: 1rem 1.2rem;
+      background: var(--dark);
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-align: center;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      line-height: 1.4;
+    }
+    .btn-workshop:hover { background: var(--brown); }
+
+    /* ---- Footer (dark variant — identical to play.html) ---- */
+    .footer-dark {
+      background: var(--dark);
+      color: var(--cream);
+      padding: 4rem 3rem 2rem;
+      border-top: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    .footer-dark .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(250, 247, 242, 0.1);
+    }
+
+    .footer-dark .footer-brand h3 {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      margin-bottom: 1rem;
+      color: var(--cream);
+    }
+
+    .footer-dark .footer-brand p {
+      font-size: 0.8rem;
+      color: var(--cream);
+      opacity: 0.55;
+      max-width: 300px;
+      line-height: 1.75;
+    }
+
+    .footer-dark h4 {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.2rem;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .footer-dark ul { list-style: none; }
+    .footer-dark ul li { margin-bottom: 0.7rem; }
+    .footer-dark ul li a {
+      font-size: 0.82rem;
+      color: var(--cream);
+      opacity: 0.65;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .footer-dark ul li a:hover { opacity: 1; }
+
+    .footer-dark .footer-contact-col p {
+      font-size: 0.82rem;
+      color: var(--cream);
+      opacity: 0.65;
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-dark .footer-bottom {
+      max-width: 1100px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--cream);
+      opacity: 0.35;
+    }
+
+    /* ---- Nav active state ---- */
+    .nav-links a.active {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 992px) {
+      .workshop-grid { grid-template-columns: 1fr; max-width: 500px; margin-left: auto; margin-right: auto; }
+    }
+
+    @media (max-width: 768px) {
+      .soul-intro { padding: 8rem 1.5rem 4rem; }
+      .footer-dark .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-dark { padding: 3rem 1.5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav>
+    <a href="index.html" class="nav-logo">ANKE SCHAUBRENNER</a>
+    <ul class="nav-links">
+      <li><a href="index.html#about">ABOUT</a></li>
+      <li><a href="business.html">BUSINESS</a></li>
+      <li><a href="soul.html" class="active">SOUL</a></li>
+      <li><a href="play.html">PLAY</a></li>
+    </ul>
+    <div class="nav-social">
+      <!-- Instagram -->
+      <a href="#" aria-label="Instagram">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+        </svg>
+      </a>
+      <!-- TikTok -->
+      <a href="#" aria-label="TikTok">
+        <svg width="14" height="16" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.81 1.54V6.78a4.85 4.85 0 01-1.04-.09z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ========== SECTION 2: PLAYSHOPS 2026 INTRO ========== -->
+  <section class="soul-intro">
+    <h1>Playshops 2026</h1>
+    <p>Diese Vorlage demonstriert, wie man mehrere Angebote in ein einzelnes mehrstufiges Formular integriert und den Verlauf mithilfe von Schaltflächen und logischen Verknüpfungen lenken kann.</p>
+  </section>
+
+  <!-- ========== SECTION 3: WORKSHOP CARDS ========== -->
+  <section class="soul-workshops" id="workshops">
+    <div class="workshop-grid">
+
+      <!-- Workshop I: München -->
+      <article class="workshop-card">
+        <div class="workshop-badge">I</div>
+        <img class="workshop-card-image" src="images/soul-workshop1.png" alt="Workshop München">
+        <div class="workshop-card-body">
+          <p class="workshop-location-date">14.06.–17.06.2026 &nbsp;~&nbsp; Zollhaus Süd</p>
+          <h3>Workshop München</h3>
+          <p class="workshop-desc">Diese Vorlage demonstriert, wie man mehrere Angebote in ein einzelnes mehrstufiges Formular integriert und den Verlauf mithilfe von Schaltflächen und logischen Verknüpfungen lenken kann.</p>
+          <ul class="workshop-checklist">
+            <li>Individuelle Unterstützung</li>
+            <li>Klare Handlungsschritte</li>
+            <li>Fokussierte Verantwortung</li>
+          </ul>
+          <a href="#" class="btn-workshop">Ich interessiere mich für ein individuelles Coaching</a>
+        </div>
+      </article>
+
+      <!-- Workshop II: Berlin -->
+      <article class="workshop-card">
+        <div class="workshop-badge">II</div>
+        <img class="workshop-card-image" src="images/soul-workshop2.png" alt="Workshop Berlin">
+        <div class="workshop-card-body">
+          <p class="workshop-location-date">12.08.–15.08.2026 &nbsp;~&nbsp; Schwabing</p>
+          <h3>Workshop Berlin</h3>
+          <p class="workshop-desc">Diese Vorlage demonstriert, wie man mehrere Angebote in ein einzelnes mehrstufiges Formular integriert und den Verlauf mithilfe von Schaltflächen und logischen Verknüpfungen lenken kann.</p>
+          <ul class="workshop-checklist">
+            <li>Individuelle Unterstützung</li>
+            <li>Klare Handlungsschritte</li>
+            <li>Fokussierte Verantwortung</li>
+          </ul>
+          <a href="#" class="btn-workshop">Ich interessiere mich für ein individuelles Coaching</a>
+        </div>
+      </article>
+
+      <!-- Workshop III: Hamburg -->
+      <article class="workshop-card">
+        <div class="workshop-badge">III</div>
+        <img class="workshop-card-image" src="images/soul-workshop3.png" alt="Workshop Hamburg">
+        <div class="workshop-card-body">
+          <p class="workshop-location-date">22.09.–25.09.2026 &nbsp;~&nbsp; Altona</p>
+          <h3>Workshop Hamburg</h3>
+          <p class="workshop-desc">Diese Vorlage demonstriert, wie man mehrere Angebote in ein einzelnes mehrstufiges Formular integriert und den Verlauf mithilfe von Schaltflächen und logischen Verknüpfungen lenken kann.</p>
+          <ul class="workshop-checklist">
+            <li>Kollektives Wissen</li>
+            <li>Netzwerkmöglichkeiten</li>
+            <li>Kollaborative Problemlösung</li>
+          </ul>
+          <a href="#" class="btn-workshop">Tritt der Mastermind-Gruppe bei</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer-dark">
+    <div class="footer-inner">
+
+      <!-- Left: Brand -->
+      <div class="footer-brand">
+        <h3>ANKE SCHAUBRENNER</h3>
+        <p>Seit 1999 entwickeln wir mit viel Engagement und Liebe Ideen, die Brücken bauen. Zwischen Kulturen, Generationen, Geschlechtern und in Uns. Um Menschen zu helfen ihr ureigenes Potenzial zu entfalten.</p>
+      </div>
+
+      <!-- Center: Business links -->
+      <div>
+        <h4>Business</h4>
+        <ul>
+          <li><a href="business.html">Business Coaching</a></li>
+          <li><a href="soul.html">Unsere Playshops</a></li>
+          <li><a href="play.html">Tickets &amp; Events</a></li>
+          <li><a href="soul.html">Bloom Commune</a></li>
+          <li><a href="index.html#about">Über Anke</a></li>
+        </ul>
+      </div>
+
+      <!-- Right: Rechtsdokumente + Kontakt -->
+      <div>
+        <h4>Rechtsdokumente</h4>
+        <ul>
+          <li><a href="haftungsausschluss.html">Haftungsausschluss</a></li>
+          <li><a href="datenschutz.html">Datenschutzrichtlinie</a></li>
+        </ul>
+        <br>
+        <h4>Kontakte</h4>
+        <div class="footer-contact-col">
+          <p>Sabrina Meguellati</p>
+          <p>Assistentin</p>
+          <p style="margin-top:0.6rem;">
+            <a href="mailto:info@anke-schaubrenner.com" style="color:var(--gold); font-size:0.8rem; text-decoration:underline; text-underline-offset:3px;">info@anke-schaubrenner.com</a>
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Anke Schaubrenner. Diese Website ist nicht Teil der Facebook-Website oder von Facebook Inc.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
