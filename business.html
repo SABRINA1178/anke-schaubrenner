@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BUSINESS — Anke Schaubrenner</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=3">
+
+  <style>
+    /* ---- Fullscreen Marble Background ---- */
+    .business-hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .business-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+
+    .business-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.18);
+      z-index: 1;
+    }
+
+    /* ---- Content ---- */
+    .business-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      max-width: 660px;
+      transform: scale(0.8);
+      transform-origin: center center;
+      margin-top: 6rem;
+    }
+
+    .business-badge {
+      display: inline-block;
+      background: var(--black);
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-size: 1.22rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.4rem 1.4rem;
+      border-radius: 6px;
+      margin-bottom: 2.5rem;
+    }
+
+    .business-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--brown);
+      line-height: 1.15;
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.01em;
+    }
+
+    .business-title strong {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .business-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--gold);
+      margin: 0 auto 1.8rem;
+      animation: divider-grow 2s ease-out forwards;
+    }
+
+    @keyframes divider-grow {
+      from { width: 0; opacity: 0; }
+      to   { width: 60px; opacity: 1; }
+    }
+
+    .business-subtitle {
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--brown);
+      line-height: 1.9;
+      letter-spacing: 0.04em;
+      margin-bottom: 3rem;
+      opacity: 0.85;
+    }
+
+    /* ---- Pulsierender Goldkreis ---- */
+    .business-glow {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      background: var(--white);
+      margin: 0 auto 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: glow-pulse 3s ease-in-out infinite;
+      position: relative;
+    }
+
+    .wave {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 1.5px solid var(--black);
+      opacity: 0;
+      animation: wave-out 2.8s ease-out infinite;
+    }
+    .wave:nth-child(1) { animation-delay: 0s; }
+    .wave:nth-child(2) { animation-delay: 0.7s; }
+    .wave:nth-child(3) { animation-delay: 1.4s; }
+    .wave:nth-child(4) { animation-delay: 2.1s; }
+
+    @keyframes wave-out {
+      0%   { transform: scale(1);   opacity: 0.65; }
+      100% { transform: scale(3.2); opacity: 0; }
+    }
+
+    .business-glow-icon {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: var(--gold);
+    }
+
+    /* ---- Button ---- */
+    .btn-back {
+      display: inline-block;
+      padding: 0.85rem 2.4rem;
+      background: var(--brown);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: lowercase;
+      text-decoration: none;
+      border-radius: 6px;
+      border: 3px solid var(--brown);
+      box-shadow: 0 4px 16px rgba(74, 59, 40, 0.3);
+      transition: all 0.3s;
+    }
+
+    .btn-back:hover {
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--white);
+    }
+
+    /* ---- Sunbeam Canvas ---- */
+    #sunbeams-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    /* ---- Rahmen um Textbereich ---- */
+    .business-frame {
+      border: 1px solid var(--black);
+      border-radius: 14px;
+      padding: 2.4rem 1.6rem;
+      background: var(--white);
+    }
+
+    /* ---- Nav active ---- */
+    .nav-links a.active { color: var(--gold); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav style="position:fixed;top:1.5rem;left:12.5%;right:12.5%;z-index:9999;">
+    <a href="index.html" class="nav-logo">ANKE SCHAUBRENNER</a>
+    <ul class="nav-links">
+      <li><a href="index.html#naturgewalt">ABOUT</a></li>
+      <li><a href="business.html" class="active">BUSINESS</a></li>
+      <li><a href="soul.html">SOUL</a></li>
+      <li><a href="play.html">PLAY</a></li>
+    </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="nav-social">
+      <a href="#" aria-label="Instagram">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+        </svg>
+      </a>
+      <!-- Facebook -->
+      <a href="#" aria-label="Facebook">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="business-hero">
+    <img class="business-bg" src="images/business-card.png" alt="Business">
+    <div class="business-overlay"></div>
+
+    <!-- Sunbeam Canvas -->
+    <canvas id="sunbeams-canvas"></canvas>
+
+    <div class="business-content">
+      <span class="business-badge">Business</span>
+
+      <div class="business-glow">
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <span class="business-glow-icon">AS</span>
+      </div>
+
+      <div class="business-frame">
+        <h1 class="business-title">
+          Großes entsteht<br><strong>gerade.</strong>
+        </h1>
+
+        <div class="business-divider"></div>
+
+        <p class="business-subtitle">
+          Dieser Bereich wird bald für dich geöffnet.<br>
+          Coaching, Beratung &amp; Business-Impulse<br>
+          von Anke Schaubrenner — Kaluna Fee.
+        </p>
+
+        <a href="index.html" class="btn-back">zurück zur Startseite</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function () {
+    const canvas = document.getElementById('sunbeams-canvas');
+    const ctx    = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Lichtquelle — oben links, leicht außerhalb des Rahmens
+    const sx = () => canvas.width  * -0.04;
+    const sy = () => canvas.height * -0.08;
+
+    // Strahlenbündel — Winkel, Breite, Helligkeit, Driftgeschwindigkeit
+    const RAYS = [
+      { a: 0.28, w: 0.10, b: 0.48, d: 0.00017 },
+      { a: 0.44, w: 0.06, b: 0.30, d: 0.00025 },
+      { a: 0.60, w: 0.16, b: 0.55, d: 0.00011 },
+      { a: 0.74, w: 0.05, b: 0.22, d: 0.00031 },
+      { a: 0.88, w: 0.11, b: 0.38, d: 0.00015 },
+      { a: 1.02, w: 0.04, b: 0.18, d: 0.00023 },
+      { a: 1.16, w: 0.09, b: 0.28, d: 0.00019 },
+    ];
+
+    // Staubmoten im Licht
+    const MOTES = Array.from({ length: 55 }, () => ({
+      x: Math.random(), y: Math.random(),
+      r: Math.random() * 1.6 + 0.4,
+      ph: Math.random() * Math.PI * 2,
+      sp: Math.random() * 0.000055 + 0.000015,
+      dr: (Math.random() - 0.5) * 0.000025,
+    }));
+
+    // Goldene Aufblitzer entlang der Marmoradern
+    const SPARKS = [
+      { x: 0.14, y: 0.10, sz: 55, ph: 0.0  },
+      { x: 0.27, y: 0.22, sz: 38, ph: 1.1  },
+      { x: 0.39, y: 0.36, sz: 65, ph: 2.3  },
+      { x: 0.51, y: 0.47, sz: 42, ph: 0.7  },
+      { x: 0.62, y: 0.57, sz: 70, ph: 3.5  },
+      { x: 0.73, y: 0.67, sz: 48, ph: 1.8  },
+      { x: 0.84, y: 0.77, sz: 35, ph: 2.9  },
+      { x: 0.21, y: 0.58, sz: 45, ph: 4.1  },
+      { x: 0.66, y: 0.30, sz: 52, ph: 5.2  },
+    ];
+
+    function drawGlow(t) {
+      const x = sx(), y = sy();
+      const pulse = 1 + 0.07 * Math.sin(t * 0.0009);
+      const r = canvas.width * 0.30 * pulse;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0,   'rgba(255,252,200,0.60)');
+      g.addColorStop(0.18,'rgba(255,242,155,0.32)');
+      g.addColorStop(0.50,'rgba(255,225,100,0.12)');
+      g.addColorStop(1,   'rgba(255,200,60,0)');
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+    }
+
+    function drawRay(t, ray) {
+      const x = sx(), y = sy();
+      const len = Math.hypot(canvas.width * 1.9, canvas.height * 1.9);
+      const wobble = Math.sin(t * 0.00075 + ray.a * 6.3) * 0.013;
+      const a = ray.a + wobble;
+      const opWave = 0.72 + 0.28 * Math.sin(t * 0.00055 + ray.a * 4.7);
+
+      const x1 = x + Math.cos(a - ray.w / 2) * len;
+      const y1 = y + Math.sin(a - ray.w / 2) * len;
+      const x2 = x + Math.cos(a + ray.w / 2) * len;
+      const y2 = y + Math.sin(a + ray.w / 2) * len;
+      const gx = x + Math.cos(a) * len * 0.62;
+      const gy = y + Math.sin(a) * len * 0.62;
+
+      const g = ctx.createLinearGradient(x, y, gx, gy);
+      g.addColorStop(0,    `rgba(255,248,195,${ray.b * opWave})`);
+      g.addColorStop(0.22, `rgba(255,238,155,${ray.b * opWave * 0.58})`);
+      g.addColorStop(0.55, `rgba(255,222,110,${ray.b * opWave * 0.20})`);
+      g.addColorStop(1,    'rgba(255,205,70,0)');
+
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x1, y1);
+      ctx.lineTo(x2, y2);
+      ctx.closePath();
+      ctx.fillStyle = g;
+      ctx.fill();
+    }
+
+    function drawMotes(t) {
+      MOTES.forEach(m => {
+        const px = ((m.x + t * m.sp) % 1.0) * canvas.width;
+        const py = ((m.y + t * m.dr + t * 0.000008) % 1.0) * canvas.height;
+        // nur in der Strahlzone
+        if ((px / canvas.width) + (py / canvas.height) < 1.55) {
+          const op = 0.25 + 0.30 * Math.sin(t * 0.0018 + m.ph);
+          ctx.beginPath();
+          ctx.arc(px, py, m.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,245,170,${op})`;
+          ctx.fill();
+        }
+      });
+    }
+
+    function drawSparks(t) {
+      SPARKS.forEach(s => {
+        const pulse = 0.45 + 0.55 * Math.sin(t * 0.0014 + s.ph);
+        const r = s.sz * (0.75 + 0.25 * pulse);
+        const op = pulse * 0.80;
+        const px = s.x * canvas.width;
+        const py = s.y * canvas.height;
+        const g = ctx.createRadialGradient(px, py, 0, px, py, r);
+        g.addColorStop(0,   `rgba(255,225,55,${op})`);
+        g.addColorStop(0.30,`rgba(212,175,55,${op * 0.55})`);
+        g.addColorStop(1,   'rgba(212,175,55,0)');
+        ctx.beginPath();
+        ctx.arc(px, py, r, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.fill();
+      });
+    }
+
+    function frame(t) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.globalCompositeOperation = 'source-over';
+      drawGlow(t);
+      RAYS.forEach(r => drawRay(t, r));
+      drawMotes(t);
+      drawSparks(t);
+      requestAnimationFrame(frame);
+    }
+
+    requestAnimationFrame(frame);
+  })();
+  </script>
+
+  <script src="main.js"></script>
+</body>
+</html>

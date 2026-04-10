@@ -65,6 +65,7 @@
       text-transform: uppercase;
       padding: 0.25rem 0.9rem;
       line-height: 1.1;
+      border-radius: 6px;
     }
 
     /* Info-Box — mittig im freien Bereich rechts */
@@ -76,6 +77,7 @@
       background: rgba(8, 8, 8, 0.94);
       padding: 2rem 2.2rem;
       width: 340px;
+      border-radius: 14px;
     }
 
     .play-hero-infobox h2 {
@@ -123,12 +125,12 @@
     .play-shop-intro {
       background: var(--white);
       text-align: center;
-      padding: 1.8rem 2rem 1.5rem;
+      padding: 3.5rem 2rem 3rem;
     }
 
     .play-shop-intro p {
       font-family: var(--font-body);
-      font-size: 1.6rem;
+      font-size: 2.11rem;
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -142,6 +144,7 @@
       color: var(--white);
       padding: 0.1rem 0.6rem;
       font-weight: 700;
+      border-radius: 6px;
     }
 
     .play-chevron {
@@ -155,13 +158,14 @@
     /* ---- Tickets-Header (schwarzer Streifen) ---- */
     .play-tickets-header {
       background: var(--black);
-      padding: 3rem 4%;
+      padding: 1.5rem 4%;
+      margin: 0 120px 0 120px;
       text-align: left;
     }
 
     .play-tickets-header h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(2.3rem, 4.6vw, 3.68rem);
       font-weight: 700;
       color: var(--white);
       margin-bottom: 1rem;
@@ -173,32 +177,35 @@
       background: var(--gold);
       color: var(--black);
       font-family: var(--font-body);
-      font-size: 0.85rem;
+      font-size: 1.1rem;
       font-weight: 600;
       letter-spacing: 0.08em;
-      padding: 0.4rem 1.4rem;
+      padding: 0.6rem 2rem;
       text-transform: uppercase;
+      border-radius: 6px;
     }
 
     /* ---- Event-Karten ---- */
     .play-tickets-cards {
       background: var(--white);
-      padding: 3rem 4% 4rem;
+      padding: 1.5rem 4% 4rem 120px;
     }
 
     .event-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
+      gap: 1.2rem;
+      max-width: 860px;
+      margin: 0;
     }
 
     .event-card {
       background: var(--white);
       display: flex;
       flex-direction: column;
-      border: 1px solid rgba(0,0,0,0.07);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--black);
     }
 
     .event-card-image {
@@ -206,32 +213,33 @@
       aspect-ratio: 3 / 4;
       object-fit: cover;
       display: block;
+      border-radius: 14px 14px 0 0;
+      border-bottom: 1px solid var(--black);
     }
 
     .event-card-body {
-      padding: 1.4rem 1.4rem 1.8rem;
+      padding: 0.8rem 0.9rem 1.1rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       flex: 1;
       text-align: center;
-      border-top: 1px solid rgba(0,0,0,0.1);
     }
 
     .event-card-icon {
-      width: 44px;
-      height: 44px;
+      width: 36px;
+      height: 36px;
       background: var(--black);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.55rem;
     }
 
     .event-card-icon svg {
-      width: 22px;
-      height: 22px;
+      width: 18px;
+      height: 18px;
       stroke: var(--white);
       fill: none;
       stroke-width: 1.5;
@@ -239,31 +247,36 @@
 
     .event-card-title {
       display: inline-block;
-      background: var(--black);
-      color: var(--gold);
+      background: var(--gold);
+      color: var(--pure-black);
       font-family: var(--font-body);
-      font-size: 0.78rem;
+      font-size: 16px;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
-      padding: 0.35rem 0.8rem;
-      margin-bottom: 0.5rem;
+      padding: 0.2rem 0.6rem;
+      margin-bottom: 0.25rem;
       text-align: center;
+      border-radius: 6px;
+      line-height: 1.2;
     }
 
     .event-card-subtitle {
-      font-size: 0.8rem;
+      font-size: 16px;
+      font-weight: 600;
       color: var(--black);
       opacity: 0.6;
-      margin-bottom: 1rem;
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
     }
 
     .event-card-venue {
       font-family: var(--font-body);
-      font-size: 0.82rem;
+      font-size: 16px;
+      font-weight: 600;
       color: var(--black);
-      margin-bottom: 0.8rem;
-      line-height: 1.5;
+      margin-bottom: 0.4rem;
+      line-height: 1.2;
     }
 
     .event-card-date {
@@ -271,39 +284,50 @@
       background: var(--brown);
       color: var(--white);
       font-family: var(--font-body);
-      font-size: 0.78rem;
+      font-size: 16px;
       font-weight: 600;
-      padding: 0.25rem 0.9rem;
-      margin-bottom: 0.7rem;
-      letter-spacing: 0.05em;
+      padding: 0.18rem 0.6rem;
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.02em;
+      border-radius: 6px;
     }
 
     .event-card-category {
-      font-size: 0.78rem;
+      font-size: 16px;
+      font-weight: 600;
       color: var(--black);
       opacity: 0.65;
-      margin-bottom: 1.4rem;
+      margin-bottom: 0.9rem;
+      line-height: 1.2;
     }
 
     .btn-event {
       margin-top: auto;
       display: block;
       width: 100%;
-      padding: 0.9rem 1rem;
+      padding: 0.8rem 1rem;
       background: var(--brown);
       color: var(--white);
       font-family: var(--font-body);
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-align: center;
       text-transform: lowercase;
-      border: none;
+      border: 3px solid var(--brown);
       cursor: pointer;
-      transition: background 0.3s;
       text-decoration: none;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      animation: btn-heartbeat 3.5s ease-in-out infinite;
     }
-    .btn-event:hover { background: var(--black); color: var(--white); }
+    .btn-event:hover {
+      animation: none;
+      background: var(--black);
+      border-color: var(--black);
+      color: var(--white);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
 
     /* ---- Pfeil nach Tickets ---- */
     .section-chevron {
@@ -323,13 +347,14 @@
     /* ---- Musik-Header (schwarzer Streifen) ---- */
     .play-musik-header {
       background: var(--black);
-      padding: 2.5rem 4%;
+      padding: 1.5rem 4%;
       text-align: right;
+      margin: 0 120px;
     }
 
     .play-musik-header h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(2.3rem, 4.6vw, 3.68rem);
       font-weight: 700;
       color: var(--white);
       margin-bottom: 0.8rem;
@@ -338,58 +363,77 @@
     /* ---- Musik-Karten ---- */
     .play-musik-cards {
       background: var(--white);
-      padding: 3rem 4% 4rem;
+      padding: 1.5rem 120px calc(4rem + 100px) 120px;
     }
 
     .music-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      display: flex;
       gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      width: 100%;
     }
 
     .music-card {
       background: var(--white);
       display: flex;
       flex-direction: column;
-      border: 1px solid rgba(0,0,0,0.07);
+      border: 1px solid var(--black);
+      border-radius: 14px;
+      overflow: hidden;
+      flex: 0 0 212px;
+    }
+
+    .music-card:nth-child(2) {
+      margin-left: auto;
     }
 
     .music-card-image {
       width: 100%;
-      aspect-ratio: 3 / 4;
+      aspect-ratio: 2 / 3;
       object-fit: cover;
       display: block;
+      border-radius: 14px 14px 0 0;
+      border-bottom: 1px solid var(--black);
+      transition: transform 0.4s ease;
+    }
+
+    .music-card:hover .music-card-image {
+      transform: scale(1.07);
     }
 
     .music-card-body {
-      padding: 1.2rem 1rem 1.6rem;
+      padding: 0.8rem 0.9rem 1.1rem;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       flex: 1;
-      text-align: center;
-      border-top: 1px solid rgba(0,0,0,0.1);
+      text-align: left;
     }
 
     .music-card-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--black);
-      border-radius: 50%;
+      width: 36px;
+      height: 36px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 0.9rem;
+      margin-bottom: 1.2rem;
+      background: transparent;
     }
 
-    .music-card-icon svg {
-      width: 20px;
-      height: 20px;
-      stroke: var(--white);
-      fill: none;
-      stroke-width: 1.5;
+    .vinyl-record {
+      width: 36px;
+      height: 36px;
+      overflow: visible;
+    }
+
+    .vinyl-spin {
+      animation: vinyl-spin 3s linear infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    @keyframes vinyl-spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
     }
 
     .music-card-title {
@@ -397,12 +441,16 @@
       background: var(--black);
       color: var(--gold);
       font-family: var(--font-body);
-      font-size: 0.78rem;
+      font-size: 20px;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
-      padding: 0.3rem 0.7rem;
-      margin-bottom: 0.5rem;
+      padding: 0.25rem 0.7rem;
+      margin-bottom: 0.8rem;
+      border-radius: 6px;
+      line-height: 1.2;
+      text-align: left;
+      align-self: flex-start;
     }
 
     .music-card-subtitle {
@@ -410,26 +458,39 @@
       background: var(--gold);
       color: var(--black);
       font-family: var(--font-body);
-      font-size: 0.72rem;
+      font-size: 20px;
       font-weight: 600;
       padding: 0.2rem 0.6rem;
-      margin-bottom: 0.8rem;
-      text-align: center;
+      margin-bottom: 1rem;
+      text-align: left;
+      border-radius: 6px;
+      line-height: 1.2;
     }
 
     .music-card-desc {
-      font-size: 0.75rem;
+      font-size: 20px;
+      font-weight: 600;
       color: var(--black);
-      opacity: 0.7;
-      line-height: 1.6;
-      margin-bottom: 0.5rem;
+      line-height: 1.2;
+      margin-bottom: 0.9rem;
+      text-align: left;
     }
 
     .music-card-producer {
-      font-size: 0.7rem;
+      font-size: 20px;
+      font-weight: 600;
       color: var(--black);
       opacity: 0.45;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.4rem;
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    @keyframes btn-heartbeat {
+      0%   { background: var(--brown); box-shadow: 0 4px 12px rgba(0,0,0,0.25); color: var(--white); }
+      35%  { background: #EED7B8;      box-shadow: 0 6px 28px rgba(238,215,184,0.6); color: #1A1A1A; }
+      65%  { background: var(--brown); box-shadow: 0 4px 12px rgba(0,0,0,0.25); color: var(--white); }
+      100% { background: var(--brown); box-shadow: 0 4px 12px rgba(0,0,0,0.25); color: var(--white); }
     }
 
     .btn-music {
@@ -440,38 +501,65 @@
       background: var(--brown);
       color: var(--white);
       font-family: var(--font-body);
-      font-size: 0.73rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
       text-align: center;
       text-transform: lowercase;
-      border: none;
+      border: 3px solid var(--brown);
       cursor: pointer;
-      transition: all 0.3s;
       text-decoration: none;
+      border-radius: 6px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      animation: btn-heartbeat 3.5s ease-in-out infinite;
     }
-    .btn-music:hover { background: var(--black); }
+    .btn-music:hover {
+      animation: none;
+      background: var(--black);
+      border-color: var(--black);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
 
     /* ---- Legal ---- */
     .play-legal {
-      background: var(--black);
-      padding: 3rem 4%;
+      background: var(--brown);
+      padding: 1.6rem 120px;
+      margin: 0;
+      border-radius: 0;
     }
 
     .play-legal-inner {
-      max-width: 1100px;
-      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .play-legal-inner p {
+      padding: 0 2rem;
+      border-right: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .play-legal-inner p:first-child {
+      padding-left: 0;
+    }
+
+    .play-legal-inner p:last-child {
+      border-right: none;
     }
 
     .play-legal p {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.8;
-      margin-bottom: 0.8rem;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+      margin: 0;
     }
 
     .play-legal strong {
-      color: rgba(255,255,255,0.85);
+      display: block;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 0.3rem;
+      font-size: 0.74rem;
+      letter-spacing: 0.04em;
     }
 
     .play-legal a {
@@ -480,16 +568,110 @@
       text-underline-offset: 3px;
     }
 
+    /* ---- Audio Preview Player ---- */
+    .music-card-preview-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 14px 14px 0 0;
+      border-bottom: 1px solid var(--black);
+    }
+    .music-card-preview-wrap .music-card-image {
+      border-radius: 0;
+      border-bottom: none;
+      display: block;
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .music-card:hover .music-card-preview-wrap .music-card-image {
+      transform: scale(1.07);
+    }
+    .preview-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 84px;
+      height: 84px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .preview-ring-svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 84px; height: 84px;
+      transform: rotate(-90deg);
+    }
+    .preview-ring-bg  { fill: none; stroke: rgba(255,255,255,0.25); stroke-width: 3; }
+    .preview-ring-fill {
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 226.19;
+      stroke-dashoffset: 226.19;
+    }
+    .preview-icon-wrap {
+      width: 60px; height: 60px;
+      background: rgba(0,0,0,0.65);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+      transition: background 0.3s, transform 0.2s;
+    }
+    .preview-btn:hover .preview-icon-wrap {
+      background: rgba(0,0,0,0.88);
+      transform: scale(1.1);
+    }
+    .preview-icon { fill: white; width: 28px; height: 28px; }
+    .preview-song-title {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.72);
+      color: white;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-align: center;
+      padding: 0.4rem 0.5rem;
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+    .preview-song-title.visible { opacity: 1; }
+
     /* ---- Nav active ---- */
     .nav-links a.active { color: var(--gold); font-weight: 600; }
 
     /* ---- Responsive ---- */
     @media (max-width: 900px) {
       .event-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
-      .music-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 600px) {
-      .music-grid { grid-template-columns: 1fr; }
+    @media (max-width: 768px) {
+      .play-hero-title { font-size: clamp(3rem, 18vw, 7rem); }
+      .play-hero-infobox { position: static; margin: 1rem auto; max-width: 100%; }
+      .music-grid { flex-wrap: wrap; justify-content: center; }
+      .music-card { flex: 0 0 calc(50% - 0.75rem); }
+      .music-card:nth-child(2) { margin-left: 0; }
+      .event-grid { grid-template-columns: 1fr !important; max-width: 420px; margin: 0 auto; }
+      .play-section { padding-left: 1.2rem !important; padding-right: 1.2rem !important; }
+      .music-tile { padding: 1.5rem 1.2rem; }
+    }
+    @media (max-width: 500px) {
+      .music-grid { flex-direction: column; align-items: center; }
+      .music-card { flex: 0 0 280px; width: 280px; }
+      .music-card:nth-child(2) { margin-left: 0; }
       .play-hero-infobox { position: static; margin: 1rem; max-width: 100%; }
     }
   </style>
@@ -500,11 +682,16 @@
   <nav style="position:fixed;top:1.5rem;left:12.5%;right:12.5%;z-index:9999;">
     <a href="index.html" class="nav-logo">ANKE SCHAUBRENNER</a>
     <ul class="nav-links">
-      <li><a href="about.html">ABOUT</a></li>
+      <li><a href="index.html#naturgewalt">ABOUT</a></li>
       <li><a href="business.html">BUSINESS</a></li>
       <li><a href="soul.html">SOUL</a></li>
       <li><a href="play.html" class="active">PLAY</a></li>
     </ul>
+    <button class="nav-hamburger" id="navHamburger" aria-label="Menü öffnen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <div class="nav-social">
       <a href="#" aria-label="Instagram">
         <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
@@ -513,9 +700,10 @@
           <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
         </svg>
       </a>
-      <a href="#" aria-label="TikTok">
-        <svg width="14" height="16" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.22 8.22 0 004.81 1.54V6.78a4.85 4.85 0 01-1.04-.09z"/>
+      <!-- Facebook -->
+      <a href="#" aria-label="Facebook">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
         </svg>
       </a>
     </div>
@@ -552,8 +740,8 @@
 
   <!-- ========== TICKETS: HEADER ========== -->
   <div class="play-tickets-header" id="tickets">
-    <h2>Tickets &amp; Veranstaltungen</h2>
-    <span class="badge-pill">Resonanz &amp; Begegnung</span>
+    <h2>Tickets <span class="amp">&amp;</span> Veranstaltungen</h2>
+    <span class="badge-pill">Resonanz <span class="amp">&amp;</span> Begegnung</span>
   </div>
 
   <!-- ========== TICKETS: KARTEN ========== -->
@@ -562,7 +750,7 @@
 
       <!-- Karte 1: Cosmic Cine -->
       <article class="event-card">
-        <img class="event-card-image" src="images/event-cosmic.png" alt="Cosmic Cine Festival">
+        <img class="event-card-image" src="images/Cosmic Cine Festival 2026.jpg" alt="Cosmic Cine Festival">
         <div class="event-card-body">
           <div class="event-card-icon">
             <svg viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.36a1 1 0 01-1.447.89L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
@@ -578,7 +766,7 @@
 
       <!-- Karte 2: Workshop Karen Sailer -->
       <article class="event-card">
-        <img class="event-card-image" src="images/event-karen.png" alt="Workshop mit Karen Sailer">
+        <img class="event-card-image" src="images/Lovegate Experience.jpg" alt="Workshop mit Karen Sailer">
         <div class="event-card-body">
           <div class="event-card-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 20v-1a6 6 0 0112 0v1"/><circle cx="5" cy="9" r="2"/><path d="M1 20v-1a4 4 0 015.33-3.77"/><circle cx="19" cy="9" r="2"/><path d="M23 20v-1a4 4 0 00-5.33-3.77"/></svg>
@@ -588,13 +776,13 @@
           <p class="event-card-venue">Mathaeser Filmpalast<br>München</p>
           <span class="event-card-date">18.04.2026</span>
           <p class="event-card-category">Vertiefung</p>
-          <a href="https://www.mathaeser.de/mm/filmdetail/lovegate/A0974000012PLXMQDD" target="_blank" class="btn-event">Platz im Rudel sichern</a>
+          <a href="https://www.mathaeser.de/mm/filmdetail/lovegate-experience-workshop/22974000012PLXMQDD" target="_blank" class="btn-event">Platz im Rudel sichern</a>
         </div>
       </article>
 
       <!-- Karte 3: Laura Malina Seiler -->
       <article class="event-card">
-        <img class="event-card-image" src="images/event-laura.png" alt="Laura Malina Seiler">
+        <img class="event-card-image" src="images/Happy Holy Confident.webp" alt="Laura Malina Seiler">
         <div class="event-card-body">
           <div class="event-card-icon">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 20v-1a6 6 0 0112 0v1"/><circle cx="5" cy="9" r="2"/><path d="M1 20v-1a4 4 0 015.33-3.77"/><circle cx="19" cy="9" r="2"/><path d="M23 20v-1a4 4 0 00-5.33-3.77"/></svg>
@@ -619,7 +807,7 @@
   <!-- ========== MUSIK: HEADER ========== -->
   <div class="play-musik-header" id="musik">
     <h2>Musik</h2>
-    <span class="badge-pill">Frequenz &amp; Wort</span>
+    <span class="badge-pill">Frequenz <span class="amp">&amp;</span> Wort</span>
   </div>
 
   <!-- ========== MUSIK: KARTEN ========== -->
@@ -628,75 +816,186 @@
 
       <!-- Song 1: Love Gate -->
       <article class="music-card">
-        <img class="music-card-image" src="images/music-lovegate.png" alt="Love Gate">
+        <div class="music-card-preview-wrap" data-audio="lovegate">
+          <img class="music-card-image" src="images/Lovegate Experience.jpg" alt="Love Gate">
+          <button class="preview-btn" aria-label="Vorschau abspielen">
+            <svg class="preview-ring-svg" viewBox="0 0 84 84"><circle class="preview-ring-bg" cx="42" cy="42" r="36"/><circle class="preview-ring-fill" cx="42" cy="42" r="36"/></svg>
+            <div class="preview-icon-wrap">
+              <svg class="preview-icon preview-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="preview-icon preview-pause" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </div>
+          </button>
+          <div class="preview-song-title"></div>
+        </div>
         <div class="music-card-body">
           <div class="music-card-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 8l8 4-8 4V8z" fill="currentColor" stroke="none"/></svg>
+            <svg class="vinyl-record" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <!-- Schwarzer Hintergrundkreis -->
+              <circle cx="22" cy="22" r="22" fill="#1a1a1a"/>
+              <!-- Weißes Plattenspieler-Symbol -->
+              <g class="vinyl-spin">
+                <circle cx="22" cy="22" r="14" fill="none" stroke="white" stroke-width="1.5"/>
+                <circle cx="22" cy="22" r="9"  fill="none" stroke="white" stroke-width="1.5"/>
+                <circle cx="22" cy="22" r="3"  fill="white"/>
+              </g>
+              <!-- Schwenkarm statisch -->
+              <line x1="38" y1="6" x2="24" y2="19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="38" cy="6" r="2.5" fill="white"/>
+              <circle cx="23" cy="20" r="1.5" fill="white"/>
+            </svg>
           </div>
           <span class="music-card-title">"Love Gate"</span>
           <span class="music-card-subtitle">Original Motion Picture Soundtrack</span>
-          <p class="music-card-desc">Songs, die die Protagonistinnen auf ihrer Reise zurück zu sich selbst begleiten.</p>
-          <p class="music-card-producer">Prod.: Anke Schaubrenner, Hanno, Karen Sailer</p>
-          <a href="#" class="btn-music">Soundtrack erwerben</a>
+          <p class="music-card-desc">Songs, die die Prota&shy;gonistinnen auf ihrer Reise zurück zu sich selbst begleiten.</p>
+          <p class="music-card-producer">Prod.: Anke Schau&shy;brenner, Hanno di Rosa, Karen Sailer</p>
+          <a href="https://www.amazon.de/dp/B0FVYBCVCM/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1SJ0E3WF8HVCS&dib=eyJ2IjoiMSJ9.YBKZt8bPdv6pj-8rGybrkfRs3Vf2tyPM9jSJHskd8_fXHXpAHjlbCriIp8ox9q-ZFLz0eh9BZURCAwGw8BYe_mOwYFBcJVMBt87GPPYEXERX8O_v7z79ZFqaOZC53gl44-P4IqgLzDYiJQTpA87wM2gAuVeqLyH2fq87uwhUKhz9AkdWlICN0vrPfxrPkF_bRHSfvWs7M2z6FZuoyqsr0YRl0Srv_LduNAqa6DyhTc0.a0E3m2eWE_doYNva5J8rOdgZil70yhOAKFvtGb8qaO0&dib_tag=se&keywords=love+gate+soundtrack&qid=1775816034&sprefix=love+gate+soundtrack%2Caps%2C140&sr=8-1" target="_blank" class="btn-music">Soundtrack erwerben</a>
         </div>
       </article>
 
       <!-- Song 2: Wild Hearts -->
       <article class="music-card">
-        <img class="music-card-image" src="images/music-wildhearts.png" alt="Wild Hearts">
+        <div class="music-card-preview-wrap" data-audio="wildhearts">
+          <img class="music-card-image" src="images/Rocks Wild Hearts.jpg" alt="Wild Hearts">
+          <button class="preview-btn" aria-label="Vorschau abspielen">
+            <svg class="preview-ring-svg" viewBox="0 0 84 84"><circle class="preview-ring-bg" cx="42" cy="42" r="36"/><circle class="preview-ring-fill" cx="42" cy="42" r="36"/></svg>
+            <div class="preview-icon-wrap">
+              <svg class="preview-icon preview-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="preview-icon preview-pause" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </div>
+          </button>
+        </div>
         <div class="music-card-body">
           <div class="music-card-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 8l8 4-8 4V8z" fill="currentColor" stroke="none"/></svg>
+            <svg class="vinyl-record" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <!-- Schwarzer Hintergrundkreis -->
+              <circle cx="22" cy="22" r="22" fill="#1a1a1a"/>
+              <!-- Weißes Plattenspieler-Symbol -->
+              <g class="vinyl-spin">
+                <circle cx="22" cy="22" r="14" fill="none" stroke="white" stroke-width="1.5"/>
+                <circle cx="22" cy="22" r="9"  fill="none" stroke="white" stroke-width="1.5"/>
+                <circle cx="22" cy="22" r="3"  fill="white"/>
+              </g>
+              <!-- Schwenkarm statisch -->
+              <line x1="38" y1="6" x2="24" y2="19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="38" cy="6" r="2.5" fill="white"/>
+              <circle cx="23" cy="20" r="1.5" fill="white"/>
+            </svg>
           </div>
           <span class="music-card-title">Wild Hearts</span>
           <span class="music-card-subtitle">Song Wild Hearts by Anke</span>
-          <p class="music-card-desc">Songs, die die Protagonistinnen auf ihrer Reise zurück zu sich selbst begleiten.</p>
-          <p class="music-card-producer">Prod.: Anke Schaubrenner, Hanno, Karen Sailer</p>
-          <a href="#" class="btn-music">hol ich mir!</a>
+          <p class="music-card-desc">Jubiläums Hymne zu Karen Sailers&nbsp;Wild Hearts Universe.</p>
+          <p class="music-card-producer">Prod.: Anke Schau&shy;brenner, Sven Gordon Williams</p>
+          <a href="https://www.checkout-ds24.com/product/683765" target="_blank" class="btn-music">hol ich mir!</a>
         </div>
       </article>
 
       <!-- Song 3: Earth Child -->
       <article class="music-card">
-        <img class="music-card-image" src="images/music-earthchild.png" alt="Earth Child">
+        <div class="music-card-preview-wrap" data-audio="earthchild">
+          <img class="music-card-image" src="images/little Girl Earth Child.jpg" alt="Earth Child">
+          <button class="preview-btn" aria-label="Vorschau abspielen">
+            <svg class="preview-ring-svg" viewBox="0 0 84 84"><circle class="preview-ring-bg" cx="42" cy="42" r="36"/><circle class="preview-ring-fill" cx="42" cy="42" r="36"/></svg>
+            <div class="preview-icon-wrap">
+              <svg class="preview-icon preview-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="preview-icon preview-pause" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </div>
+          </button>
+        </div>
         <div class="music-card-body">
           <div class="music-card-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 8l8 4-8 4V8z" fill="currentColor" stroke="none"/></svg>
+            <svg class="vinyl-record" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <!-- Schwarzer Hintergrundkreis -->
+              <circle cx="22" cy="22" r="22" fill="#1a1a1a"/>
+              <!-- Weißes Plattenspieler-Symbol -->
+              <g class="vinyl-spin">
+                <circle cx="22" cy="22" r="14" fill="none" stroke="white" stroke-width="1.5"/>
+                <circle cx="22" cy="22" r="9"  fill="none" stroke="white" stroke-width="1.5"/>
+                <circle cx="22" cy="22" r="3"  fill="white"/>
+              </g>
+              <!-- Schwenkarm statisch -->
+              <line x1="38" y1="6" x2="24" y2="19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="38" cy="6" r="2.5" fill="white"/>
+              <circle cx="23" cy="20" r="1.5" fill="white"/>
+            </svg>
           </div>
           <span class="music-card-title">Earth Child</span>
           <span class="music-card-subtitle">Song Earth Child by Anke</span>
-          <p class="music-card-desc">Songs, die die Protagonistinnen auf ihrer Reise zurück zu sich selbst begleiten.</p>
-          <p class="music-card-producer">Prod.: Anke Schaubrenner, Hanno, Karen Sailer</p>
-          <a href="#" class="btn-music">will ich!</a>
+          <p class="music-card-desc">Premierensong zum „happy, holy, confident" Jubiläums&shy;event 2026</p>
+          <p class="music-card-producer">Prod.: Anke Schau&shy;brenner, Sven Gordon Williams</p>
+          <a href="https://www.checkout-ds24.com/product/683772" target="_blank" class="btn-music">will ich!</a>
         </div>
       </article>
 
       <!-- Song 4: Holy Holy -->
       <article class="music-card">
-        <img class="music-card-image" src="images/music-holy.png" alt="Holy Holy">
+        <div class="music-card-preview-wrap" data-audio="holyholy">
+          <img class="music-card-image" src="images/Bird  Holy Holy.jpg" alt="Holy Holy">
+          <button class="preview-btn" aria-label="Vorschau abspielen">
+            <svg class="preview-ring-svg" viewBox="0 0 84 84"><circle class="preview-ring-bg" cx="42" cy="42" r="36"/><circle class="preview-ring-fill" cx="42" cy="42" r="36"/></svg>
+            <div class="preview-icon-wrap">
+              <svg class="preview-icon preview-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="preview-icon preview-pause" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </div>
+          </button>
+        </div>
         <div class="music-card-body">
           <div class="music-card-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 8l8 4-8 4V8z" fill="currentColor" stroke="none"/></svg>
+            <svg class="vinyl-record" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <!-- Schwarzer Hintergrundkreis -->
+              <circle cx="22" cy="22" r="22" fill="#1a1a1a"/>
+              <!-- Weißes Plattenspieler-Symbol -->
+              <g class="vinyl-spin">
+                <circle cx="22" cy="22" r="14" fill="none" stroke="white" stroke-width="1.5"/>
+                <circle cx="22" cy="22" r="9"  fill="none" stroke="white" stroke-width="1.5"/>
+                <circle cx="22" cy="22" r="3"  fill="white"/>
+              </g>
+              <!-- Schwenkarm statisch -->
+              <line x1="38" y1="6" x2="24" y2="19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="38" cy="6" r="2.5" fill="white"/>
+              <circle cx="23" cy="20" r="1.5" fill="white"/>
+            </svg>
           </div>
           <span class="music-card-title">Holy Holy</span>
           <span class="music-card-subtitle">Song Holy Holy by Anke</span>
-          <p class="music-card-desc">Songs, die die Protagonistinnen auf ihrer Reise zurück zu sich selbst begleiten.</p>
-          <p class="music-card-producer">Prod.: Anke Schaubrenner, Hanno, Karen Sailer</p>
-          <a href="#" class="btn-music">aber sowas von!</a>
+          <p class="music-card-desc">Jubiläumssong zum „happy, holy, confident" Jubiläums&shy;event 2026</p>
+          <p class="music-card-producer">Prod.: Anke Schau&shy;brenner, Sven Gordon Williams</p>
+          <a href="https://www.checkout-ds24.com/product/683770" target="_blank" class="btn-music">aber sowas von!</a>
         </div>
       </article>
 
       <!-- Song 5: I Remember -->
       <article class="music-card">
-        <img class="music-card-image" src="images/music-iremember.png" alt="I Remember">
+        <div class="music-card-preview-wrap" data-audio="iremember">
+          <img class="music-card-image" src="images/Elefant I Remember.webp" alt="I Remember">
+          <button class="preview-btn" aria-label="Vorschau abspielen">
+            <svg class="preview-ring-svg" viewBox="0 0 84 84"><circle class="preview-ring-bg" cx="42" cy="42" r="36"/><circle class="preview-ring-fill" cx="42" cy="42" r="36"/></svg>
+            <div class="preview-icon-wrap">
+              <svg class="preview-icon preview-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              <svg class="preview-icon preview-pause" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            </div>
+          </button>
+        </div>
         <div class="music-card-body">
           <div class="music-card-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 8l8 4-8 4V8z" fill="currentColor" stroke="none"/></svg>
+            <svg class="vinyl-record" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+              <!-- Schwarzer Hintergrundkreis -->
+              <circle cx="22" cy="22" r="22" fill="#1a1a1a"/>
+              <!-- Weißes Plattenspieler-Symbol -->
+              <g class="vinyl-spin">
+                <circle cx="22" cy="22" r="14" fill="none" stroke="white" stroke-width="1.5"/>
+                <circle cx="22" cy="22" r="9"  fill="none" stroke="white" stroke-width="1.5"/>
+                <circle cx="22" cy="22" r="3"  fill="white"/>
+              </g>
+              <!-- Schwenkarm statisch -->
+              <line x1="38" y1="6" x2="24" y2="19" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="38" cy="6" r="2.5" fill="white"/>
+              <circle cx="23" cy="20" r="1.5" fill="white"/>
+            </svg>
           </div>
           <span class="music-card-title">I Remember</span>
           <span class="music-card-subtitle">Song I Remember by Anke</span>
-          <p class="music-card-desc">Songs, die die Protagonistinnen auf ihrer Reise zurück zu sich selbst begleiten.</p>
-          <p class="music-card-producer">Prod.: Anke Schaubrenner, Hanno, Karen Sailer</p>
+          <p class="music-card-desc">Ein Song, der dich erinnern lässt, was du längst über dich vergessen hast.</p>
+          <p class="music-card-producer">Prod.: Anke Schau&shy;brenner, Sven Gordon Williams</p>
           <a href="#" class="btn-music">hier damit!</a>
         </div>
       </article>
@@ -707,11 +1006,156 @@
   <!-- ========== LEGAL ========== -->
   <section class="play-legal">
     <div class="play-legal-inner">
-      <p><strong>Hinweis zu deiner Bestellung:</strong> Die auf dieser Seite angebotenen Erlebnisse, Musiktitel und Produkte werden über unsere Partner (z. B. Digistore24 oder spezifische Ticket-Plattformen) abgewickelt. Mit Klick auf den Kauf-Button wirst du auf die Seite des jeweiligen Anbieters weitergeleitet. Dort gelten die entsprechenden Allgemeinen Geschäftsbedingungen (AGB), Widerrufsbelehrungen und Datenschutzbestimmungen des Verkäufers. Anke Schaubrenner tritt hierbei als Vermittlerin auf.</p>
-      <p><strong>Wichtiger Hinweis für Tickets:</strong> Bitte beachte, dass für termingebundene Veranstaltungen (wie das Cosmic Cine oder Live-Events) gemäß § 312g Abs. 2 Nr. 9 BGB in der Regel kein Widerrufsrecht besteht. Prüfe deine Auswahl daher bitte sorgfältig vor dem Abschluss der Buchung beim Ticketing-Partner.</p>
-      <p><strong>Datenschutz:</strong> Durch die Weiterleitung an unsere Partner werden personenbezogene Daten zur Vertragsabwicklung verarbeitet. Details dazu findest du in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      <p><strong>Hinweis zu deiner Bestellung</strong>Die auf dieser Seite angebotenen Erlebnisse, Musiktitel und Produkte werden über unsere Partner (z. B. Digistore24 oder spezifische Ticket-Plattformen) abgewickelt. Mit Klick auf den Kauf-Button wirst du auf die Seite des jeweiligen Anbieters weitergeleitet. Dort gelten die AGB, Widerrufsbelehrungen und Datenschutzbestimmungen des Verkäufers.</p>
+      <p><strong>Wichtiger Hinweis für Tickets</strong>Bitte beachte, dass für termingebundene Veranstaltungen (wie das Cosmic Cine oder Live-Events) gemäß § 312g Abs. 2 Nr. 9 BGB in der Regel kein Widerrufsrecht besteht. Prüfe deine Auswahl sorgfältig vor dem Abschluss der Buchung.</p>
+      <p><strong>Datenschutz</strong>Durch die Weiterleitung an unsere Partner werden personenbezogene Daten zur Vertragsabwicklung verarbeitet. Details dazu findest du in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
     </div>
   </section>
+
+  <script>
+  /* ---- Button-Sync ---- */
+  document.addEventListener('DOMContentLoaded', () => {
+    const btns = document.querySelectorAll('.btn-event, .btn-music');
+    function syncAll() {
+      btns.forEach(b => { b.style.animation = 'none'; });
+      void document.body.offsetHeight; // reflow — startet alle neu
+      btns.forEach(b => { b.style.animation = ''; });
+    }
+    syncAll();
+  });
+
+  /* ---- Audio Preview Player ---- */
+  (function () {
+    const FADE_MS    = 1200;
+    const SEGMENT_MS = 15000;
+    const SINGLE_MS  = 30000;
+    const RING_CIRC  = 226.19;
+
+    const playlist = [
+      { src: 'audio/lovegate/LG_Step Right Through_Opener_Final.mp3', title: 'Step Right Through' },
+      { src: 'audio/lovegate/LG_Habanero_Song.mpeg',                   title: 'Habanero Song' },
+      { src: 'audio/lovegate/LG_Divine Magic - Anettes Song_13.02.2024.mp3', title: 'Divine Magic' },
+      { src: 'audio/lovegate/LG_Adeles Song.mp3',                       title: "Adele's Song" },
+      { src: 'audio/lovegate/LG_My Name Is Melody_13.02.2024.mp3',       title: 'My Name Is Melody' },
+      { src: 'audio/lovegate/LG_I will find You Again_12.02.2024.mp3',   title: 'I Will Find You Again' },
+      { src: 'audio/lovegate/LG_Lilias Song_12.02.2024.mp3',             title: "Lilia's Song" },
+      { src: 'audio/lovegate/LG_Moonchild_song.mp3',                     title: 'Moonchild' },
+      { src: 'audio/lovegate/LG_Unconditional Love_26.11.2023.mp3',      title: 'Unconditional Love' },
+      { src: 'audio/lovegate/LG_Open Hearts_13.02.2024.mp3',             title: 'Open Hearts' },
+      { src: 'audio/lovegate/LG_Anjas Song_13.02.2024.mp3',              title: "Anja's Song" }
+    ];
+
+    const singles = {
+      wildhearts: 'audio/wildhearts.mp3',
+      earthchild: 'audio/earthchild.mp3',
+      holyholy:   'audio/holyholy.mp3'
+    };
+
+    let active = null;
+
+    function resetWrap(wrap) {
+      wrap.querySelector('.preview-ring-fill').style.strokeDashoffset = RING_CIRC;
+      wrap.querySelector('.preview-play').style.display  = '';
+      wrap.querySelector('.preview-pause').style.display = 'none';
+      const t = wrap.querySelector('.preview-song-title');
+      if (t) { t.textContent = ''; t.classList.remove('visible'); }
+    }
+
+    function fade(audio, from, to, ms, done) {
+      audio.volume = from;
+      const steps = 20, dt = ms / steps, dv = (to - from) / steps;
+      let n = 0;
+      const id = setInterval(() => {
+        audio.volume = Math.max(0, Math.min(1, from + dv * ++n));
+        if (n >= steps) { clearInterval(id); done && done(); }
+      }, dt);
+    }
+
+    function stopActive(done) {
+      if (!active) { done && done(); return; }
+      const a = active; active = null;
+      clearInterval(a.ivl); clearTimeout(a.tmo);
+      fade(a.audio, a.audio.volume, 0, FADE_MS, () => {
+        a.audio.pause(); a.audio.src = '';
+        resetWrap(a.wrap);
+        done && done();
+      });
+    }
+
+    function startRing(wrap, ms) {
+      const fill  = wrap.querySelector('.preview-ring-fill');
+      const t0    = performance.now();
+      fill.style.strokeDashoffset = RING_CIRC;
+      return setInterval(() => {
+        const p = Math.min((performance.now() - t0) / ms, 1);
+        fill.style.strokeDashoffset = RING_CIRC * (1 - p);
+      }, 80);
+    }
+
+    function playLoveGate(wrap) {
+      const audio  = new Audio();
+      const titleEl = wrap.querySelector('.preview-song-title');
+      let idx = 0;
+      active = { audio, wrap, ivl: null, tmo: null };
+      wrap.querySelector('.preview-play').style.display  = 'none';
+      wrap.querySelector('.preview-pause').style.display = '';
+
+      function next() {
+        if (!active || active.wrap !== wrap) return;
+        if (idx >= playlist.length) { stopActive(); return; }
+        const song = playlist[idx];
+        audio.src = song.src;
+        audio.volume = 0;
+        audio.play().catch(() => {});
+        fade(audio, 0, 1, FADE_MS);
+        if (titleEl) { titleEl.textContent = song.title; titleEl.classList.add('visible'); }
+        wrap.querySelector('.preview-ring-fill').style.strokeDashoffset = RING_CIRC;
+        clearInterval(active.ivl);
+        active.ivl = startRing(wrap, SEGMENT_MS);
+        clearTimeout(active.tmo);
+        active.tmo = setTimeout(() => {
+          clearInterval(active.ivl);
+          fade(audio, 1, 0, FADE_MS, () => {
+            audio.pause(); idx++;
+            if (active) next();
+          });
+        }, SEGMENT_MS - FADE_MS);
+      }
+      next();
+    }
+
+    function playSingle(wrap, src) {
+      const audio = new Audio(src);
+      active = { audio, wrap, ivl: null, tmo: null };
+      wrap.querySelector('.preview-play').style.display  = 'none';
+      wrap.querySelector('.preview-pause').style.display = '';
+      audio.volume = 0;
+      audio.play().catch(() => {});
+      fade(audio, 0, 1, FADE_MS);
+      active.ivl = startRing(wrap, SINGLE_MS);
+      active.tmo = setTimeout(() => {
+        clearInterval(active.ivl);
+        fade(audio, 1, 0, FADE_MS, () => {
+          audio.pause();
+          if (active && active.wrap === wrap) { active = null; resetWrap(wrap); }
+        });
+      }, SINGLE_MS - FADE_MS);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.music-card-preview-wrap').forEach(wrap => {
+        wrap.querySelector('.preview-btn').addEventListener('click', () => {
+          if (active && active.wrap === wrap) { stopActive(); return; }
+          stopActive(() => {
+            const key = wrap.dataset.audio;
+            if (key === 'lovegate') playLoveGate(wrap);
+            else if (singles[key])  playSingle(wrap, singles[key]);
+          });
+        });
+      });
+    });
+  })();
+  </script>
 
   <!-- ========== FOOTER ========== -->
   <footer>
@@ -723,10 +1167,10 @@
       <div class="footer-nav">
         <h4>Business</h4>
         <ul>
-          <li><a href="about.html">Über Anke</a></li>
+          <li><a href="index.html#naturgewalt">Über Anke</a></li>
+          <li><a href="soul.html">Unsere Soul Sessions</a></li>
           <li><a href="soul.html">Unsere Playshops</a></li>
-          <li><a href="soul.html">Unsere Events</a></li>
-          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="play.html#tickets">Unsere Events</a></li>
         </ul>
       </div>
       <div class="footer-legal">
@@ -743,7 +1187,7 @@
         </div>
         <p class="footer-contact-name">Sabrina Meguellati</p>
         <p class="footer-contact-role">Assistentin</p>
-        <a href="mailto:info@anke-schaubrenner.com" class="email-btn">E-Mail senden</a>
+        <a href="mailto:sabrina.meguellati@gmx.de" class="email-btn">E-Mail senden</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -751,5 +1195,6 @@
     </div>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>

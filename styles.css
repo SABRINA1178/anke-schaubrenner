@@ -109,7 +109,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   gap: 1.2rem;
-  padding: 0.85rem 6rem;
+  padding: 0.85rem 2.5rem;
   background: var(--white);
   border-radius: 6px;
   box-shadow: 0 2px 16px rgba(74, 59, 40, 0.08);
@@ -119,20 +119,22 @@ nav {
   font-family: var(--font-body);
   font-size: 1.6rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   color: var(--brown);
   white-space: nowrap;
 }
 
 .nav-links {
   display: flex;
-  gap: 2.5rem;
+  gap: 1rem;
+  flex: 1;
+  justify-content: center;
 }
 
 .nav-links a {
   font-size: 1.6rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   color: var(--brown);
   transition: color 0.2s;
 }
@@ -150,6 +152,31 @@ nav {
   transition: color 0.2s;
 }
 .nav-social a:hover { color: var(--gold); }
+
+/* --- Coming Soon Toast --- */
+.coming-soon-toast {
+  position: fixed;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(-10px);
+  background: var(--brown);
+  color: var(--cream);
+  padding: 0.65rem 1.8rem;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+  z-index: 9999;
+  white-space: nowrap;
+}
+.coming-soon-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 
 /* --- SECTION 1: Hero --- */
 .hero {
@@ -1002,11 +1029,125 @@ footer ul li a:hover { opacity: 1; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
 }
 
+/* ============================================================
+   MOBILE NAVIGATION — Hamburger
+   ============================================================ */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 10001;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--brown);
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ============================================================
+   MOBILE — max-width: 768px
+   ============================================================ */
 @media (max-width: 768px) {
-  nav { padding: 1rem 1.5rem; }
-  .nav-links { display: none; }
-  .hero-content { left: 4%; right: 4%; }
-  .section-quote { padding: 5rem 1.5rem; }
+
+  /* Nav */
+  nav {
+    top: 0.8rem;
+    left: 4%;
+    right: 4%;
+    padding: 0.75rem 1.2rem;
+    border-radius: 8px;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background: var(--white);
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+    gap: 1.2rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(74,59,40,0.12);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 1.3rem;
+  }
+
+  .nav-social {
+    gap: 0.8rem;
+  }
+
+  .nav-logo {
+    font-size: 1.1rem;
+  }
+
+  /* Hero (index.html) */
+  .hero-content {
+    top: auto;
+    bottom: 8%;
+    left: 5%;
+    right: 5%;
+    max-width: 100%;
+    transform: none;
+    text-align: center;
+  }
+
+  .hero-content blockquote {
+    font-size: 22px;
+  }
+
+  /* Sections allgemein */
+  section {
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
+  }
+
+  /* Zahlen-Karten (index.html) */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Dreiwege-Cards (index.html) */
+  .ways-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  /* Workshop-Cards (soul.html) */
+  .workshop-grid {
+    grid-template-columns: 1fr !important;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  /* Zahlen-Grid (index.html) */
   .zahlen-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Quote & Footer */
+  .section-quote { padding: 5rem 1.5rem; }
   .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
 }
