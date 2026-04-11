@@ -159,6 +159,38 @@
       align-self: stretch;
     }
 
+    /* ---- Button auf Workshop-Bildern ---- */
+    .soul-split-right,
+    .soul-split-left-img {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-interesse {
+      position: absolute;
+      background: var(--brown);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.8rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .btn-interesse:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
     /* ---- Zweispaltiges Beige-Segment (gespiegelt) ---- */
     .soul-split-beige {
       background: var(--cream);
@@ -407,6 +439,251 @@
       opacity: 0.5;
     }
 
+    /* ---- Modal Overlay ---- */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(20,15,10,0.72);
+      z-index: 99999;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 3rem 1rem 3rem;
+      overflow-y: auto;
+    }
+    .modal-backdrop.open {
+      display: flex;
+    }
+    .modal-box {
+      background: var(--cream);
+      max-width: 780px;
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.45);
+      position: relative;
+      margin: auto;
+    }
+    .modal-close {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.1rem;
+      width: 36px;
+      height: 36px;
+      background: rgba(74,59,40,0.12);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+    .modal-close:hover { background: rgba(74,59,40,0.25); }
+    .modal-close svg { stroke: var(--brown); }
+
+    .modal-hero-img {
+      width: 100%;
+      aspect-ratio: 16/7;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+    .modal-body {
+      padding: 2.8rem 3rem 3.2rem;
+    }
+    .modal-eyebrow {
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .modal-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2.2rem;
+      color: var(--brown);
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+    .modal-subtitle {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--brown);
+      opacity: 0.7;
+      margin-bottom: 0.5rem;
+    }
+    .modal-meta {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .modal-meta span { display: flex; align-items: center; gap: 0.4rem; }
+    .modal-divider {
+      border: none;
+      border-top: 1px solid rgba(74,59,40,0.12);
+      margin: 2rem 0;
+    }
+    .modal-text {
+      font-size: 0.9rem;
+      color: var(--brown);
+      opacity: 0.82;
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+    }
+    .modal-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.8rem;
+    }
+    .modal-list li {
+      font-size: 0.9rem;
+      color: var(--brown);
+      opacity: 0.82;
+      line-height: 1.8;
+      padding-left: 1.4rem;
+      position: relative;
+      margin-bottom: 0.4rem;
+    }
+    .modal-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.7rem;
+      top: 0.35em;
+    }
+    .modal-section-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      color: var(--brown);
+      margin: 2rem 0 0.8rem;
+    }
+    .modal-kleeblatt-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .modal-kleeblatt-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.4rem 1.2rem;
+      text-align: center;
+      border: 1px solid rgba(74,59,40,0.1);
+    }
+    .modal-kleeblatt-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+    }
+    .modal-kleeblatt-name {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      color: var(--brown);
+      margin-bottom: 0.25rem;
+    }
+    .modal-kleeblatt-role {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .modal-kleeblatt-desc {
+      font-size: 0.82rem;
+      color: var(--brown);
+      opacity: 0.72;
+      line-height: 1.65;
+    }
+    .modal-pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .modal-price-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 1.6rem 1.4rem;
+      border: 1px solid rgba(74,59,40,0.12);
+    }
+    .modal-price-card.featured {
+      border-color: var(--gold);
+      background: rgba(212,175,55,0.06);
+    }
+    .modal-price-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .modal-price-amount {
+      font-family: var(--font-heading);
+      font-size: 1.7rem;
+      color: var(--brown);
+      margin-bottom: 0.3rem;
+    }
+    .modal-price-desc {
+      font-size: 0.8rem;
+      color: var(--brown);
+      opacity: 0.65;
+      line-height: 1.65;
+    }
+    .modal-earlybird {
+      background: rgba(212,175,55,0.1);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.2rem;
+      margin-bottom: 2rem;
+      font-size: 0.85rem;
+      color: var(--brown);
+      opacity: 0.85;
+      line-height: 1.75;
+    }
+    .modal-earlybird strong { color: var(--brown); opacity: 1; }
+    .modal-cta-btn {
+      display: block;
+      width: 100%;
+      padding: 1.1rem 2rem;
+      background: var(--brown);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      margin-top: 2rem;
+    }
+    .modal-cta-btn:hover {
+      background: var(--black);
+      transform: translateY(-2px);
+    }
+    @media (max-width: 600px) {
+      .modal-body { padding: 2rem 1.4rem 2.4rem; }
+      .modal-title { font-size: 1.65rem; }
+      .modal-kleeblatt-grid { grid-template-columns: 1fr; }
+      .modal-pricing-grid { grid-template-columns: 1fr; }
+    }
+
     /* ---- Nav active state ---- */
     .nav-links a.active {
       color: var(--gold);
@@ -490,14 +767,18 @@
           <span class="gut-label">Gut für:&nbsp;</span><span class="gut-list">Selbstwahrnehmung, Klarheit,<br>Geborgenheit</span>
         </p>
       </div>
-      <div class="soul-split-right"></div>
+      <div class="soul-split-right">
+        <button class="btn-interesse" onclick="openModal('modal-unjani')">Ich bin interessiert</button>
+      </div>
     </div>
   </section>
 
   <!-- ========== SECTION: ZWEISPALTIG BEIGE (gespiegelt) ========== -->
   <section class="soul-split-beige">
     <div class="soul-split-inner">
-      <div class="soul-split-left-img"></div>
+      <div class="soul-split-left-img">
+        <a href="#" class="btn-interesse">Ich bin interessiert</a>
+      </div>
       <div class="soul-split-frame">
         <p class="frame-label">Workshop:</p>
         <p class="frame-workshop-name">„Alles Tarnung!" — Die Masken mutig fallen lassen.</p>
@@ -518,14 +799,18 @@
           <span class="gut-label">Gut für:&nbsp;</span><span class="gut-list"></span>
         </p>
       </div>
-      <div class="soul-split-right"></div>
+      <div class="soul-split-right">
+        <a href="#" class="btn-interesse">Ich bin interessiert</a>
+      </div>
     </div>
   </section>
 
   <!-- ========== SECTION: ZWEISPALTIG BEIGE 2 (Bild links, Rahmen rechts) ========== -->
   <section class="soul-split-beige">
     <div class="soul-split-inner">
-      <div class="soul-split-left-img"></div>
+      <div class="soul-split-left-img">
+        <a href="#" class="btn-interesse">Ich bin interessiert</a>
+      </div>
       <div class="soul-split-frame">
         <p class="frame-label">Coming Soon!</p>
         <p class="frame-workshop-name">Workshop 4 ~ Titel folgt</p>
@@ -640,7 +925,141 @@
     </div>
   </footer>
 
+  <!-- ========== MODAL: UNJANI ========== -->
+  <div class="modal-backdrop" id="modal-unjani" role="dialog" aria-modal="true" aria-label="Unjani Workshop Details">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('modal-unjani')" aria-label="Schließen">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <!-- Hero Image -->
+      <img class="modal-hero-img" src="images/soul-workshop1.png" alt="Unjani Retreat — Villa Gückelsberg">
+
+      <div class="modal-body">
+
+        <!-- Title Block -->
+        <p class="modal-eyebrow">Retreat 2026</p>
+        <h2 class="modal-title">Unjani</h2>
+        <p class="modal-subtitle">„3 Tage pure Lust am Leben"</p>
+        <div class="modal-meta">
+          <span>
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            29.–31. August 2026
+          </span>
+          <span>
+            <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Villa Gückelsberg
+          </span>
+        </div>
+
+        <hr class="modal-divider">
+
+        <!-- Was ist Unjani -->
+        <h3 class="modal-section-title">Was ist Unjani?</h3>
+        <p class="modal-text">„Unjani" ist ein Zulu-Wort und bedeutet: <em>„Wie geht es dir?"</em> — aber nicht als höfliche Floskel, sondern als echte, tiefe Frage. Eine Frage, die in der afrikanischen Tradition wirklich gehört wird, und auf die man wirklich antwortet.</p>
+        <p class="modal-text">Drei Tage, in denen wir uns selbst diese Frage stellen. In denen wir spüren dürfen, was wirklich ist — und gleichzeitig feiern, was schon alles da ist. Wir kommen zusammen, um Freude zu entfesseln, Körper zu wecken, Geschichten zu teilen und das Leben in seiner vollen Buntheit zu kosten.</p>
+
+        <h3 class="modal-section-title">Was erwartet dich?</h3>
+        <ul class="modal-list">
+          <li>Wir essen mit den Fingern.</li>
+          <li>Wir laufen barfuß.</li>
+          <li>Wir singen — laut und leise, allein und zusammen.</li>
+          <li>Wir tanzen — bis der Körper wieder weiß, wer er ist.</li>
+          <li>Wir erzählen uns Geschichten — und hören einander wirklich zu.</li>
+          <li>Wir lachen, wir weinen, wir atmen tief durch.</li>
+          <li>Und wir schlafen gut — weil der Tag sich wirklich gelebt anfühlt.</li>
+        </ul>
+
+        <p class="modal-text">Dieses Retreat ist kein Kurs. Es ist eine Einladung — in ein intensives, lebendiges Miteinander, das Spuren hinterlässt. Draußen in der Natur, mit einem Team, das dich wirklich sieht.</p>
+
+        <hr class="modal-divider">
+
+        <!-- Das Kleeblatt -->
+        <h3 class="modal-section-title">Das Kleeblatt — dein Begleitteam</h3>
+        <div class="modal-kleeblatt-grid">
+          <div class="modal-kleeblatt-card">
+            <div class="modal-kleeblatt-icon">🎵</div>
+            <p class="modal-kleeblatt-name">Anke Schaubrenner</p>
+            <p class="modal-kleeblatt-role">Die Stimme</p>
+            <p class="modal-kleeblatt-desc">Sängerin, Coach &amp; Projektentwicklerin. Sie öffnet Räume durch Klang, Resonanz und jahrzehntelange Bühnenerfahrung.</p>
+          </div>
+          <div class="modal-kleeblatt-card">
+            <div class="modal-kleeblatt-icon">🌿</div>
+            <p class="modal-kleeblatt-name">Britt Wenckebach</p>
+            <p class="modal-kleeblatt-role">Der Körper</p>
+            <p class="modal-kleeblatt-desc">Bewegungs- und Körpertherapeutin. Sie bringt den Körper wieder ins Gespräch — sanft, direkt und voller Leben.</p>
+          </div>
+          <div class="modal-kleeblatt-card">
+            <div class="modal-kleeblatt-icon">📖</div>
+            <p class="modal-kleeblatt-name">Sylva-Michèle Sternkopf</p>
+            <p class="modal-kleeblatt-role">Die Geschichte</p>
+            <p class="modal-kleeblatt-desc">Systemische Beraterin &amp; Erzählerin. Sie hilft, alte Muster zu erkennen — und neue Kapitel zu beginnen.</p>
+          </div>
+        </div>
+
+        <hr class="modal-divider">
+
+        <!-- Preise -->
+        <h3 class="modal-section-title">Investition</h3>
+        <div class="modal-pricing-grid">
+          <div class="modal-price-card">
+            <p class="modal-price-label">Standard</p>
+            <p class="modal-price-amount">1.955 €</p>
+            <p class="modal-price-desc">3 Tage Retreat inkl. Verpflegung und Unterkunft in der Villa Gückelsberg.</p>
+          </div>
+          <div class="modal-price-card featured">
+            <p class="modal-price-label">Premium ✦</p>
+            <p class="modal-price-amount">2.655 €</p>
+            <p class="modal-price-desc">Wie Standard — plus einer exklusiven 1:1-Session mit Anke im Anschluss ans Retreat.</p>
+          </div>
+        </div>
+
+        <div class="modal-earlybird">
+          <strong>🌸 Early Bird — nur bis 1. Mai 2026:</strong><br>
+          Standard für <strong>2.222 €</strong> &nbsp;|&nbsp; Premium für <strong>2.955 €</strong><br>
+          <span style="font-size:0.78rem; opacity:0.75;">Sichere dir deinen Platz jetzt — die Plätze sind begrenzt.</span>
+        </div>
+
+        <!-- CTA -->
+        <a href="https://business.villa-gueckelsberg.de/unjani/" target="_blank" rel="noopener" class="modal-cta-btn">Zur Anmeldung</a>
+
+      </div><!-- /modal-body -->
+    </div><!-- /modal-box -->
+  </div><!-- /modal-backdrop -->
+
   <script>
+    // Modal öffnen / schließen
+    function openModal(id) {
+      const m = document.getElementById(id);
+      if (m) {
+        m.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      if (m) {
+        m.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    }
+    // Klick auf Backdrop schließt Modal
+    document.querySelectorAll('.modal-backdrop').forEach(function(m) {
+      m.addEventListener('click', function(e) {
+        if (e.target === m) closeModal(m.id);
+      });
+    });
+    // ESC schließt Modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-backdrop.open').forEach(function(m) {
+          closeModal(m.id);
+        });
+      }
+    });
+
     // Video: einmal komplett abspielen, dann nochmal starten und bei 5 Sek einfrieren
     (function () {
       const video = document.getElementById('soulHeroVideo');
