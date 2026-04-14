@@ -391,9 +391,6 @@
 
         <!-- DSGVO Consent -->
         <div class="cf-consent">
-          <p class="cf-consent-intro">Anke Schaubrenner verpflichtet sich, Ihre Privatsphäre zu schützen und zu respektieren. Wir nutzen Ihre personenbezogenen Daten nur zur Verwaltung Ihres Kontos und zur Bereitstellung der von Ihnen angeforderten Produkte und Dienstleistungen. Von Zeit zu Zeit möchten wir Sie über unsere Produkte und Dienstleistungen sowie andere Inhalte, die für Sie von Interesse sein könnten, informieren. Wenn Sie damit einverstanden sind, dass wir Sie zu diesem Zweck kontaktieren, geben Sie bitte unten an, wie Sie von uns kontaktiert werden möchten.</p>
-
-          <p class="cf-consent-process">Um Ihnen die gewünschten Inhalte bereitzustellen, müssen wir Ihre personenbezogenen Daten speichern und verarbeiten. Wenn Sie damit einverstanden sind, dass wir Ihre personenbezogenen Daten für diesen Zweck speichern, aktivieren Sie bitte das folgende Kontrollkästchen.</p>
 
           <label class="cf-checkbox-label">
             <input type="checkbox" id="cf-consent" required>
@@ -401,7 +398,15 @@
             <span class="cf-checkbox-text">Ich stimme der Speicherung und Verarbeitung meiner personenbezogenen Daten durch Anke Schaubrenner zu.</span>
           </label>
 
-          <p class="cf-consent-note">Sie können diese Benachrichtigungen jederzeit abbestellen. Weitere Informationen zum Abbestellen, zu unseren Datenschutzverfahren und dazu, wie wir Ihre Privatsphäre schützen und respektieren, finden Sie in unserer <a href="datenschutz.html">Datenschutzrichtlinie</a>.</p>
+          <button type="button" class="cf-consent-toggle" id="cf-consent-toggle" aria-expanded="false">
+            Datenschutzhinweis lesen <span class="cf-toggle-arrow">▾</span>
+          </button>
+
+          <div class="cf-consent-details" id="cf-consent-details">
+            <p class="cf-consent-intro">Anke Schaubrenner verpflichtet sich, Ihre Privatsphäre zu schützen und zu respektieren. Wir nutzen Ihre personenbezogenen Daten nur zur Verwaltung Ihres Kontos und zur Bereitstellung der von Ihnen angeforderten Produkte und Dienstleistungen. Von Zeit zu Zeit möchten wir Sie über unsere Produkte und Dienstleistungen sowie andere Inhalte, die für Sie von Interesse sein könnten, informieren.</p>
+            <p class="cf-consent-process">Um Ihnen die gewünschten Inhalte bereitzustellen, müssen wir Ihre personenbezogenen Daten speichern und verarbeiten. Sie können diese Einwilligung jederzeit widerrufen. Weitere Informationen finden Sie in unserer <a href="datenschutz.html">Datenschutzrichtlinie</a>.</p>
+          </div>
+
         </div>
 
         <div class="cf-error" id="cf-error" role="alert" aria-live="polite"></div>
@@ -696,6 +701,15 @@
     document.getElementById('cf-consent').addEventListener('change', function() {
       document.querySelector('.cf-checkbox-label').classList.remove('cf-invalid');
     });
+
+    // Datenschutz-Toggle
+    const toggle  = document.getElementById('cf-consent-toggle');
+    const details = document.getElementById('cf-consent-details');
+    toggle.addEventListener('click', function () {
+      const open = details.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+
   })();
   </script>
 
