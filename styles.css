@@ -845,6 +845,198 @@ nav {
   color: var(--black);
 }
 
+/* --- Kontaktformular (custom, DSGVO) --- */
+#contact-form {
+  text-align: left;
+}
+
+.cf-field {
+  margin-bottom: 1.2rem;
+}
+
+.cf-field label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brown);
+  margin-bottom: 0.45rem;
+}
+
+.cf-field input,
+.cf-field textarea {
+  width: 100%;
+  padding: 0.85rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  background: var(--white);
+  border: 1.5px solid rgba(74,59,40,0.18);
+  border-radius: 6px;
+  color: var(--black);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.cf-field input::placeholder,
+.cf-field textarea::placeholder {
+  color: rgba(74,59,40,0.35);
+}
+
+.cf-field input:focus,
+.cf-field textarea:focus {
+  border-color: var(--brown);
+  box-shadow: 0 0 0 3px rgba(74,59,40,0.07);
+}
+
+.cf-field input.cf-invalid,
+.cf-field textarea.cf-invalid {
+  border-color: #c0392b;
+}
+
+.cf-field textarea {
+  resize: vertical;
+  min-height: 130px;
+}
+
+/* DSGVO Consent Block */
+.cf-consent {
+  background: rgba(74,59,40,0.04);
+  border: 1px solid rgba(74,59,40,0.12);
+  border-radius: 8px;
+  padding: 1.4rem 1.5rem;
+  margin-bottom: 1.4rem;
+}
+
+.cf-consent-intro,
+.cf-consent-process {
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: rgba(26,26,26,0.7);
+  margin-bottom: 1rem;
+}
+
+.cf-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.cf-checkbox-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.cf-checkmark {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  border: 2px solid var(--brown);
+  border-radius: 3px;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.cf-checkmark::after {
+  content: '';
+  display: none;
+  width: 5px;
+  height: 9px;
+  border: 2px solid var(--white);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+}
+
+.cf-checkbox-label input:checked ~ .cf-checkmark {
+  background: var(--brown);
+  border-color: var(--brown);
+}
+
+.cf-checkbox-label input:checked ~ .cf-checkmark::after {
+  display: block;
+}
+
+.cf-checkbox-label.cf-invalid .cf-checkmark {
+  border-color: #c0392b;
+}
+
+.cf-checkbox-text {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: var(--black);
+  font-weight: 500;
+}
+
+.cf-consent-note {
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: rgba(26,26,26,0.55);
+}
+
+.cf-consent-note a {
+  color: var(--brown);
+  text-decoration: underline;
+}
+
+/* Error message */
+.cf-error {
+  display: none;
+  background: #fdf2f2;
+  border: 1px solid #e8c4c4;
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  color: #c0392b;
+  margin-bottom: 1rem;
+}
+
+.cf-error.visible {
+  display: block;
+}
+
+/* Submit Button */
+.cf-submit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+  position: relative;
+}
+
+.cf-submit-spinner {
+  display: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: var(--white);
+  border-radius: 50%;
+  animation: cf-spin 0.7s linear infinite;
+}
+
+.cf-submit.loading .cf-submit-spinner { display: inline-block; }
+.cf-submit.loading .cf-submit-text { opacity: 0.7; }
+.cf-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+
+@keyframes cf-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- altes contact-form (veraltet, bleibt für Kompatibilität) --- */
 .contact-form {
   display: flex;
   flex-direction: column;

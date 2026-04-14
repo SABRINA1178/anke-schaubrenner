@@ -372,11 +372,45 @@
     <div class="section-contact-inner">
       <blockquote>„Lass uns den Raum öffnen.."</blockquote>
       <p class="subtitle">Jede Session beginnt mit einem ersten Impuls. Was bewegt dich gerade?</p>
-      <form class="contact-form" onsubmit="return false;">
-        <input type="text" placeholder="Wie darf ich Sie/dich ansprechen?">
-        <input type="email" placeholder="Deine/Ihre E-Mail-Adresse">
-        <textarea placeholder="Was bewegt dich/Sie gerade?"></textarea>
-        <button type="submit">Anfrage senden</button>
+      <form id="contact-form" novalidate>
+
+        <div class="cf-field">
+          <label for="cf-name">Name</label>
+          <input type="text" id="cf-name" name="name" placeholder="Dein Name" required>
+        </div>
+
+        <div class="cf-field">
+          <label for="cf-email">E-Mail</label>
+          <input type="email" id="cf-email" name="email" placeholder="deine@email.de" required>
+        </div>
+
+        <div class="cf-field">
+          <label for="cf-message">Nachricht</label>
+          <textarea id="cf-message" name="message" rows="5" placeholder="Was bewegt dich?" required></textarea>
+        </div>
+
+        <!-- DSGVO Consent -->
+        <div class="cf-consent">
+          <p class="cf-consent-intro">Anke Schaubrenner verpflichtet sich, Ihre Privatsphäre zu schützen und zu respektieren. Wir nutzen Ihre personenbezogenen Daten nur zur Verwaltung Ihres Kontos und zur Bereitstellung der von Ihnen angeforderten Produkte und Dienstleistungen. Von Zeit zu Zeit möchten wir Sie über unsere Produkte und Dienstleistungen sowie andere Inhalte, die für Sie von Interesse sein könnten, informieren. Wenn Sie damit einverstanden sind, dass wir Sie zu diesem Zweck kontaktieren, geben Sie bitte unten an, wie Sie von uns kontaktiert werden möchten.</p>
+
+          <p class="cf-consent-process">Um Ihnen die gewünschten Inhalte bereitzustellen, müssen wir Ihre personenbezogenen Daten speichern und verarbeiten. Wenn Sie damit einverstanden sind, dass wir Ihre personenbezogenen Daten für diesen Zweck speichern, aktivieren Sie bitte das folgende Kontrollkästchen.</p>
+
+          <label class="cf-checkbox-label">
+            <input type="checkbox" id="cf-consent" required>
+            <span class="cf-checkmark"></span>
+            <span class="cf-checkbox-text">Ich stimme der Speicherung und Verarbeitung meiner personenbezogenen Daten durch Anke Schaubrenner zu.</span>
+          </label>
+
+          <p class="cf-consent-note">Sie können diese Benachrichtigungen jederzeit abbestellen. Weitere Informationen zum Abbestellen, zu unseren Datenschutzverfahren und dazu, wie wir Ihre Privatsphäre schützen und respektieren, finden Sie in unserer <a href="datenschutz.html">Datenschutzrichtlinie</a>.</p>
+        </div>
+
+        <div class="cf-error" id="cf-error" role="alert" aria-live="polite"></div>
+
+        <button type="submit" class="btn btn-dark cf-submit" id="cf-submit-btn">
+          <span class="cf-submit-text">Nachricht senden</span>
+          <span class="cf-submit-spinner" aria-hidden="true"></span>
+        </button>
+
       </form>
     </div>
   </section>
@@ -542,5 +576,129 @@
   </script>
 
   <script src="main.js"></script>
+
+  <!-- ===== HubSpot Kontaktformular Submit ===== -->
+  <script>
+  (function () {
+    const PORTAL_ID = '148241165';
+    const FORM_ID   = '7c6637d8-7a54-4de1-b2be-439f83e08355';
+    const API_URL   = 'https://api.hsforms.com/submissions/v3/integration/submit/' + PORTAL_ID + '/' + FORM_ID;
+
+    const form      = document.getElementById('contact-form');
+    const btn       = document.getElementById('cf-submit-btn');
+    const errorBox  = document.getElementById('cf-error');
+
+    function showError(msg) {
+      errorBox.textContent = msg;
+      errorBox.classList.add('visible');
+    }
+
+    function clearError() {
+      errorBox.textContent = '';
+      errorBox.classList.remove('visible');
+    }
+
+    function setLoading(on) {
+      btn.disabled = on;
+      btn.classList.toggle('loading', on);
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      clearError();
+
+      const nameVal    = document.getElementById('cf-name').value.trim();
+      const emailVal   = document.getElementById('cf-email').value.trim();
+      const messageVal = document.getElementById('cf-message').value.trim();
+      const consent    = document.getElementById('cf-consent').checked;
+
+      // Validierung
+      let valid = true;
+
+      [['cf-name', nameVal], ['cf-email', emailVal], ['cf-message', messageVal]].forEach(function([id, val]) {
+        const el = document.getElementById(id);
+        if (!val) {
+          el.classList.add('cf-invalid');
+          valid = false;
+        } else {
+          el.classList.remove('cf-invalid');
+        }
+      });
+
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+      if (emailVal && !emailOk) {
+        document.getElementById('cf-email').classList.add('cf-invalid');
+        valid = false;
+      }
+
+      const checkboxLabel = document.querySelector('.cf-checkbox-label');
+      if (!consent) {
+        checkboxLabel.classList.add('cf-invalid');
+        valid = false;
+      } else {
+        checkboxLabel.classList.remove('cf-invalid');
+      }
+
+      if (!valid) {
+        showError('Bitte fülle alle Pflichtfelder aus und stimme der Datenschutzerklärung zu.');
+        return;
+      }
+
+      setLoading(true);
+
+      const payload = {
+        fields: [
+          { name: 'name', value: nameVal },
+          { name: 'email',     value: emailVal },
+          { name: 'message',   value: messageVal }
+        ],
+        legalConsentOptions: {
+          consent: {
+            consentToProcess: true,
+            text: 'Ich stimme der Speicherung und Verarbeitung meiner personenbezogenen Daten durch Anke Schaubrenner zu.',
+            communications: []
+          }
+        },
+        context: {
+          pageUri:  window.location.href,
+          pageName: document.title
+        }
+      };
+
+      try {
+        const res = await fetch(API_URL, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          window.location.href = 'danke.html';
+        } else {
+          const data = await res.json().catch(function() { return {}; });
+          const msg  = (data.errors && data.errors[0] && data.errors[0].message) || 'Unbekannter Fehler.';
+          showError('Fehler beim Senden: ' + msg);
+          setLoading(false);
+        }
+      } catch (err) {
+        showError('Verbindungsfehler. Bitte versuche es später erneut.');
+        setLoading(false);
+      }
+    });
+
+    // Fehlerstatus live zurücksetzen beim Tippen
+    ['cf-name', 'cf-email', 'cf-message'].forEach(function(id) {
+      document.getElementById(id).addEventListener('input', function() {
+        this.classList.remove('cf-invalid');
+      });
+    });
+
+    document.getElementById('cf-consent').addEventListener('change', function() {
+      document.querySelector('.cf-checkbox-label').classList.remove('cf-invalid');
+    });
+  })();
+  </script>
+
+
 </body>
 </html>
