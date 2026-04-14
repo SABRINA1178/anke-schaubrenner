@@ -23,7 +23,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body { scroll-behavior: smooth; }
-html { scroll-padding-top: 70px; }
+html { scroll-padding-top: 80px; }
 
 body {
   font-family: var(--font-body);
@@ -31,7 +31,6 @@ body {
   color: var(--black);
   font-size: 16px;
   line-height: 1.7;
-  padding-top: 70px;
 }
 
 img { max-width: 100%; display: block; }
@@ -103,18 +102,19 @@ em { font-style: italic; }
 /* --- Navigation --- */
 nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
+  top: 1rem;
+  left: 3%;
+  right: 3%;
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1.2rem;
   padding: 0.85rem 2.5rem;
-  background: var(--white);
-  border-radius: 0;
+  background: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 6px;
   box-shadow: 0 2px 16px rgba(74, 59, 40, 0.08);
 }
 
@@ -1294,11 +1294,11 @@ footer ul li a:hover { opacity: 1; }
 
   /* Nav */
   nav {
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0.6rem;
+    left: 2%;
+    right: 2%;
     padding: 0.75rem 1.2rem;
-    border-radius: 0;
+    border-radius: 6px;
   }
 
   .nav-hamburger {
