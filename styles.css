@@ -241,7 +241,8 @@ nav {
 .hero-partners {
   overflow: hidden;
   width: 100%;
-  margin-top: 3cm;
+  height: 70px;
+  margin-top: 2rem;
   background: transparent;
 }
 
