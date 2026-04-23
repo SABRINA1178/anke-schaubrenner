@@ -128,6 +128,8 @@ nav {
   display: inline-block;
   transform: scaleX(0.63);
   transform-origin: left center;
+  vertical-align: middle;
+  line-height: 1;
 }
 
 .nav-links {
