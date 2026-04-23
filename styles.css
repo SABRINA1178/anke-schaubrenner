@@ -103,8 +103,9 @@ em { font-style: italic; }
 nav {
   position: absolute;
   top: 1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   width: 75%;
   z-index: 1000;
   display: flex;
