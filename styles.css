@@ -120,13 +120,13 @@ nav {
 
 .nav-logo {
   font-family: var(--font-body);
-  font-size: 2.1rem;
-  font-weight: 500;
+  font-size: 2.4rem;
+  font-weight: 400;
   letter-spacing: 0.03em;
   color: var(--brown);
   white-space: nowrap;
   display: inline-block;
-  transform: scaleX(0.88);
+  transform: scaleX(0.80);
   transform-origin: left center;
 }
 
