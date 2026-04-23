@@ -196,8 +196,8 @@ nav {
 
 .hero-image {
   width: 100%;
-  height: calc(100% + 200px);
-  margin-top: -200px;
+  height: calc(100% + 250px);
+  margin-top: -250px;
   object-fit: cover;
   object-position: 40% top;
   filter: contrast(1.08) brightness(1.04) saturate(1.05);
