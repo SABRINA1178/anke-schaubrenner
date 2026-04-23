@@ -122,7 +122,7 @@ nav {
   font-family: var(--font-body);
   font-size: 2.23rem;
   font-weight: 400;
-  letter-spacing: 0.027em;
+  letter-spacing: 0.06em;
   color: var(--brown);
   white-space: nowrap;
   display: inline-block;
