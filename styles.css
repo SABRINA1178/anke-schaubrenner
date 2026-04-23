@@ -120,7 +120,7 @@ nav {
 
 .nav-logo {
   font-family: var(--font-body);
-  font-size: calc(2.6rem + 3px);
+  font-size: 2.23rem;
   font-weight: 400;
   letter-spacing: 0.027em;
   color: var(--brown);
