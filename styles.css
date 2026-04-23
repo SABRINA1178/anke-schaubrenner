@@ -120,18 +120,11 @@ nav {
 
 .nav-logo {
   font-family: var(--font-body);
-  font-size: 2.23rem;
+  font-size: 1.6rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   color: var(--brown);
   white-space: nowrap;
-  display: inline-block;
-  transform: scaleX(0.55);
-  transform-origin: left center;
-  vertical-align: middle;
-  line-height: 1;
-  position: relative;
-  top: 2px;
 }
 
 .nav-links {
