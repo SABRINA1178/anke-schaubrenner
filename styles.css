@@ -200,6 +200,8 @@ nav {
   object-fit: cover;
   object-position: 40% 35%;
   filter: contrast(1.08) brightness(1.04) saturate(1.05);
+  transform: scale(1.05);
+  transform-origin: 40% 35%;
 }
 
 .hero-overlay {
