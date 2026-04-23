@@ -103,7 +103,7 @@ em { font-style: italic; }
 /* --- Navigation --- */
 nav {
   position: absolute;
-  top: 1.5rem;
+  top: calc(1.5rem + 3px);
   left: 12.5%;
   width: 75%;
   z-index: 1000;
