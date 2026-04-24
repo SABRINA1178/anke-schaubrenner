@@ -436,10 +436,10 @@
     }
 
     .music-card-body {
-      padding: 0.8rem 0.9rem 1.1rem;
+      padding: 0.8rem 0 1.1rem;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: stretch;
       flex: 1;
       text-align: left;
     }
@@ -451,6 +451,7 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 1.2rem;
+      margin-left: 0.9rem;
       background: transparent;
     }
 
@@ -472,7 +473,7 @@
     }
 
     .music-card-title {
-      display: inline-block;
+      display: block;
       background: var(--black);
       color: var(--gold);
       font-family: var(--font-body);
@@ -480,25 +481,24 @@
       font-weight: 700;
       letter-spacing: 0.03em;
       text-transform: uppercase;
-      padding: 0.25rem 0.7rem;
+      padding: 0.35rem 0.9rem;
       margin-bottom: 0.8rem;
-      border-radius: 6px;
+      border-radius: 0;
       line-height: 1.2;
       text-align: left;
-      align-self: flex-start;
     }
 
     .music-card-subtitle {
-      display: inline-block;
+      display: block;
       background: var(--gold);
       color: var(--black);
       font-family: var(--font-body);
       font-size: 20px;
       font-weight: 600;
-      padding: 0.2rem 0.6rem;
+      padding: 0.25rem 0.9rem;
       margin-bottom: 1rem;
       text-align: left;
-      border-radius: 6px;
+      border-radius: 0;
       line-height: 1.2;
     }
 
@@ -508,6 +508,7 @@
       color: var(--black);
       line-height: 1.2;
       margin-bottom: 0.9rem;
+      padding: 0 0.9rem;
       text-align: left;
     }
 
@@ -517,6 +518,7 @@
       color: var(--black);
       opacity: 0.45;
       margin-bottom: 1.4rem;
+      padding: 0 0.9rem;
       line-height: 1.2;
       text-align: left;
     }
@@ -532,7 +534,7 @@
       margin-top: auto;
       display: block;
       width: 100%;
-      padding: 0.75rem 0.8rem;
+      padding: 0.75rem 0.9rem;
       background: var(--brown);
       color: var(--white);
       font-family: var(--font-body);
@@ -542,9 +544,11 @@
       text-align: center;
       text-transform: lowercase;
       border: 3px solid var(--brown);
+      border-left: none;
+      border-right: none;
       cursor: pointer;
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 0;
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
       /* Animation wird ausschließlich per JS gesetzt — NICHT hier ändern */
     }
