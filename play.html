@@ -1092,7 +1092,7 @@
       wildhearts:  { src: 'audio/wildhearts.mp3',  start: 0 },
       earthchild:  { src: 'audio/earthchild.mp3',  start: 0 },
       holyholy:    { src: 'audio/holyholy.mp3',    start: 0 },
-      weremember:  { src: 'audio/weremember.mp3',  start: 0 }
+      weremember:  { src: 'audio/weremember.mp3',  start: 97, duration: 35000 }
     };
 
     let active = null;
@@ -1168,26 +1168,26 @@
       next();
     }
 
-    function playSingle(wrap, src, startSec) {
+    function playSingle(wrap, src, startSec, durationMs) {
+      const ms    = durationMs || SINGLE_MS;
       const audio = new Audio(src);
       active = { audio, wrap, ivl: null, tmo: null };
       wrap.querySelector('.preview-play').style.display  = 'none';
       wrap.querySelector('.preview-pause').style.display = '';
       audio.volume = 0;
-      // Springe zum gewünschten Einstiegspunkt (Vers 1 → Hook)
       if (startSec) {
         audio.addEventListener('loadedmetadata', () => { audio.currentTime = startSec; }, { once: true });
       }
       audio.play().catch(() => {});
       fade(audio, 0, 1, FADE_MS);
-      active.ivl = startRing(wrap, SINGLE_MS);
+      active.ivl = startRing(wrap, ms);
       active.tmo = setTimeout(() => {
         clearInterval(active.ivl);
         fade(audio, 1, 0, FADE_MS, () => {
           audio.pause();
           if (active && active.wrap === wrap) { active = null; resetWrap(wrap); }
         });
-      }, SINGLE_MS - FADE_MS);
+      }, ms - FADE_MS);
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -1197,7 +1197,7 @@
           stopActive(() => {
             const key = wrap.dataset.audio;
             if (key === 'lovegate') playLoveGate(wrap);
-            else if (singles[key])  playSingle(wrap, singles[key].src, singles[key].start);
+            else if (singles[key])  playSingle(wrap, singles[key].src, singles[key].start, singles[key].duration);
           });
         });
       });
