@@ -352,6 +352,18 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
     }
 
+    /* ---- Vergangene Events / abgelaufene Produkte — kein Blinken ---- */
+    .btn-past,
+    .btn-past:hover {
+      animation: none !important;
+      background: var(--black) !important;
+      border-color: var(--black) !important;
+      color: rgba(255,255,255,0.55) !important;
+      cursor: default;
+      box-shadow: none !important;
+      pointer-events: none;
+    }
+
     /* ---- Pfeil nach Tickets ---- */
     .section-chevron {
       background: var(--white);
@@ -799,7 +811,7 @@
           <p class="event-card-venue">Mathaeser Filmpalast<br>München</p>
           <span class="event-card-date">16.–18. April 2026</span>
           <p class="event-card-category">Hauptprogramm</p>
-          <a href="https://www.cosmic-cine.tv/festival/de/" target="_blank" class="btn-event">Inspiration eintüten</a>
+          <a href="https://www.cosmic-cine.tv/festival/de/" target="_blank" class="btn-event btn-past">schon Geschichte</a>
         </div>
       </article>
 
@@ -818,7 +830,7 @@
           <p class="event-card-venue">Mathaeser Filmpalast<br>München</p>
           <span class="event-card-date">18.04.2026</span>
           <p class="event-card-category">Vertiefung</p>
-          <a href="https://www.mathaeser.de/mm/filmdetail/lovegate-experience-workshop/22974000012PLXMQDD" target="_blank" class="btn-event">Platz im Rudel sichern</a>
+          <a href="https://www.mathaeser.de/mm/filmdetail/lovegate-experience-workshop/22974000012PLXMQDD" target="_blank" class="btn-event btn-past">schon Geschichte</a>
         </div>
       </article>
 
@@ -837,7 +849,7 @@
           <p class="event-card-venue">Olympiahalle<br>München</p>
           <span class="event-card-date">11.04.2026</span>
           <p class="event-card-category">Gast-Impuls</p>
-          <a href="https://lauraseiler.com/happy-holy-confident-live/" target="_blank" class="btn-event">Magische Momente sichern</a>
+          <a href="https://lauraseiler.com/happy-holy-confident-live/" target="_blank" class="btn-event btn-past">schon Geschichte</a>
         </div>
       </article>
 
@@ -1062,7 +1074,8 @@
      CSS-Animation-Property für .btn-event und .btn-music bleibt leer. */
   document.addEventListener('DOMContentLoaded', () => {
     const ANIM = 'btn-heartbeat 3.5s ease-in-out infinite';
-    const btns = document.querySelectorAll('.btn-event, .btn-music');
+    // .btn-past explizit ausschließen — die blinken nie
+    const btns = document.querySelectorAll('.btn-event:not(.btn-past), .btn-music:not(.btn-past)');
     // Erst alle stoppen …
     btns.forEach(b => { b.style.animation = 'none'; });
     // … dann in exakt einem Frame gemeinsam starten
