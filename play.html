@@ -342,7 +342,7 @@
       text-decoration: none;
       border-radius: 6px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      animation: btn-heartbeat 3.5s ease-in-out infinite;
+      /* Animation wird ausschließlich per JS gesetzt — NICHT hier ändern */
     }
     .btn-event:hover {
       animation: none;
@@ -534,7 +534,7 @@
       text-decoration: none;
       border-radius: 6px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-      animation: btn-heartbeat 3.5s ease-in-out infinite;
+      /* Animation wird ausschließlich per JS gesetzt — NICHT hier ändern */
     }
     .btn-music:hover {
       animation: none;
@@ -1056,15 +1056,21 @@
   </section>
 
   <script>
-  /* ---- Button-Sync ---- */
+  /* ---- Button-Sync (GESPERRT — nicht ändern) ----
+     Animation läuft NUR über JS in einem einzigen requestAnimationFrame,
+     damit alle Buttons exakt im selben Takt blinken — unabhängig vom Ladezeitpunkt.
+     CSS-Animation-Property für .btn-event und .btn-music bleibt leer. */
   document.addEventListener('DOMContentLoaded', () => {
+    const ANIM = 'btn-heartbeat 3.5s ease-in-out infinite';
     const btns = document.querySelectorAll('.btn-event, .btn-music');
-    function syncAll() {
-      btns.forEach(b => { b.style.animation = 'none'; });
-      void document.body.offsetHeight; // reflow — startet alle neu
-      btns.forEach(b => { b.style.animation = ''; });
-    }
-    syncAll();
+    // Erst alle stoppen …
+    btns.forEach(b => { b.style.animation = 'none'; });
+    // … dann in exakt einem Frame gemeinsam starten
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        btns.forEach(b => { b.style.animation = ANIM; });
+      });
+    });
   });
 
   /* ---- Audio Preview Player ---- */
