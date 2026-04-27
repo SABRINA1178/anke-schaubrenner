@@ -371,7 +371,7 @@ nav {
   position: absolute;
   top: -2px; right: -2px;
   width: 28px; height: 28px;
-  background: var(--cream);
+  background: var(--gold);
   border-radius: 50%;
   border: 1.5px solid var(--brown);
   display: flex; align-items: center; justify-content: center;
@@ -379,7 +379,7 @@ nav {
 }
 .hcnl-heart-badge svg {
   width: 13px; height: 13px;
-  fill: var(--gold);
+  fill: var(--cream);
   animation: hcnl-heartbeat 1.4s ease-in-out infinite;
 }
 
