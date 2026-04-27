@@ -434,6 +434,15 @@
           ihr ureigenes Potenzial zu entfalten.
         </p>
       </div>
+      <div class="footer-newsletter">
+        <h4>Earth Child Community</h4>
+        <p>Neue Songs, Einladungen & Impulse — direkt von Anke.</p>
+        <form class="footer-nl-row" id="footer-nl-form" novalidate>
+          <input type="email" id="footer-nl-email" placeholder="deine@email.de" required>
+          <button type="submit">→</button>
+        </form>
+        <p class="footer-nl-success" id="footer-nl-success">✨ Willkommen!</p>
+      </div>
       <div class="footer-nav">
         <h4>Business</h4>
         <ul>
@@ -723,47 +732,40 @@
     const FORM_ID   = 'bdb6de41-7eec-49c4-a8cc-4eefa77bb549';
     const API_URL   = 'https://api.hsforms.com/submissions/v3/integration/submit/' + PORTAL_ID + '/' + FORM_ID;
 
-    const form    = document.getElementById('nl-form');
-    const emailEl = document.getElementById('nl-email');
-    const note    = document.getElementById('nl-note');
-    const success = document.getElementById('nl-success');
-
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const email = emailEl.value.trim();
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        emailEl.classList.add('cf-invalid');
-        return;
-      }
-      emailEl.classList.remove('cf-invalid');
-
-      const btn = form.querySelector('button');
-      btn.disabled = true;
-      btn.textContent = '…';
-
-      try {
-        const res = await fetch(API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            fields: [{ name: 'email', value: email }],
-            context: { pageUri: window.location.href, pageName: 'Anke Schaubrenner — Startseite' }
-          })
-        });
-
-        if (res.ok) {
-          form.style.display = 'none';
-          note.style.display = 'none';
-          success.style.display = 'block';
-        } else {
-          btn.disabled = false;
-          btn.textContent = 'Ja, ich bin dabei';
+    // Footer-Newsletter
+    [
+      { formId: 'nl-form', emailId: 'nl-email', noteId: 'nl-note', successId: 'nl-success' },
+      { formId: 'footer-nl-form', emailId: 'footer-nl-email', noteId: null, successId: 'footer-nl-success' }
+    ].forEach(function(cfg) {
+      const f = document.getElementById(cfg.formId);
+      if (!f) return;
+      f.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const emailEl = document.getElementById(cfg.emailId);
+        const email   = emailEl.value.trim();
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          emailEl.classList.add('cf-invalid'); return;
         }
-      } catch (err) {
-        btn.disabled = false;
-        btn.textContent = 'Ja, ich bin dabei';
-      }
+        emailEl.classList.remove('cf-invalid');
+        const btn = f.querySelector('button');
+        btn.disabled = true;
+        const origText = btn.textContent;
+        btn.textContent = '…';
+        try {
+          const res = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fields: [{ name: 'email', value: email }], context: { pageUri: window.location.href, pageName: 'Anke Schaubrenner — Startseite' } })
+          });
+          if (res.ok) {
+            f.style.display = 'none';
+            if (cfg.noteId) document.getElementById(cfg.noteId).style.display = 'none';
+            document.getElementById(cfg.successId).style.display = 'block';
+          } else { btn.disabled = false; btn.textContent = origText; }
+        } catch(err) { btn.disabled = false; btn.textContent = origText; }
+      });
     });
+
   })();
   </script>
 
