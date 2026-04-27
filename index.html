@@ -840,41 +840,117 @@
       });
       closeBtn.addEventListener('click', closeCard);
 
-      function spawnParticles() {
-        particles.innerHTML = '';
-        for (var i = 0; i < 24; i++) {
-          var p = document.createElement('div');
-          p.className = 'hcnl-particle';
-          var angle = Math.random() * 360;
-          var dist  = 50 + Math.random() * 60;
-          var size  = Math.random() * 7 + 3;
-          var isLine = Math.random() > 0.6;
-          p.style.cssText = [
-            'width:'  + (isLine ? 2 : size) + 'px',
-            'height:' + (isLine ? size * 2.5 : size) + 'px',
-            'border-radius:' + (isLine ? '2px' : '50%'),
-            'background:' + (Math.random() > 0.4 ? '#D4AF37' : 'rgba(74,59,40,0.6)'),
-            '--angle:'  + angle + 'deg',
-            '--dist:'   + dist + 'px',
-            '--dur:'    + (0.5 + Math.random() * 0.45) + 's',
-            '--delay:'  + (Math.random() * 0.15) + 's'
-          ].join(';');
-          particles.appendChild(p);
+      function launchFireworks() {
+        var hero   = document.querySelector('.hero');
+        var hRect  = hero.getBoundingClientRect();
+        var canvas = document.createElement('canvas');
+        canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:50;';
+        hero.appendChild(canvas);
+        var ctx = canvas.getContext('2d');
+        canvas.width  = hero.offsetWidth;
+        canvas.height = hero.offsetHeight;
+
+        /* Ursprung relativ zur Hero-Sektion */
+        var rect = circle.getBoundingClientRect();
+        var ox = rect.left - hRect.left + rect.width  / 2;
+        var oy = rect.top  - hRect.top  + rect.height / 2;
+
+        var COLORS = ['#D4AF37','#E8C94A','#FAF7F2','#4A3B28','#c49b20','#ffffff','#f5d76e','#eedaa0'];
+        var ps = [];
+
+        function burst(x, y, n, sm) {
+          for (var i = 0; i < n; i++) {
+            var a   = Math.random() * Math.PI * 2;
+            var spd = (2 + Math.random() * 8) * (sm || 1);
+            var t   = Math.random();
+            var isStreamer = t > 0.65;
+            ps.push({
+              x: x, y: y,
+              vx: Math.cos(a) * spd,
+              vy: Math.sin(a) * spd - (1.5 + Math.random() * 3.5),
+              color: COLORS[Math.floor(Math.random() * COLORS.length)],
+              w: isStreamer ? (2 + Math.random() * 2) : (4 + Math.random() * 7),
+              h: isStreamer ? (14 + Math.random() * 22) : (4 + Math.random() * 7),
+              shape: t < 0.38 ? 'circle' : (isStreamer ? 'streamer' : 'square'),
+              rot: Math.random() * Math.PI * 2,
+              rotV: (Math.random() - 0.5) * 0.28,
+              grav: 0.10 + Math.random() * 0.12,
+              drag: 0.984,
+              life: 1,
+              decay: 0.005 + Math.random() * 0.009,
+              glow: Math.random() > 0.55
+            });
+          }
         }
+
+        /* Wellen */
+        burst(ox, oy, 70, 1.3);
+        setTimeout(function(){ burst(ox-90, oy-130, 40); }, 220);
+        setTimeout(function(){ burst(ox+110, oy-90,  40); }, 380);
+        setTimeout(function(){ burst(ox-20,  oy-200, 45, 1.1); }, 580);
+        setTimeout(function(){ burst(ox+50,  oy-250, 35, 0.95); }, 820);
+        setTimeout(function(){ burst(ox,     oy-60,  55, 1.4); }, 1100);
+        setTimeout(function(){ burst(ox-60,  oy-170, 30); }, 1400);
+        setTimeout(function(){ burst(ox+80,  oy-190, 30); }, 1600);
+
+        /* Willkommen-Text — im Hero */
+        setTimeout(function() {
+          var wEl = document.createElement('div');
+          wEl.className = 'hcnl-welcome';
+          wEl.style.left = ox + 'px';
+          wEl.style.top  = (oy + rect.height / 2 + 18) + 'px';
+          wEl.innerHTML  = '<strong>Willkommen — du gehörst dazu.</strong><span>Earth Child Community</span>';
+          hero.appendChild(wEl);
+          setTimeout(function() {
+            wEl.style.transition = 'opacity 0.8s ease';
+            wEl.style.opacity = '0';
+            setTimeout(function(){ wEl.remove(); }, 900);
+          }, 3200);
+        }, 700);
+
+        function frame() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          var alive = false;
+          for (var i = 0; i < ps.length; i++) {
+            var p = ps[i];
+            if (p.life <= 0) continue;
+            alive = true;
+            p.x  += p.vx; p.y  += p.vy;
+            p.vy += p.grav; p.vx *= p.drag;
+            p.rot += p.rotV; p.life -= p.decay;
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, p.life);
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot);
+            if (p.glow) { ctx.shadowColor = p.color; ctx.shadowBlur = 7; }
+            ctx.fillStyle = p.color;
+            if (p.shape === 'circle') {
+              ctx.beginPath();
+              ctx.arc(0, 0, p.w / 2, 0, Math.PI * 2);
+              ctx.fill();
+            } else {
+              ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+            }
+            ctx.restore();
+          }
+          if (alive) { requestAnimationFrame(frame); }
+          else { canvas.remove(); }
+        }
+        requestAnimationFrame(frame);
       }
 
       form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        const email = emailEl.value.trim();
+        var email = emailEl.value.trim();
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
           emailEl.classList.add('cf-invalid'); return;
         }
         emailEl.classList.remove('cf-invalid');
-        const btn = form.querySelector('.hcnl-submit');
+        var btn = form.querySelector('.hcnl-submit');
         btn.disabled = true; btn.textContent = '…';
 
         try {
-          const res = await fetch(API_URL, {
+          var res = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ fields: [{ name: 'email', value: email }], context: { pageUri: window.location.href, pageName: 'Anke Schaubrenner — Startseite' } })
@@ -883,7 +959,8 @@
             widget.classList.remove('hcnl--open');
             widget.classList.add('hcnl--success');
             hint.style.opacity = '0';
-            spawnParticles();
+            hint.style.pointerEvents = 'none';
+            launchFireworks();
           } else { btn.disabled = false; btn.textContent = 'Dabei sein'; }
         } catch(err) { btn.disabled = false; btn.textContent = 'Dabei sein'; }
       });
