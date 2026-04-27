@@ -53,15 +53,48 @@
     <img class="hero-image" src="images/Header Anke Final.png" alt="Anke Schaubrenner">
     <div class="hero-overlay"></div>
 
-    <!-- Newsletter oben links -->
-    <div class="hero-nl-box">
-      <p class="hero-nl-label">Earth Child Community</p>
-      <p class="hero-nl-sub">Neue Songs & Einladungen — direkt von Anke.</p>
-      <form class="hero-nl-row" id="hero-nl-form" novalidate>
-        <input type="email" id="hero-nl-email" placeholder="deine@email.de" required>
-        <button type="submit">→</button>
-      </form>
-      <p class="hero-nl-success" id="hero-nl-success">✨ Willkommen!</p>
+    <!-- Newsletter Kreis — Earth Child Community -->
+    <div class="hcnl" id="hcnl">
+
+      <!-- STUFE 1: Pulsierender Kreis -->
+      <div class="hcnl-circle" id="hcnlCircle" role="button" aria-label="Earth Child Community beitreten" tabindex="0">
+        <div class="hcnl-pulse"></div>
+        <div class="hcnl-pulse hcnl-pulse-2"></div>
+        <div class="hcnl-pulse hcnl-pulse-3"></div>
+        <div class="hcnl-core">
+          <svg class="hcnl-heart" viewBox="0 0 24 24">
+            <path d="M12 21C12 21 3 14.5 3 8.5a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6-9 12.5-9 12.5z"/>
+          </svg>
+        </div>
+      </div>
+      <p class="hcnl-hint" id="hcnlHint">Community beitreten</p>
+
+      <!-- STUFE 2: Formular-Karte -->
+      <div class="hcnl-card" id="hcnlCard">
+        <button class="hcnl-close" id="hcnlClose" aria-label="Schließen">×</button>
+        <p class="hcnl-card-label">Earth Child Community</p>
+        <p class="hcnl-card-sub">Neue Songs & Einladungen —<br>direkt von Anke.</p>
+        <form class="hcnl-form" id="hcnl-form" novalidate>
+          <input type="email" id="hcnl-email" placeholder="deine@email.de" required>
+          <button type="submit" class="hcnl-submit">Dabei sein</button>
+        </form>
+        <p class="hcnl-card-note">Kein Spam. Jederzeit abmeldbar.</p>
+      </div>
+
+      <!-- STUFE 3: Belohnung -->
+      <div class="hcnl-reward" id="hcnlReward">
+        <div class="hcnl-r-ring hcnl-r-ring-1"></div>
+        <div class="hcnl-r-ring hcnl-r-ring-2"></div>
+        <div class="hcnl-r-ring hcnl-r-ring-3"></div>
+        <div class="hcnl-r-inner">
+          <svg class="hcnl-r-check" viewBox="0 0 52 52">
+            <polyline points="14,27 22,36 38,18"/>
+          </svg>
+        </div>
+        <p class="hcnl-r-text">Willkommen —<br><em>du gehörst dazu.</em></p>
+        <div class="hcnl-r-particles" id="hcnlParticles"></div>
+      </div>
+
     </div>
 
     <div class="hero-content">
@@ -735,25 +768,20 @@
     const FORM_ID   = 'bdb6de41-7eec-49c4-a8cc-4eefa77bb549';
     const API_URL   = 'https://api.hsforms.com/submissions/v3/integration/submit/' + PORTAL_ID + '/' + FORM_ID;
 
-    // Alle Newsletter-Formulare
-    [
-      { formId: 'nl-form',      emailId: 'nl-email',      noteId: 'nl-note', successId: 'nl-success' },
-      { formId: 'hero-nl-form', emailId: 'hero-nl-email', noteId: null,      successId: 'hero-nl-success' }
-    ].forEach(function(cfg) {
-      const f = document.getElementById(cfg.formId);
+    // Großer Newsletter-Block (Sektion vor Footer)
+    (function() {
+      const f = document.getElementById('nl-form');
       if (!f) return;
       f.addEventListener('submit', async function(e) {
         e.preventDefault();
-        const emailEl = document.getElementById(cfg.emailId);
+        const emailEl = document.getElementById('nl-email');
         const email   = emailEl.value.trim();
         if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
           emailEl.classList.add('cf-invalid'); return;
         }
         emailEl.classList.remove('cf-invalid');
         const btn = f.querySelector('button');
-        btn.disabled = true;
-        const origText = btn.textContent;
-        btn.textContent = '…';
+        btn.disabled = true; btn.textContent = '…';
         try {
           const res = await fetch(API_URL, {
             method: 'POST',
@@ -762,12 +790,96 @@
           });
           if (res.ok) {
             f.style.display = 'none';
-            if (cfg.noteId) document.getElementById(cfg.noteId).style.display = 'none';
-            document.getElementById(cfg.successId).style.display = 'block';
-          } else { btn.disabled = false; btn.textContent = origText; }
-        } catch(err) { btn.disabled = false; btn.textContent = origText; }
+            document.getElementById('nl-note').style.display = 'none';
+            document.getElementById('nl-success').style.display = 'block';
+          } else { btn.disabled = false; btn.textContent = 'Ja, ich bin dabei'; }
+        } catch(err) { btn.disabled = false; btn.textContent = 'Ja, ich bin dabei'; }
       });
-    });
+    })();
+
+    // Hero Kreis — Earth Child Community
+    (function() {
+      const widget    = document.getElementById('hcnl');
+      const circle    = document.getElementById('hcnlCircle');
+      const hint      = document.getElementById('hcnlHint');
+      const card      = document.getElementById('hcnlCard');
+      const closeBtn  = document.getElementById('hcnlClose');
+      const form      = document.getElementById('hcnl-form');
+      const emailEl   = document.getElementById('hcnl-email');
+      const reward    = document.getElementById('hcnlReward');
+      const particles = document.getElementById('hcnlParticles');
+
+      function openCard() {
+        widget.classList.add('hcnl--open');
+        hint.style.opacity = '0';
+        hint.style.pointerEvents = 'none';
+        setTimeout(function() { emailEl.focus(); }, 420);
+      }
+
+      function closeCard() {
+        widget.classList.remove('hcnl--open');
+        hint.style.opacity = '1';
+        hint.style.pointerEvents = '';
+      }
+
+      circle.addEventListener('click', function() {
+        if (!widget.classList.contains('hcnl--open') && !widget.classList.contains('hcnl--success')) {
+          openCard();
+        }
+      });
+      circle.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCard(); }
+      });
+      closeBtn.addEventListener('click', closeCard);
+
+      function spawnParticles() {
+        particles.innerHTML = '';
+        for (var i = 0; i < 24; i++) {
+          var p = document.createElement('div');
+          p.className = 'hcnl-particle';
+          var angle = Math.random() * 360;
+          var dist  = 50 + Math.random() * 60;
+          var size  = Math.random() * 7 + 3;
+          var isLine = Math.random() > 0.6;
+          p.style.cssText = [
+            'width:'  + (isLine ? 2 : size) + 'px',
+            'height:' + (isLine ? size * 2.5 : size) + 'px',
+            'border-radius:' + (isLine ? '2px' : '50%'),
+            'background:' + (Math.random() > 0.4 ? '#D4AF37' : 'rgba(74,59,40,0.6)'),
+            '--angle:'  + angle + 'deg',
+            '--dist:'   + dist + 'px',
+            '--dur:'    + (0.5 + Math.random() * 0.45) + 's',
+            '--delay:'  + (Math.random() * 0.15) + 's'
+          ].join(';');
+          particles.appendChild(p);
+        }
+      }
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const email = emailEl.value.trim();
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          emailEl.classList.add('cf-invalid'); return;
+        }
+        emailEl.classList.remove('cf-invalid');
+        const btn = form.querySelector('.hcnl-submit');
+        btn.disabled = true; btn.textContent = '…';
+
+        try {
+          const res = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fields: [{ name: 'email', value: email }], context: { pageUri: window.location.href, pageName: 'Anke Schaubrenner — Startseite' } })
+          });
+          if (res.ok) {
+            widget.classList.remove('hcnl--open');
+            widget.classList.add('hcnl--success');
+            hint.style.opacity = '0';
+            spawnParticles();
+          } else { btn.disabled = false; btn.textContent = 'Dabei sein'; }
+        } catch(err) { btn.disabled = false; btn.textContent = 'Dabei sein'; }
+      });
+    })();
 
   })();
   </script>
