@@ -408,6 +408,21 @@
     </div>
   </section>
 
+  <!-- ========== SECTION 10: NEWSLETTER ========== -->
+  <section class="section-newsletter" id="newsletter">
+    <div class="newsletter-inner">
+      <p class="newsletter-label">Community</p>
+      <h2 class="newsletter-title">Earth Child Community</h2>
+      <p class="newsletter-sub">Musik, die reguliert. Impulse, die bewegen. Einladungen, bevor sie öffentlich werden.<br>Sei als Erste dabei.</p>
+      <form class="newsletter-row" id="nl-form" novalidate>
+        <input type="email" id="nl-email" placeholder="deine@email.de" required>
+        <button type="submit" class="btn btn-gold">Ja, ich bin dabei</button>
+      </form>
+      <p class="newsletter-note" id="nl-note">Kein Spam. Nur das, was wirklich zählt. Jederzeit abmeldbar.</p>
+      <p class="newsletter-success" id="nl-success">✨ Willkommen — schön, dass du da bist.</p>
+    </div>
+  </section>
+
   <!-- ========== FOOTER ========== -->
   <footer>
     <div class="footer-inner">
@@ -701,6 +716,56 @@
   })();
   </script>
 
+  <!-- ===== Newsletter — HubSpot Earth Child Community ===== -->
+  <script>
+  (function () {
+    const PORTAL_ID = '148241165';
+    const FORM_ID   = 'bdb6de41-7eec-49c4-a8cc-4eefa77bb549';
+    const API_URL   = 'https://api.hsforms.com/submissions/v3/integration/submit/' + PORTAL_ID + '/' + FORM_ID;
+
+    const form    = document.getElementById('nl-form');
+    const emailEl = document.getElementById('nl-email');
+    const note    = document.getElementById('nl-note');
+    const success = document.getElementById('nl-success');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const email = emailEl.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        emailEl.classList.add('cf-invalid');
+        return;
+      }
+      emailEl.classList.remove('cf-invalid');
+
+      const btn = form.querySelector('button');
+      btn.disabled = true;
+      btn.textContent = '…';
+
+      try {
+        const res = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields: [{ name: 'email', value: email }],
+            context: { pageUri: window.location.href, pageName: 'Anke Schaubrenner — Startseite' }
+          })
+        });
+
+        if (res.ok) {
+          form.style.display = 'none';
+          note.style.display = 'none';
+          success.style.display = 'block';
+        } else {
+          btn.disabled = false;
+          btn.textContent = 'Ja, ich bin dabei';
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Ja, ich bin dabei';
+      }
+    });
+  })();
+  </script>
 
 </body>
 </html>

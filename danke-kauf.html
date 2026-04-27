@@ -482,15 +482,45 @@
       }
     })();
 
-    // Newsletter-Formular (Platzhalter — wird mit HubSpot verbunden)
-    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = document.getElementById('newsletterEmail').value;
-      // TODO: HubSpot API Anbindung hier einfügen
-      this.style.display = 'none';
-      document.querySelector('.newsletter-note').style.display = 'none';
-      document.getElementById('newsletterSuccess').style.display = 'block';
-    });
+    // Newsletter — HubSpot Earth Child Community
+    (function () {
+      const PORTAL_ID = '148241165';
+      const FORM_ID   = 'bdb6de41-7eec-49c4-a8cc-4eefa77bb549';
+      const API_URL   = 'https://api.hsforms.com/submissions/v3/integration/submit/' + PORTAL_ID + '/' + FORM_ID;
+
+      document.getElementById('newsletterForm').addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const email = document.getElementById('newsletterEmail').value.trim();
+        if (!email) return;
+
+        const btn = this.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        btn.textContent = '…';
+
+        try {
+          const res = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fields: [{ name: 'email', value: email }],
+              context: { pageUri: window.location.href, pageName: 'Danke — Kauf' }
+            })
+          });
+
+          if (res.ok) {
+            this.style.display = 'none';
+            document.querySelector('.newsletter-note').style.display = 'none';
+            document.getElementById('newsletterSuccess').style.display = 'block';
+          } else {
+            btn.disabled = false;
+            btn.textContent = 'Ja, ich bin dabei';
+          }
+        } catch (err) {
+          btn.disabled = false;
+          btn.textContent = 'Ja, ich bin dabei';
+        }
+      });
+    })();
   </script>
 
 </body>
