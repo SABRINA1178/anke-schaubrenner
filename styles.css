@@ -197,10 +197,10 @@ nav {
   height: calc(100% + 100px);
   margin-top: -100px;
   object-fit: cover;
-  object-position: 40% 35%;
+  object-position: 33% 35%;
   filter: contrast(1.08) brightness(1.04) saturate(1.05);
-  transform: scale(1.20);
-  transform-origin: 40% 35%;
+  transform: scale(1.44);
+  transform-origin: 33% 35%;
 }
 
 .hero-overlay {
