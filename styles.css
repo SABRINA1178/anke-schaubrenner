@@ -1848,4 +1848,137 @@ footer ul li a:hover { opacity: 1; }
   /* Quote & Footer */
   .section-quote { padding: 5rem 1.5rem; }
   .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+  /* Hero Circle — kleiner + tiefer auf Mobile */
+  .hcnl {
+    top: calc(1.5rem + 3px + 52px + 1.4rem);
+    left: 5%;
+    width: 200px;
+  }
+  .hcnl-circle { width: 80px; height: 80px; }
+  .hcnl-ring-inner { inset: 8px; }
+  .hcnl-checkmark svg { width: 20px; height: 20px; }
+  .hcnl-heart-badge { width: 22px; height: 22px; top: -1px; right: -1px; }
+  .hcnl-heart-badge svg { width: 10px; height: 10px; }
+  .hcnl-orbit-dot { width: 5px; height: 5px; transform-origin: -38px 0; }
+  .hcnl-orbit-dot:nth-child(2) { transform: rotate(120deg) translateX(-38px); }
+  .hcnl-orbit-dot:nth-child(3) { transform: rotate(240deg) translateX(-38px); }
+  .hcnl-orbit { inset: -10px; }
+  .hcnl-hint { font-size: 0.58rem; }
+  .hcnl-card { width: 200px; padding: 0.85rem 1rem 0.75rem; }
+  .hcnl-card-label { font-size: 0.58rem; }
+  .hcnl-card-sub { font-size: 0.72rem; }
+
+  /* Naturgewalt */
+  .section-naturgewalt { padding: 4rem 1.5rem; }
+  .naturgewalt-image { max-height: 340px; object-fit: cover; }
+
+  /* Zahlen */
+  .zahlen-content h2 { font-size: 1.6rem; }
+  .zahlen-content p  { font-size: 0.88rem; }
+  .stat-card         { padding: 1.2rem 0.8rem; }
+  .stat-number       { font-size: 2rem; }
+
+  /* Newsletter Sektion */
+  .newsletter-title  { font-size: 1.5rem; }
+  .newsletter-row    { flex-direction: column; align-items: stretch; }
+  .newsletter-row input[type="email"] { max-width: 100%; }
+
+  /* Footer */
+  .footer-brand h3   { font-size: 1rem; }
+  .footer-bottom p   { font-size: 0.68rem; text-align: center; }
+}
+
+/* ============================================================
+   MOBILE KLEIN — max-width: 480px (Smartphones)
+   ============================================================ */
+@media (max-width: 480px) {
+
+  /* Hero */
+  .hero-content blockquote { font-size: 18px; line-height: 1.4; }
+  .hero-content .btn { font-size: 0.8rem; padding: 0.65rem 1.2rem; }
+  .hero-partners { height: 50px; }
+  .hero-partners img { height: 34px; }
+
+  /* Hero Circle verstecken wenn sehr klein — zu wenig Platz */
+  .hcnl { display: none; }
+
+  /* Großes Zitat */
+  .section-quote blockquote { font-size: 1.3rem; }
+  .section-quote p { font-size: 0.88rem; }
+
+  /* Naturgewalt */
+  .naturgewalt-left h2 { font-size: 28px !important; }
+  .naturgewalt-text blockquote { font-size: 1.1rem; }
+
+  /* Methode */
+  .section-methode h2 { font-size: 1.6rem; }
+  .section-methode p  { font-size: 0.9rem; }
+
+  /* Dreiwege-Cards */
+  .way-card { min-height: 260px; }
+
+  /* Erfahrung */
+  .erfahrung-item { padding: 1rem 0; }
+
+  /* Zahlen */
+  .zahlen-grid { grid-template-columns: 1fr 1fr; gap: 0.7rem; }
+  .stat-number { font-size: 1.8rem; }
+
+  /* Partner Sektion */
+  .section-partner { padding: 3.5rem 1.2rem; }
+  .section-partner h2 { font-size: 1.5rem; }
+
+  /* Kontakt */
+  .section-contact-inner { padding: 3rem 1.2rem; }
+  .section-contact blockquote { font-size: 1.3rem; }
+
+  /* Newsletter */
+  .section-newsletter { padding: 3.5rem 1.2rem; }
+  .newsletter-title { font-size: 1.3rem; }
+
+  /* Footer */
+  .footer-inner { padding-bottom: 2rem; }
+  footer { padding: 3rem 5% 1.5rem; }
+}
+
+/* ============================================================
+   PLAY-SEITE MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* Hero Infobox */
+  .play-hero-infobox {
+    position: relative;
+    top: auto; right: auto;
+    transform: none;
+    width: 92%;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+
+  /* Tickets */
+  .tickets-grid { grid-template-columns: 1fr !important; max-width: 420px; margin: 0 auto; }
+
+  /* Musik-Karten */
+  .music-grid { grid-template-columns: 1fr !important; max-width: 420px; margin: 0 auto; }
+
+  /* Shop Intro */
+  .play-shop-intro { padding: 2rem 1.5rem 1.8rem; }
+  .play-shop-intro h2 { font-size: 1.6rem; }
+
+  /* Legal */
+  .play-legal-grid { grid-template-columns: 1fr !important; }
+  .play-legal { padding: 2.5rem 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  /* Play Hero */
+  .play-hero { min-height: 75vh; }
+  .play-hero-infobox h2 { font-size: 0.95rem; }
+  .play-hero-infobox p  { font-size: 0.82rem; }
+
+  /* Musik */
+  .music-card-title  { font-size: 1rem; }
+  .music-card-desc   { font-size: 0.8rem; }
 }
