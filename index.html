@@ -52,6 +52,18 @@
     <!-- BILD: Anke Schaubrenner Hauptfoto (Creme-Blazer, Steinwand) -->
     <img class="hero-image" src="images/Header Anke Final.png" alt="Anke Schaubrenner">
     <div class="hero-overlay"></div>
+
+    <!-- Newsletter oben links -->
+    <div class="hero-nl-box">
+      <p class="hero-nl-label">Earth Child Community</p>
+      <p class="hero-nl-sub">Neue Songs & Einladungen — direkt von Anke.</p>
+      <form class="hero-nl-row" id="hero-nl-form" novalidate>
+        <input type="email" id="hero-nl-email" placeholder="deine@email.de" required>
+        <button type="submit">→</button>
+      </form>
+      <p class="hero-nl-success" id="hero-nl-success">✨ Willkommen!</p>
+    </div>
+
     <div class="hero-content">
       <blockquote>„Erinnere dich an das, was natürlich ist."</blockquote>
       <a href="play.html#tickets" class="btn btn-outline">Aktuelle Events &amp; Tickets</a>
@@ -434,22 +446,13 @@
           ihr ureigenes Potenzial zu entfalten.
         </p>
       </div>
-      <div class="footer-newsletter">
-        <h4>Earth Child Community</h4>
-        <p>Neue Songs, Einladungen & Impulse — direkt von Anke.</p>
-        <form class="footer-nl-row" id="footer-nl-form" novalidate>
-          <input type="email" id="footer-nl-email" placeholder="deine@email.de" required>
-          <button type="submit">→</button>
-        </form>
-        <p class="footer-nl-success" id="footer-nl-success">✨ Willkommen!</p>
-      </div>
       <div class="footer-nav">
         <h4>Business</h4>
         <ul>
           <li><a href="about.html">Über Anke</a></li>
           <li><a href="soul.html">Unsere Playshops</a></li>
           <li><a href="soul.html">Unsere Events</a></li>
-          <li><a href="soul.html">Bloom Commune</a></li>
+          <li><a href="#newsletter">Earth Child Community</a></li>
           <li><a href="faq.html">FAQ</a></li>
         </ul>
       </div>
@@ -732,10 +735,10 @@
     const FORM_ID   = 'bdb6de41-7eec-49c4-a8cc-4eefa77bb549';
     const API_URL   = 'https://api.hsforms.com/submissions/v3/integration/submit/' + PORTAL_ID + '/' + FORM_ID;
 
-    // Footer-Newsletter
+    // Alle Newsletter-Formulare
     [
-      { formId: 'nl-form', emailId: 'nl-email', noteId: 'nl-note', successId: 'nl-success' },
-      { formId: 'footer-nl-form', emailId: 'footer-nl-email', noteId: null, successId: 'footer-nl-success' }
+      { formId: 'nl-form',      emailId: 'nl-email',      noteId: 'nl-note', successId: 'nl-success' },
+      { formId: 'hero-nl-form', emailId: 'hero-nl-email', noteId: null,      successId: 'hero-nl-success' }
     ].forEach(function(cfg) {
       const f = document.getElementById(cfg.formId);
       if (!f) return;

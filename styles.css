@@ -246,6 +246,82 @@ nav {
   color: var(--cream);
 }
 
+/* --- HERO NEWSLETTER BOX (oben links) --- */
+.hero-nl-box {
+  position: absolute;
+  top: calc(1.5rem + 3px + 56px + 2rem); /* unterhalb der Nav */
+  left: 12.5%;
+  width: 270px;
+  background: rgba(250, 247, 242, 0.82);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(74, 59, 40, 0.18);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  z-index: 10;
+}
+
+.hero-nl-label {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+
+.hero-nl-sub {
+  font-size: 0.78rem;
+  color: var(--brown);
+  line-height: 1.45;
+  margin-bottom: 0.7rem;
+  opacity: 0.85;
+}
+
+.hero-nl-row {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.hero-nl-row input[type="email"] {
+  flex: 1;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(74,59,40,0.25);
+  border-radius: 6px;
+  background: rgba(255,255,255,0.7);
+  color: var(--brown);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.hero-nl-row input[type="email"]::placeholder { color: rgba(74,59,40,0.35); }
+.hero-nl-row input[type="email"]:focus { border-color: var(--brown); }
+.hero-nl-row input[type="email"].cf-invalid { border-color: #e05c5c; }
+
+.hero-nl-row button {
+  padding: 0.45rem 0.75rem;
+  background: var(--brown);
+  color: var(--cream);
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.hero-nl-row button:hover { opacity: 0.8; }
+.hero-nl-row button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.hero-nl-success {
+  display: none;
+  font-size: 0.82rem;
+  color: var(--brown);
+  font-style: italic;
+  margin-top: 0.3rem;
+}
+
 .hero-partners {
   overflow: hidden;
   width: 100%;
@@ -1301,7 +1377,7 @@ footer {
 
 .footer-inner {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1.4fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 3rem;
   max-width: 1200px;
   margin: 0 auto;
