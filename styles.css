@@ -252,7 +252,7 @@ nav {
 
 .hcnl {
   position: absolute;
-  top: calc(1.5rem + 3px + 62px + 1.8rem);
+  top: calc(1.5rem + 3px + 62px + 4rem); /* weiter runter */
   left: 12.5%;
   z-index: 20;
   display: flex;
@@ -264,74 +264,127 @@ nav {
 /* --- KREIS (Stufe 1) --- */
 .hcnl-circle {
   position: relative;
-  width: 72px;
-  height: 72px;
+  width: 110px;
+  height: 110px;
   cursor: pointer;
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
-.hcnl-circle:hover { transform: scale(1.07); }
+.hcnl-circle:hover { transform: scale(1.05); }
 .hcnl--open .hcnl-circle,
 .hcnl--success .hcnl-circle { cursor: default; }
 
+/* Äußerer schwarzer Ring */
+.hcnl-ring-black {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1.5px solid var(--black);
+  opacity: 0.18;
+}
+
+/* Goldener Außenring */
+.hcnl-ring-outer {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2.5px solid var(--gold);
+}
+
 /* Pulsierende Ringe */
-.hcnl-pulse {
+.hcnl-ring-pulse {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 3px solid var(--black);
+  border: 2px solid var(--gold);
   opacity: 0;
-  box-shadow: 0 0 8px 2px rgba(26,26,26,0.35);
-  animation: hcnl-pulse 2.6s ease-out infinite;
+  animation: hcnl-pulse-out 2.2s 0.8s ease-out infinite;
 }
-.hcnl-pulse-2 { animation-delay: 0.87s; }
-.hcnl-pulse-3 { animation-delay: 1.74s; }
-
-@keyframes hcnl-pulse {
-  0%   { transform: scale(1);   opacity: 1; }
-  60%  { opacity: 0.5; }
-  100% { transform: scale(2.4); opacity: 0; }
+.hcnl-ring-pulse-2 {
+  border: 1.5px solid rgba(26,26,26,0.25);
+  animation-delay: 1.5s;
 }
 
-/* Kern */
-.hcnl-core {
+@keyframes hcnl-pulse-out {
+  0%   { opacity: 0.75; transform: scale(1); }
+  100% { opacity: 0;    transform: scale(1.9); }
+}
+
+/* Goldener Innenkreis */
+.hcnl-ring-inner {
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4AF37 0%, #e8c94a 50%, #c49b20 100%);
+  box-shadow: 0 8px 32px rgba(212,175,55,0.45), inset 0 0 0 1.5px rgba(26,26,26,0.12);
+}
+
+/* Herz-Icon im Kern */
+.hcnl-checkmark {
   position: absolute;
   inset: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(8px);
-  border: 1.5px solid rgba(26, 26, 26, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.18);
-  transition: background 0.3s, box-shadow 0.3s;
 }
-.hcnl-circle:hover .hcnl-core {
-  background: #ffffff;
-  box-shadow: 0 6px 28px rgba(0,0,0,0.26);
-}
-
-/* Herz-Icon */
-.hcnl-heart {
-  width: 26px;
-  height: 26px;
-  fill: var(--gold);
-  stroke: none;
-  animation: hcnl-heartbeat 2.8s ease-in-out infinite;
-  filter: drop-shadow(0 0 4px rgba(212,175,55,0.5));
+.hcnl-checkmark svg {
+  width: 28px; height: 28px;
+  fill: var(--white);
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.2));
+  animation: hcnl-heartbeat 2.6s ease-in-out infinite;
 }
 @keyframes hcnl-heartbeat {
   0%, 100% { transform: scale(1); }
-  14%       { transform: scale(1.18); }
-  28%       { transform: scale(1); }
-  42%       { transform: scale(1.10); }
-  56%       { transform: scale(1); }
+  14%  { transform: scale(1.2); }
+  28%  { transform: scale(1); }
+  42%  { transform: scale(1.1); }
+  56%  { transform: scale(1); }
+}
+
+/* Orbit-Punkte */
+.hcnl-orbit {
+  position: absolute;
+  inset: -14px;
+  border-radius: 50%;
+}
+.hcnl-orbit-dot {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 1px solid var(--black);
+  top: 50%; left: 50%;
+  margin: -3px 0 0 -3px;
+  transform-origin: -52px 0;
+}
+.hcnl-orbit-dot:nth-child(1) { animation: hcnl-spin 4s linear infinite; }
+.hcnl-orbit-dot:nth-child(2) { animation: hcnl-spin 4s 1.33s linear infinite; transform: rotate(120deg) translateX(-52px); }
+.hcnl-orbit-dot:nth-child(3) { animation: hcnl-spin 4s 2.66s linear infinite; transform: rotate(240deg) translateX(-52px); }
+@keyframes hcnl-spin {
+  from { transform: rotate(0deg) translateX(-52px); }
+  to   { transform: rotate(360deg) translateX(-52px); }
+}
+
+/* Herz-Badge oben rechts */
+.hcnl-heart-badge {
+  position: absolute;
+  top: -2px; right: -2px;
+  width: 28px; height: 28px;
+  background: var(--cream);
+  border-radius: 50%;
+  border: 1.5px solid var(--black);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+.hcnl-heart-badge svg {
+  width: 13px; height: 13px;
+  fill: var(--gold);
+  animation: hcnl-heartbeat 1.4s ease-in-out infinite;
 }
 
 /* Hint-Text */
 .hcnl-hint {
-  margin-top: 0.55rem;
+  margin-top: 0.7rem;
   font-family: var(--font-body);
   font-size: 0.68rem;
   font-weight: 600;
