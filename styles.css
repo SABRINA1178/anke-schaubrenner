@@ -199,7 +199,7 @@ nav {
   object-fit: cover;
   object-position: 33% 35%;
   filter: contrast(1.08) brightness(1.04) saturate(1.05);
-  transform: translateX(-120px) scale(1.38);
+  transform: translateX(-150px) scale(1.38);
   transform-origin: 33% 35%;
 }
 
