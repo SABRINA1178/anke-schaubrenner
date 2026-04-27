@@ -575,7 +575,8 @@ nav {
   height: 48px;
   width: auto;
   object-fit: contain;
-  opacity: 0.7;
+  filter: grayscale(100%);
+  opacity: 0.9;
 }
 
 .partner-text {
