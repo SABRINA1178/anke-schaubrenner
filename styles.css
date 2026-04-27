@@ -283,25 +283,25 @@ nav {
   opacity: 0.18;
 }
 
-/* Goldener Außenring */
+/* Schwarzer Außenring */
 .hcnl-ring-outer {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 2.5px solid var(--gold);
+  border: 2.5px solid var(--black);
 }
 
-/* Pulsierende Ringe */
+/* Pulsierende Ringe — schwarz */
 .hcnl-ring-pulse {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 2px solid var(--gold);
+  border: 2px solid var(--black);
   opacity: 0;
   animation: hcnl-pulse-out 2.2s 0.8s ease-out infinite;
 }
 .hcnl-ring-pulse-2 {
-  border: 1.5px solid rgba(26,26,26,0.25);
+  border: 1.5px solid rgba(26,26,26,0.5);
   animation-delay: 1.5s;
 }
 
@@ -310,16 +310,16 @@ nav {
   100% { opacity: 0;    transform: scale(1.9); }
 }
 
-/* Goldener Innenkreis */
+/* Weißer Innenkreis */
 .hcnl-ring-inner {
   position: absolute;
   inset: 10px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #D4AF37 0%, #e8c94a 50%, #c49b20 100%);
-  box-shadow: 0 8px 32px rgba(212,175,55,0.45), inset 0 0 0 1.5px rgba(26,26,26,0.12);
+  background: var(--white);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), inset 0 0 0 1.5px rgba(26,26,26,0.08);
 }
 
-/* Herz-Icon im Kern */
+/* Herz-Icon im Kern — gold */
 .hcnl-checkmark {
   position: absolute;
   inset: 0;
@@ -329,8 +329,8 @@ nav {
 }
 .hcnl-checkmark svg {
   width: 28px; height: 28px;
-  fill: var(--white);
-  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.2));
+  fill: var(--gold);
+  filter: drop-shadow(0 1px 3px rgba(212,175,55,0.4));
   animation: hcnl-heartbeat 2.6s ease-in-out infinite;
 }
 @keyframes hcnl-heartbeat {
