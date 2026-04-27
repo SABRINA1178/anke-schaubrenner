@@ -279,16 +279,18 @@ nav {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  border: 2px solid var(--gold);
+  border: 3px solid var(--gold);
   opacity: 0;
-  animation: hcnl-pulse 2.8s ease-out infinite;
+  box-shadow: 0 0 8px 2px rgba(212,175,55,0.5);
+  animation: hcnl-pulse 2.6s ease-out infinite;
 }
-.hcnl-pulse-2 { animation-delay: 0.9s; }
-.hcnl-pulse-3 { animation-delay: 1.8s; }
+.hcnl-pulse-2 { animation-delay: 0.87s; }
+.hcnl-pulse-3 { animation-delay: 1.74s; }
 
 @keyframes hcnl-pulse {
-  0%   { transform: scale(1);    opacity: 0.7; }
-  100% { transform: scale(2.1);  opacity: 0; }
+  0%   { transform: scale(1);   opacity: 1; }
+  60%  { opacity: 0.5; }
+  100% { transform: scale(2.4); opacity: 0; }
 }
 
 /* Kern */
