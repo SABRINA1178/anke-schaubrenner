@@ -393,8 +393,14 @@ nav {
   text-transform: uppercase;
   color: var(--cream);
   text-shadow: 0 1px 5px rgba(0,0,0,0.65);
-  transition: opacity 0.3s ease;
   white-space: nowrap;
+  animation: hcnl-hint-pulse 2.2s 0.8s ease-in-out infinite;
+}
+
+@keyframes hcnl-hint-pulse {
+  0%   { opacity: 0.45; letter-spacing: 0.14em; }
+  30%  { opacity: 1;    letter-spacing: 0.18em; }
+  100% { opacity: 0.45; letter-spacing: 0.14em; }
 }
 
 /* --- KARTE (Stufe 2) --- */
