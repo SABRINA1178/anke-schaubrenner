@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
@@ -756,180 +756,448 @@
     </div>
   </section>
 
-  <!-- ========== SECTION: ZWEISPALTIG WEISS ========== -->
-  <section class="soul-split">
-    <div class="soul-split-inner">
-      <div class="soul-split-frame">
-        <p class="frame-label">Workshop: 29.–31.08.2026</p>
-        <p class="frame-workshop-name">Unjani ~ Wie geht es deinem Herzen?</p>
-        <p class="frame-subtitle">Gefragt, nach Afrikanischem Brauch.</p>
-        <p class="frame-gut-fuer">
-          <span class="gut-label">Gut für:&nbsp;</span><span class="gut-list">Selbstwahrnehmung, Klarheit,<br>Geborgenheit</span>
-        </p>
+  <!-- ========== SECTION: PRODUKT-KACHELN ========== -->
+  <section class="soul-products">
+
+    <style>
+      .soul-products {
+        background: var(--cream);
+        padding: 5rem 2rem 6rem;
+      }
+      .soul-products-header {
+        text-align: center;
+        margin-bottom: 3.5rem;
+      }
+      .soul-products-eyebrow {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin: 0 0 0.8rem;
+      }
+      .soul-products-title {
+        font-family: 'Lora', serif;
+        font-size: 2.2rem;
+        font-weight: 500;
+        color: var(--brown);
+        margin: 0 0 1rem;
+      }
+      .soul-products-subtitle {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.9rem;
+        color: rgba(74,59,40,0.65);
+        line-height: 1.7;
+        max-width: 540px;
+        margin: 0 auto;
+      }
+      .soul-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 980px;
+        margin: 0 auto 2.5rem;
+      }
+      .soul-card {
+        background: var(--white);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 4px 28px rgba(74,59,40,0.10);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .soul-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 40px rgba(74,59,40,0.16);
+      }
+      .soul-card-header {
+        background: var(--brown);
+        padding: 1rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .soul-card-type {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.67rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(250,247,242,0.65);
+      }
+      .soul-card-badge {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        padding: 0.28rem 0.75rem;
+        border-radius: 20px;
+      }
+      .soul-card-badge--date { background: var(--gold); color: var(--brown); }
+      .soul-card-badge--soon {
+        background: rgba(250,247,242,0.12);
+        color: rgba(250,247,242,0.75);
+        border: 1px solid rgba(250,247,242,0.25);
+      }
+      .soul-card-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        object-position: center 60%;
+      }
+      .soul-card-placeholder {
+        height: 200px;
+        background: linear-gradient(135deg,#2A1F12 0%,#4A3B28 55%,#6B5540 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .soul-card-placeholder-text {
+        font-family: 'Lora', serif;
+        font-size: 1.8rem;
+        font-style: italic;
+        color: rgba(212,175,55,0.6);
+        margin: 0;
+        text-align: center;
+        padding: 1rem;
+      }
+      .soul-card-body {
+        padding: 1.7rem 1.7rem 1rem;
+        flex: 1;
+      }
+      .soul-card-title {
+        font-family: 'Lora', serif;
+        font-size: 1.55rem;
+        font-weight: 600;
+        color: var(--brown);
+        margin: 0 0 0.3rem;
+        line-height: 1.2;
+      }
+      .soul-card-subtitle {
+        font-family: 'Lora', serif;
+        font-style: italic;
+        font-size: 0.92rem;
+        color: rgba(74,59,40,0.58);
+        margin: 0 0 0.9rem;
+      }
+      .soul-card-desc {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.87rem;
+        line-height: 1.75;
+        color: rgba(74,59,40,0.78);
+        margin: 0 0 1.1rem;
+        font-weight: 300;
+      }
+      .soul-card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+      }
+      .soul-card-tags span {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.67rem;
+        font-weight: 600;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        background: rgba(212,175,55,0.1);
+        color: var(--brown);
+        border: 1px solid rgba(212,175,55,0.3);
+        padding: 0.22rem 0.65rem;
+        border-radius: 20px;
+      }
+      .soul-card-footer {
+        padding: 0.9rem 1.7rem 1.7rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid rgba(74,59,40,0.07);
+        margin-top: auto;
+      }
+      .soul-card-location {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.76rem;
+        color: rgba(74,59,40,0.48);
+        margin: 0;
+      }
+      .soul-card-btn {
+        background: var(--brown);
+        color: var(--white);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.73rem;
+        font-weight: 600;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 6px;
+        padding: 0.72rem 1.3rem;
+        cursor: pointer;
+        transition: background 0.25s;
+        white-space: nowrap;
+      }
+      .soul-card-btn:hover { background: var(--black); }
+      .soul-card-btn--outline {
+        background: transparent;
+        color: var(--brown);
+        border: 1.5px solid var(--brown);
+      }
+      .soul-card-btn--outline:hover { background: var(--brown); color: var(--white); }
+      .soul-card-premium {
+        position: relative;
+        background: #2A1F12;
+        border-radius: 20px;
+        overflow: hidden;
+        max-width: 980px;
+        margin: 0 auto;
+        box-shadow: 0 8px 48px rgba(26,16,4,0.35);
+      }
+      .soul-card-premium canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+      .soul-card-premium-inner {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 3rem;
+        padding: 3.5rem;
+        align-items: center;
+      }
+      .soul-card-premium-badge {
+        display: inline-block;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.67rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        border: 1px solid rgba(212,175,55,0.35);
+        border-radius: 20px;
+        padding: 0.32rem 0.9rem;
+        margin-bottom: 1.3rem;
+      }
+      .soul-card-premium-title {
+        font-family: 'Lora', serif;
+        font-size: 2.4rem;
+        font-weight: 500;
+        color: #FAF7F2;
+        margin: 0 0 0.35rem;
+        line-height: 1.2;
+      }
+      .soul-card-premium-title em { font-style: italic; color: var(--gold); }
+      .soul-card-premium-subtitle {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.75rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(250,247,242,0.4);
+        margin: 0 0 1.3rem;
+      }
+      .soul-card-premium-divider {
+        width: 48px;
+        height: 1.5px;
+        background: var(--gold);
+        margin-bottom: 1.3rem;
+      }
+      .soul-card-premium-desc {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.88rem;
+        line-height: 1.8;
+        color: rgba(250,247,242,0.68);
+        margin: 0 0 1.3rem;
+        font-weight: 300;
+      }
+      .soul-card-premium-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+      }
+      .soul-card-premium-tags span {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.67rem;
+        font-weight: 600;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        background: rgba(212,175,55,0.1);
+        color: rgba(212,175,55,0.85);
+        border: 1px solid rgba(212,175,55,0.22);
+        padding: 0.22rem 0.65rem;
+        border-radius: 20px;
+      }
+      .soul-card-premium-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.1rem;
+        text-align: center;
+      }
+      .soul-premium-price-box {
+        background: rgba(250,247,242,0.055);
+        border: 1px solid rgba(212,175,55,0.22);
+        border-radius: 14px;
+        padding: 1.8rem 2rem;
+        width: 100%;
+      }
+      .soul-premium-price-label {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.63rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin: 0 0 0.55rem;
+      }
+      .soul-premium-price-amount {
+        font-family: 'Lora', serif;
+        font-size: 2.8rem;
+        font-weight: 600;
+        color: #FAF7F2;
+        margin: 0;
+        line-height: 1;
+      }
+      .soul-premium-price-sub {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.7rem;
+        color: rgba(250,247,242,0.38);
+        margin: 0.25rem 0 1rem;
+      }
+      .soul-premium-price-year {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: rgba(212,175,55,0.65);
+        border-top: 1px solid rgba(212,175,55,0.18);
+        padding-top: 0.75rem;
+        margin: 0;
+        letter-spacing: 0.04em;
+      }
+      .soul-premium-btn {
+        background: var(--gold);
+        color: var(--brown);
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        border: none;
+        border-radius: 8px;
+        padding: 1rem 1.8rem;
+        cursor: pointer;
+        width: 100%;
+        transition: background 0.25s, transform 0.2s;
+      }
+      .soul-premium-btn:hover { background: #e5c444; transform: translateY(-2px); }
+      .soul-premium-note {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 0.7rem;
+        color: rgba(250,247,242,0.3);
+        margin: 0;
+        font-style: italic;
+      }
+      @media (max-width: 768px) {
+        .soul-cards-grid { grid-template-columns: 1fr; }
+        .soul-card-premium-inner { grid-template-columns: 1fr; padding: 2.2rem 1.6rem; gap: 2rem; }
+        .soul-card-premium-title { font-size: 1.85rem; }
+        .soul-products-title { font-size: 1.7rem; }
+      }
+    </style>
+
+    <div class="soul-products-header">
+      <p class="soul-products-eyebrow">Retreats &amp; Formate 2026</p>
+      <h2 class="soul-products-title">Was wartet auf dich</h2>
+      <p class="soul-products-subtitle">Erlebnisräume für Menschen, die bereit sind — zu fühlen, zu wachsen und wieder lebendig zu werden.</p>
+    </div>
+
+    <div class="soul-cards-grid">
+
+      <!-- KACHEL 1: UNJANI -->
+      <div class="soul-card">
+        <div class="soul-card-header">
+          <span class="soul-card-type">Retreat · 3 Tage</span>
+          <span class="soul-card-badge soul-card-badge--date">29.–31. Aug 2026</span>
+        </div>
+        <img class="soul-card-image" src="images/soul-workshop1.png" alt="Unjani Retreat">
+        <div class="soul-card-body">
+          <h3 class="soul-card-title">Unjani</h3>
+          <p class="soul-card-subtitle">Wie geht es deinem Herzen?</p>
+          <p class="soul-card-desc">Drei Tage pure Lust am Leben — singen, tanzen, barfuß laufen, echte Geschichten teilen. Ein Retreat, das Spuren hinterlässt.</p>
+          <div class="soul-card-tags">
+            <span>Selbstwahrnehmung</span>
+            <span>Klarheit</span>
+            <span>Geborgenheit</span>
+          </div>
+        </div>
+        <div class="soul-card-footer">
+          <p class="soul-card-location">📍 Villa Gückelsberg</p>
+          <button class="soul-card-btn" onclick="openModal('modal-unjani')">Mehr erfahren →</button>
+        </div>
       </div>
-      <div class="soul-split-right">
-        <button class="btn-interesse" onclick="openModal('modal-unjani')">Ich bin interessiert</button>
+
+      <!-- KACHEL 2: ALLES TARNUNG -->
+      <div class="soul-card">
+        <div class="soul-card-header">
+          <span class="soul-card-type">Playshop · Tagesformat</span>
+          <span class="soul-card-badge soul-card-badge--soon">Datum folgt</span>
+        </div>
+        <div class="soul-card-placeholder">
+          <p class="soul-card-placeholder-text">"Alles Tarnung!"</p>
+        </div>
+        <div class="soul-card-body">
+          <h3 class="soul-card-title">Alles Tarnung!</h3>
+          <p class="soul-card-subtitle">Die Masken mutig fallen lassen.</p>
+          <p class="soul-card-desc">Was zeigst du der Welt — und was verbirgst du? Ein kraftvoller Tag für mehr Authentizität, innere Kraft und echte Selbstakzeptanz.</p>
+          <div class="soul-card-tags">
+            <span>Authentizität</span>
+            <span>Innere Kraft</span>
+            <span>Selbstakzeptanz</span>
+          </div>
+        </div>
+        <div class="soul-card-footer">
+          <p class="soul-card-location">📍 Ort folgt</p>
+          <button class="soul-card-btn soul-card-btn--outline" onclick="openModal('modal-lebenslinien')">Vormerken lassen</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PREMIUM-KACHEL: LEBENSLINIEN -->
+    <div class="soul-card-premium" id="lebenslinien">
+      <canvas id="llCanvas"></canvas>
+      <div class="soul-card-premium-inner">
+        <div class="soul-card-premium-left">
+          <span class="soul-card-premium-badge">Jahres-Ensemble · Ab September 2026</span>
+          <h2 class="soul-card-premium-title">Lebenslinien<br><em>&amp; Liebesbrunnen</em></h2>
+          <p class="soul-card-premium-subtitle">The Song of Your Life</p>
+          <div class="soul-card-premium-divider"></div>
+          <p class="soul-card-premium-desc">Ein biografisches Jahres-Ensemble für alle, die den Mut haben, ihr Leben als Kunstwerk zu betrachten. Musik. Stimme. Biografie. Poetischer Ausdruck. Vier Orte — eine Reise.</p>
+          <div class="soul-card-premium-tags">
+            <span>7 Phasen</span>
+            <span>Max. 16 Plätze</span>
+            <span>Mallorca</span>
+            <span>Nordsee</span>
+            <span>Ostsee</span>
+            <span>Hamburg</span>
+          </div>
+        </div>
+        <div class="soul-card-premium-right">
+          <div class="soul-premium-price-box">
+            <p class="soul-premium-price-label">Investition pro Session</p>
+            <p class="soul-premium-price-amount">1.800 €</p>
+            <p class="soul-premium-price-sub">zzgl. Unterkunft &amp; Verpflegung</p>
+            <p class="soul-premium-price-year">7.200 € · Jahrespreis · 16 Plätze</p>
+          </div>
+          <button class="soul-premium-btn" onclick="openModal('modal-lebenslinien')">Ich möchte dabei sein ✦</button>
+          <p class="soul-premium-note">Vormerkliste — kostenlos &amp; unverbindlich</p>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- ========== SECTION: ZWEISPALTIG BEIGE (gespiegelt) ========== -->
-  <section class="soul-split-beige">
-    <div class="soul-split-inner">
-      <div class="soul-split-left-img">
-        <a href="#" class="btn-interesse">Ich bin interessiert</a>
-      </div>
-      <div class="soul-split-frame">
-        <p class="frame-label">Workshop:</p>
-        <p class="frame-workshop-name">„Alles Tarnung!" — Die Masken mutig fallen lassen.</p>
-        <p class="frame-gut-fuer">
-          <span class="gut-label">Gut für:&nbsp;</span><span class="gut-list">mehr Authentizität, Innere Kraft<br>&amp; Selbstakzeptanz</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SECTION: ZWEISPALTIG WEISS 2 (Rahmen links, Bild rechts) ========== -->
-  <section class="soul-split">
-    <div class="soul-split-inner">
-      <div class="soul-split-frame">
-        <p class="frame-label">Coming Soon!</p>
-        <p class="frame-workshop-name">Workshop 3 ~ Titel folgt</p>
-        <p class="frame-gut-fuer">
-          <span class="gut-label">Gut für:&nbsp;</span><span class="gut-list"></span>
-        </p>
-      </div>
-      <div class="soul-split-right">
-        <a href="#" class="btn-interesse">Ich bin interessiert</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SECTION: ZWEISPALTIG BEIGE 2 (Bild links, Rahmen rechts) ========== -->
-  <section class="soul-split-beige">
-    <div class="soul-split-inner">
-      <div class="soul-split-left-img">
-        <a href="#" class="btn-interesse">Ich bin interessiert</a>
-      </div>
-      <div class="soul-split-frame">
-        <p class="frame-label">Coming Soon!</p>
-        <p class="frame-workshop-name">Workshop 4 ~ Titel folgt</p>
-        <p class="frame-gut-fuer">
-          <span class="gut-label">Gut für:&nbsp;</span><span class="gut-list"></span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== SECTION: LEBENSLINIEN JAHRES-ENSEMBLE ========== -->
-  <section class="section-lebenslinien" id="lebenslinien">
-
-    <!-- Hintergrund Canvas -->
-    <canvas class="ll-canvas" id="llCanvas"></canvas>
-
-    <div class="ll-inner">
-
-      <!-- Label -->
-      <p class="ll-eyebrow">Das große Format</p>
-
-      <!-- Titel -->
-      <h2 class="ll-title">Lebenslinien<br><em>&amp; Liebesbrunnen</em></h2>
-      <p class="ll-subtitle">The Song of Your Life</p>
-
-      <!-- Gold Linie -->
-      <div class="ll-divider"></div>
-
-      <!-- Zitat -->
-      <blockquote class="ll-quote">
-        „Ich bringe Menschen durch Musik, Stimme, Biografie<br>und poetischen Ausdruck zurück in ihre Lebendigkeit."
-      </blockquote>
-
-      <!-- Was es ist -->
-      <p class="ll-text">
-        Ein biografisches Jahres-Ensemble für alle, die den Mut haben,<br>
-        sich selbst wieder zu begegnen. Nicht Selbstoptimierung.<br>
-        Nicht Coaching. Sondern schöpferisches Menschsein.
-      </p>
-
-      <!-- Orte als Reise -->
-      <div class="ll-journey">
-        <div class="ll-stop">
-          <div class="ll-stop-dot"></div>
-          <p class="ll-stop-name">Mallorca</p>
-          <p class="ll-stop-sub">Playshop I</p>
-        </div>
-        <div class="ll-stop-line"></div>
-        <div class="ll-stop">
-          <div class="ll-stop-dot"></div>
-          <p class="ll-stop-name">Nordsee</p>
-          <p class="ll-stop-sub">Playshop II</p>
-        </div>
-        <div class="ll-stop-line"></div>
-        <div class="ll-stop">
-          <div class="ll-stop-dot"></div>
-          <p class="ll-stop-name">Ostsee</p>
-          <p class="ll-stop-sub">Playshop III</p>
-        </div>
-        <div class="ll-stop-line"></div>
-        <div class="ll-stop">
-          <div class="ll-stop-dot ll-stop-dot-gold"></div>
-          <p class="ll-stop-name">Hamburg</p>
-          <p class="ll-stop-sub">Finale ✦</p>
-        </div>
-      </div>
-
-      <!-- Was entsteht -->
-      <div class="ll-includes">
-        <div class="ll-include-item">
-          <span class="ll-include-icon">✦</span>
-          <span>Persönliches Lebensbuch</span>
-        </div>
-        <div class="ll-include-item">
-          <span class="ll-include-icon">✦</span>
-          <span>Eigene Songs &amp; Stimmlandschaften</span>
-        </div>
-        <div class="ll-include-item">
-          <span class="ll-include-icon">✦</span>
-          <span>Biografisches Schreiben &amp; Körperpoesie</span>
-        </div>
-        <div class="ll-include-item">
-          <span class="ll-include-icon">✦</span>
-          <span>Bühnenarbeit &amp; Ensembleprozess</span>
-        </div>
-        <div class="ll-include-item">
-          <span class="ll-include-icon">✦</span>
-          <span>Das poetische Jahreskonzert als Finale</span>
-        </div>
-      </div>
-
-      <!-- Preis & Plätze -->
-      <div class="ll-pricing">
-        <div class="ll-price-block">
-          <p class="ll-price-label">Investition pro Session</p>
-          <p class="ll-price-amount">1.800 €</p>
-          <p class="ll-price-sub">4 Sessions · 7 Phasen · 1 Jahr</p>
-        </div>
-        <div class="ll-price-divider"></div>
-        <div class="ll-price-block">
-          <p class="ll-price-label">Gesamtjahr</p>
-          <p class="ll-price-amount">7.200 €</p>
-          <p class="ll-price-sub">Maximal 16 Teilnehmer</p>
-        </div>
-      </div>
-
-      <!-- Datum -->
-      <div class="ll-date-badge">
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Start: September 2026 — Datum wird bekanntgegeben
-      </div>
-
-      <!-- CTA -->
-      <button class="ll-btn" onclick="openModal('modal-lebenslinien')">
-        Ich möchte dabei sein
-      </button>
-      <p class="ll-btn-sub">Vormerkliste — kostenlos &amp; unverbindlich</p>
-
-    </div>
   </section>
 
   <!-- ========== MODAL: LEBENSLINIEN VORMERKLISTE ========== -->
