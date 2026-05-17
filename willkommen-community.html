@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Du bist angekommen — Earth Child Community</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream:  #FAF7F2;
+      --brown:  #4A3B28;
+      --gold:   #D4AF37;
+      --sand:   #EDE7DC;
+      --white:  #FFFFFF;
+      --black:  #1A1A1A;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--sand);
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 20px 60px;
+    }
+
+    /* ===== HEADER ===== */
+    .ec-header {
+      text-align: center;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fade-up 0.6s 0.2s ease forwards;
+    }
+    .ec-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brown);
+      opacity: 0.6;
+      margin-bottom: 6px;
+    }
+    .ec-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--brown);
+    }
+
+    /* Gold Linie */
+    .gold-line {
+      width: 48px;
+      height: 1.5px;
+      background: var(--gold);
+      margin: 24px auto 32px;
+      opacity: 0;
+      animation: fade-up 0.5s 0.4s ease forwards;
+    }
+
+    /* ===== KARTE ===== */
+    .card {
+      background: var(--cream);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 40px rgba(74,59,40,0.12);
+      max-width: 580px;
+      width: 100%;
+      opacity: 0;
+      animation: card-rise 0.9s 0.5s cubic-bezier(0.22,1,0.36,1) forwards;
+    }
+
+    @keyframes card-rise {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Oberes Zierband */
+    .card-top {
+      background: var(--brown);
+      padding: 22px 40px;
+      text-align: center;
+    }
+    .card-top p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+    }
+
+    /* Inhalt */
+    .card-body {
+      padding: 44px 48px 40px;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--brown);
+      margin-bottom: 28px;
+      line-height: 1.3;
+    }
+
+    .card-salut {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 16px;
+      color: var(--brown);
+      margin-bottom: 20px;
+    }
+
+    .card-text {
+      font-size: 14.5px;
+      color: var(--brown);
+      line-height: 1.85;
+      font-weight: 300;
+      margin-bottom: 18px;
+    }
+
+    /* Community-Block */
+    .community-block {
+      border-left: 3px solid var(--gold);
+      padding: 16px 20px;
+      background: rgba(212,175,55,0.06);
+      border-radius: 0 8px 8px 0;
+      margin: 28px 0;
+    }
+    .community-block-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .community-block-text {
+      font-size: 14px;
+      color: var(--brown);
+      line-height: 1.85;
+      font-weight: 300;
+    }
+
+    /* Was dich erwartet */
+    .expects-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin: 24px 0 14px;
+    }
+
+    .expects-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+    }
+    .expects-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(74,59,40,0.08);
+      font-size: 14px;
+      color: var(--brown);
+      font-weight: 400;
+    }
+    .expects-list li:last-child { border-bottom: none; }
+    .expects-list li span.dot {
+      color: var(--gold);
+      font-size: 14px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Abschluss */
+    .card-close {
+      font-size: 14.5px;
+      color: var(--brown);
+      line-height: 1.85;
+      font-weight: 300;
+      margin: 32px 0 8px;
+    }
+    .card-von {
+      font-size: 14px;
+      color: var(--brown);
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .card-signatur {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: var(--brown);
+      margin-bottom: 32px;
+    }
+
+    /* Button */
+    .btn-home {
+      display: inline-block;
+      padding: 0.9rem 2rem;
+      background: var(--brown);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 6px;
+      border: 1.5px solid var(--black);
+      transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-home:hover {
+      background: var(--black);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(26,26,26,0.18);
+    }
+
+    /* Unteres Zierband */
+    .card-bottom {
+      background: var(--brown);
+      padding: 18px 40px;
+      text-align: center;
+    }
+    .card-bottom p {
+      font-size: 11px;
+      color: rgba(250,247,242,0.5);
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    /* Footer */
+    .ec-footer {
+      margin-top: 32px;
+      text-align: center;
+      opacity: 0;
+      animation: fade-up 0.5s 1.2s ease forwards;
+    }
+    .ec-footer p {
+      font-size: 11px;
+      color: rgba(74,59,40,0.45);
+      letter-spacing: 0.1em;
+    }
+    .ec-footer a {
+      color: rgba(74,59,40,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .ec-footer a:hover { color: var(--gold); }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 540px) {
+      .card-body { padding: 32px 24px 28px; }
+      .card-top, .card-bottom { padding: 18px 24px; }
+      .card-title { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="ec-header">
+    <p class="ec-label">Earth Child Community</p>
+    <p class="ec-name">Anke Schaubrenner</p>
+  </div>
+
+  <!-- Gold Linie -->
+  <div class="gold-line"></div>
+
+  <!-- Karte -->
+  <div class="card">
+
+    <!-- Oberes Zierband -->
+    <div class="card-top">
+      <p>„Erinnere dich an das, was natürlich ist."</p>
+    </div>
+
+    <!-- Inhalt -->
+    <div class="card-body">
+
+      <p class="card-title">Du bist angekommen. 🌿</p>
+
+      <p class="card-salut">Liebe Seele,</p>
+
+      <p class="card-text">ich freue mich so, dass du da bist.</p>
+      <p class="card-text">Nicht weil du auf einen Button geklickt hast — sondern weil du gespürt hast, dass hier etwas auf dich wartet.</p>
+
+      <!-- Community Block -->
+      <div class="community-block">
+        <p class="community-block-label">Earth Child Community</p>
+        <p class="community-block-text">ist mein Menschenkreis hier auf der Erde. Ein Dorf der Wärme und der Verbundenheit — voller liebevoller Seelen, die mir auf diesem Weg begegnet sind. Und all derer, die es noch werden. Manche sind immer wieder dabei, andere folgen still aus der Ferne. Manche kennen mich schon ein Leben lang, manche haben mich gerade erst gefunden. Derselbe Herzschlag.</p>
+      </div>
+
+      <p class="card-text">Ich werde dir von Zeit zu Zeit etwas schicken — einen neuen Klang, einen Gedanken, eine Einladung. Immer dann, wenn es sich wirklich lohnt. Nie um des Sendens willen.</p>
+
+      <!-- Was dich erwartet -->
+      <p class="expects-title">Was dich erwartet</p>
+      <ul class="expects-list">
+        <li><span class="dot">✦</span> Neue Songs — bevor sie irgendwo anders erscheinen</li>
+        <li><span class="dot">✦</span> Einladungen zu Workshops, Retreats &amp; Gruppenevents</li>
+        <li><span class="dot">✦</span> Online-Begegnungen &amp; Live-Momente aus der Ferne</li>
+        <li><span class="dot">✦</span> Ab und zu einfach nur ein Klang — der dich erinnert, wer du bist</li>
+      </ul>
+
+      <!-- Abschluss -->
+      <p class="card-close">Danke, dass du Teil davon bist.</p>
+      <p class="card-von">In Liebe,</p>
+      <p class="card-signatur">Anke 🌿</p>
+
+      <a href="index.html" class="btn-home">Zurück zur Startseite</a>
+
+    </div>
+
+    <!-- Unteres Zierband -->
+    <div class="card-bottom">
+      <p>Du kannst dich jederzeit abmelden — kein Drama, kein Vorwurf. Nur Liebe.</p>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <div class="ec-footer">
+    <p>
+      <a href="https://www.anke-schaubrenner.com">www.anke-schaubrenner.com</a>
+      &nbsp;·&nbsp;
+      <a href="datenschutz.html">Datenschutz</a>
+    </p>
+  </div>
+
+</body>
+</html>

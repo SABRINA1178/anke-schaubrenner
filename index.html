@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
 </head>
 <body>
 
@@ -797,9 +797,7 @@
             body: JSON.stringify({ fields: [{ name: 'email', value: email }], context: { pageUri: window.location.href, pageName: 'Anke Schaubrenner — Startseite' } })
           });
           if (res.ok) {
-            f.style.display = 'none';
-            document.getElementById('nl-note').style.display = 'none';
-            document.getElementById('nl-success').style.display = 'block';
+            window.location.href = 'check-email.html';
           } else { btn.disabled = false; btn.textContent = 'Ja, ich bin dabei'; }
         } catch(err) { btn.disabled = false; btn.textContent = 'Ja, ich bin dabei'; }
       });
@@ -956,11 +954,8 @@
             body: JSON.stringify({ fields: [{ name: 'email', value: email }], context: { pageUri: window.location.href, pageName: 'Anke Schaubrenner — Startseite' } })
           });
           if (res.ok) {
-            widget.classList.remove('hcnl--open');
-            widget.classList.add('hcnl--success');
-            hint.style.opacity = '0';
-            hint.style.pointerEvents = 'none';
             launchFireworks();
+            setTimeout(function() { window.location.href = 'check-email.html'; }, 2200);
           } else { btn.disabled = false; btn.textContent = 'Dabei sein'; }
         } catch(err) { btn.disabled = false; btn.textContent = 'Dabei sein'; }
       });

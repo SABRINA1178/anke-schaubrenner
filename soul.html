@@ -738,7 +738,7 @@
 
   <!-- ========== HERO: VIDEO ========== -->
   <section class="soul-hero">
-    <video class="soul-hero-video" id="soulHeroVideo" autoplay muted playsinline>
+    <video class="soul-hero-video" id="soulHeroVideo" autoplay muted playsinline preload="none">
       <source src="Kurzfilm Header Soul.mp4" type="video/mp4">
     </video>
     <div class="soul-hero-overlay"></div>
@@ -820,6 +820,452 @@
       </div>
     </div>
   </section>
+
+  <!-- ========== SECTION: LEBENSLINIEN JAHRES-ENSEMBLE ========== -->
+  <section class="section-lebenslinien" id="lebenslinien">
+
+    <!-- Hintergrund Canvas -->
+    <canvas class="ll-canvas" id="llCanvas"></canvas>
+
+    <div class="ll-inner">
+
+      <!-- Label -->
+      <p class="ll-eyebrow">Das große Format</p>
+
+      <!-- Titel -->
+      <h2 class="ll-title">Lebenslinien<br><em>&amp; Liebesbrunnen</em></h2>
+      <p class="ll-subtitle">The Song of Your Life</p>
+
+      <!-- Gold Linie -->
+      <div class="ll-divider"></div>
+
+      <!-- Zitat -->
+      <blockquote class="ll-quote">
+        „Ich bringe Menschen durch Musik, Stimme, Biografie<br>und poetischen Ausdruck zurück in ihre Lebendigkeit."
+      </blockquote>
+
+      <!-- Was es ist -->
+      <p class="ll-text">
+        Ein biografisches Jahres-Ensemble für alle, die den Mut haben,<br>
+        sich selbst wieder zu begegnen. Nicht Selbstoptimierung.<br>
+        Nicht Coaching. Sondern schöpferisches Menschsein.
+      </p>
+
+      <!-- Orte als Reise -->
+      <div class="ll-journey">
+        <div class="ll-stop">
+          <div class="ll-stop-dot"></div>
+          <p class="ll-stop-name">Mallorca</p>
+          <p class="ll-stop-sub">Playshop I</p>
+        </div>
+        <div class="ll-stop-line"></div>
+        <div class="ll-stop">
+          <div class="ll-stop-dot"></div>
+          <p class="ll-stop-name">Nordsee</p>
+          <p class="ll-stop-sub">Playshop II</p>
+        </div>
+        <div class="ll-stop-line"></div>
+        <div class="ll-stop">
+          <div class="ll-stop-dot"></div>
+          <p class="ll-stop-name">Ostsee</p>
+          <p class="ll-stop-sub">Playshop III</p>
+        </div>
+        <div class="ll-stop-line"></div>
+        <div class="ll-stop">
+          <div class="ll-stop-dot ll-stop-dot-gold"></div>
+          <p class="ll-stop-name">Hamburg</p>
+          <p class="ll-stop-sub">Finale ✦</p>
+        </div>
+      </div>
+
+      <!-- Was entsteht -->
+      <div class="ll-includes">
+        <div class="ll-include-item">
+          <span class="ll-include-icon">✦</span>
+          <span>Persönliches Lebensbuch</span>
+        </div>
+        <div class="ll-include-item">
+          <span class="ll-include-icon">✦</span>
+          <span>Eigene Songs &amp; Stimmlandschaften</span>
+        </div>
+        <div class="ll-include-item">
+          <span class="ll-include-icon">✦</span>
+          <span>Biografisches Schreiben &amp; Körperpoesie</span>
+        </div>
+        <div class="ll-include-item">
+          <span class="ll-include-icon">✦</span>
+          <span>Bühnenarbeit &amp; Ensembleprozess</span>
+        </div>
+        <div class="ll-include-item">
+          <span class="ll-include-icon">✦</span>
+          <span>Das poetische Jahreskonzert als Finale</span>
+        </div>
+      </div>
+
+      <!-- Preis & Plätze -->
+      <div class="ll-pricing">
+        <div class="ll-price-block">
+          <p class="ll-price-label">Investition pro Session</p>
+          <p class="ll-price-amount">1.800 €</p>
+          <p class="ll-price-sub">4 Sessions · 7 Phasen · 1 Jahr</p>
+        </div>
+        <div class="ll-price-divider"></div>
+        <div class="ll-price-block">
+          <p class="ll-price-label">Gesamtjahr</p>
+          <p class="ll-price-amount">7.200 €</p>
+          <p class="ll-price-sub">Maximal 16 Teilnehmer</p>
+        </div>
+      </div>
+
+      <!-- Datum -->
+      <div class="ll-date-badge">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Start: September 2026 — Datum wird bekanntgegeben
+      </div>
+
+      <!-- CTA -->
+      <button class="ll-btn" onclick="openModal('modal-lebenslinien')">
+        Ich möchte dabei sein
+      </button>
+      <p class="ll-btn-sub">Vormerkliste — kostenlos &amp; unverbindlich</p>
+
+    </div>
+  </section>
+
+  <!-- ========== MODAL: LEBENSLINIEN VORMERKLISTE ========== -->
+  <div class="modal-backdrop" id="modal-lebenslinien" role="dialog" aria-modal="true" aria-label="Lebenslinien Vormerkliste">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('modal-lebenslinien')" aria-label="Schließen">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+
+      <div class="modal-body" style="padding-top:3rem;">
+
+        <p class="modal-eyebrow">Jahres-Ensemble 2026</p>
+        <h2 class="modal-title">Lebenslinien &amp; Liebesbrunnen</h2>
+        <p class="modal-subtitle" style="margin-bottom:1.5rem;">Trag dich in die Vormerkliste ein — du erfährst als Erste, wenn die Plätze öffnen.</p>
+
+        <hr class="modal-divider">
+
+        <p class="modal-text">Maximal 16 Menschen werden Teil dieses Jahres-Ensembles sein. Kein Coaching, keine Optimierung — sondern ein Jahr biografischer Kunst, Stimme und menschlicher Begegnung.</p>
+
+        <p class="modal-text">Mallorca · Nordsee · Ostsee · Hamburg<br>4 Playshops · 7 Phasen · 1 poetisches Jahreskonzert</p>
+
+        <hr class="modal-divider">
+
+        <!-- Formular -->
+        <form id="ll-form" novalidate>
+          <div class="cf-field">
+            <label for="ll-name">Dein Name</label>
+            <input type="text" id="ll-name" placeholder="Wie darf ich dich nennen?" required>
+          </div>
+          <div class="cf-field" style="margin-top:1rem;">
+            <label for="ll-email">Deine E-Mail</label>
+            <input type="email" id="ll-email" placeholder="deine@email.de" required>
+          </div>
+
+          <p id="ll-error" style="color:#c0392b;font-size:0.82rem;margin-top:0.8rem;display:none;">Bitte fülle alle Felder aus.</p>
+          <p id="ll-success" style="color:#2d7a47;font-size:0.9rem;margin-top:0.8rem;display:none;">✦ Du bist vorgemerkt — ich freue mich auf dich. 🌿</p>
+
+          <button type="submit" class="modal-cta-btn" id="ll-submit">Ich möchte dabei sein ✦</button>
+
+          <p style="text-align:center;font-size:0.75rem;color:rgba(74,59,40,0.45);margin-top:1rem;">Kostenlos &amp; unverbindlich. Kein Spam. Nur Liebe.</p>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* ===== LEBENSLINIEN SEKTION ===== */
+    .section-lebenslinien {
+      position: relative;
+      background: var(--brown);
+      padding: 7rem 2rem 8rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .ll-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .ll-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .ll-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.4rem;
+    }
+
+    .ll-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 500;
+      color: var(--cream);
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+    }
+    .ll-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .ll-subtitle {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: rgba(250,247,242,0.55);
+      margin-bottom: 2rem;
+    }
+
+    .ll-divider {
+      width: 50px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 0 auto 2.5rem;
+    }
+
+    .ll-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--cream);
+      opacity: 0.85;
+      line-height: 1.8;
+      margin-bottom: 1.8rem;
+      border: none;
+    }
+
+    .ll-text {
+      font-size: 0.9rem;
+      color: rgba(250,247,242,0.65);
+      line-height: 2;
+      font-weight: 300;
+      margin-bottom: 3.5rem;
+    }
+
+    /* Reise-Linie */
+    .ll-journey {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+      row-gap: 1.5rem;
+    }
+
+    .ll-stop {
+      text-align: center;
+      min-width: 80px;
+    }
+
+    .ll-stop-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(212,175,55,0.4);
+      border: 1.5px solid var(--gold);
+      margin: 0 auto 0.6rem;
+    }
+
+    .ll-stop-dot-gold {
+      background: var(--gold);
+      width: 16px;
+      height: 16px;
+      box-shadow: 0 0 12px rgba(212,175,55,0.6);
+    }
+
+    .ll-stop-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, rgba(212,175,55,0.3), rgba(212,175,55,0.3));
+      min-width: 40px;
+      max-width: 80px;
+      margin-bottom: 1.8rem;
+    }
+
+    .ll-stop-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      color: var(--cream);
+      margin-bottom: 0.2rem;
+    }
+
+    .ll-stop-sub {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* Includes */
+    .ll-includes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      max-width: 480px;
+      margin: 0 auto 3.5rem;
+      text-align: left;
+    }
+
+    .ll-include-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.88rem;
+      color: rgba(250,247,242,0.8);
+      font-weight: 300;
+    }
+
+    .ll-include-icon {
+      color: var(--gold);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    /* Preis */
+    .ll-pricing {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 2rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .ll-price-block {
+      padding: 2rem 2.5rem;
+      flex: 1;
+    }
+
+    .ll-price-divider {
+      width: 1px;
+      height: 80px;
+      background: rgba(212,175,55,0.2);
+    }
+
+    .ll-price-label {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .ll-price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--cream);
+      margin-bottom: 0.3rem;
+    }
+
+    .ll-price-sub {
+      font-size: 0.72rem;
+      color: rgba(250,247,242,0.45);
+      line-height: 1.6;
+    }
+
+    /* Datum Badge */
+    .ll-date-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(212,175,55,0.1);
+      border: 1px solid rgba(212,175,55,0.25);
+      border-radius: 50px;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.78rem;
+      color: var(--gold);
+      margin-bottom: 2.5rem;
+    }
+
+    /* Button */
+    .ll-btn {
+      display: inline-block;
+      padding: 1.1rem 3rem;
+      background: var(--gold);
+      color: var(--brown);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s, box-shadow 0.2s;
+      margin-bottom: 0.8rem;
+    }
+
+    .ll-btn:hover {
+      background: #e8c94a;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(212,175,55,0.35);
+    }
+
+    .ll-btn-sub {
+      font-size: 0.72rem;
+      color: rgba(250,247,242,0.35);
+      letter-spacing: 0.06em;
+    }
+
+    /* Formular im Modal */
+    .cf-field label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+    }
+    .cf-field input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid rgba(74,59,40,0.18);
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem;
+      color: var(--brown);
+      background: var(--white);
+      transition: border-color 0.2s;
+    }
+    .cf-field input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    @media (max-width: 600px) {
+      .ll-journey { gap: 0; }
+      .ll-stop-line { min-width: 20px; }
+      .ll-pricing { flex-direction: column; }
+      .ll-price-divider { width: 80%; height: 1px; }
+      .ll-price-block { padding: 1.5rem; }
+      .ll-includes { text-align: center; }
+      .ll-include-item { justify-content: center; }
+    }
+  </style>
 
   <!-- ========== FOOTER ========== -->
   <footer class="footer-dark">
@@ -1024,6 +1470,114 @@
       });
     })();
 
+
+    // ===== LEBENSLINIEN Canvas — sanfte Partikel (nur wenn sichtbar) =====
+    (function () {
+      const canvas = document.getElementById('llCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let running = false;
+      function resize() {
+        canvas.width  = canvas.offsetWidth;
+        canvas.height = canvas.offsetHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const ps = [];
+      for (let i = 0; i < 40; i++) {
+        ps.push({
+          x:    Math.random() * canvas.width,
+          y:    Math.random() * canvas.height,
+          r:    Math.random() * 2.5 + 0.5,
+          vx:   (Math.random() - 0.5) * 0.2,
+          vy:   -(Math.random() * 0.3 + 0.05),
+          life: Math.random()
+        });
+      }
+
+      function draw() {
+        if (!running) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ps.forEach(function(p) {
+          p.x += p.vx; p.y += p.vy; p.life += 0.002;
+          if (p.y < -10) { p.y = canvas.height + 10; p.x = Math.random() * canvas.width; p.life = 0; }
+          ctx.globalAlpha = Math.max(0, Math.sin(p.life * Math.PI) * 0.25);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = '#D4AF37';
+          ctx.fill();
+        });
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(draw);
+      }
+
+      // Erst starten wenn Sektion sichtbar
+      const llObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !running) {
+            running = true;
+            resize();
+            draw();
+          }
+        });
+      }, { threshold: 0.1 });
+      llObserver.observe(canvas);
+    })();
+
+    // ===== LEBENSLINIEN Vormerkliste Formular =====
+    (function () {
+      const PORTAL_ID = '148241165';
+      const FORM_ID   = 'bdb6de41-7eec-49c4-a8cc-4eefa77bb549';
+      const API_URL   = 'https://api.hsforms.com/submissions/v3/integration/submit/' + PORTAL_ID + '/' + FORM_ID;
+
+      const form    = document.getElementById('ll-form');
+      const errEl   = document.getElementById('ll-error');
+      const sucEl   = document.getElementById('ll-success');
+      const submitBtn = document.getElementById('ll-submit');
+
+      if (!form) return;
+
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const name  = document.getElementById('ll-name').value.trim();
+        const email = document.getElementById('ll-email').value.trim();
+
+        if (!name || !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          errEl.style.display = 'block'; return;
+        }
+        errEl.style.display = 'none';
+        submitBtn.disabled = true;
+        submitBtn.textContent = '…';
+
+        try {
+          const res = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fields: [
+                { name: 'firstname', value: name },
+                { name: 'email', value: email }
+              ],
+              context: { pageUri: window.location.href, pageName: 'Soul — Lebenslinien Vormerkliste' }
+            })
+          });
+          if (res.ok) {
+            form.style.display = 'none';
+            sucEl.style.display = 'block';
+          } else {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Ich möchte dabei sein ✦';
+            errEl.textContent = 'Fehler beim Senden — bitte versuche es erneut.';
+            errEl.style.display = 'block';
+          }
+        } catch(err) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Ich möchte dabei sein ✦';
+          errEl.style.display = 'block';
+        }
+      });
+    })();
 
     // Buchstaben-Animation für die Überschrift
     (function () {

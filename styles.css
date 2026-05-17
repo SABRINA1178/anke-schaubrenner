@@ -1887,6 +1887,82 @@ footer ul li a:hover { opacity: 1; }
   /* Footer */
   .footer-brand h3   { font-size: 1rem; }
   .footer-bottom p   { font-size: 0.68rem; text-align: center; }
+
+  /* ---- HERO-BILD — Anke auf Mobile sichtbar machen ---- */
+  .hero-image {
+    transform: scale(1.15);
+    transform-origin: 50% 12%;
+    object-position: 50% 8%;
+    height: 100%;
+    margin-top: 0;
+  }
+
+  /* ---- METHODE — wichtigster Fix: max-width Reset ---- */
+  .section-methode {
+    max-width: 100%;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+  .section-methode h2 { font-size: 1.8rem; }
+  .section-methode p  { font-size: 1rem; margin-bottom: 1.2rem; }
+  .section-methode h3 { font-size: 1rem; }
+
+  /* ---- NATURGEWALT ---- */
+  .section-naturgewalt > h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+  .naturgewalt-text blockquote { font-size: 1.45rem; }
+  .naturgewalt-text p          { font-size: 1rem; }
+  .naturgewalt-image           { min-height: auto; max-height: 300px; width: 100%; }
+
+  /* ---- ERFAHRUNG ---- */
+  .section-erfahrung blockquote {
+    font-size: 1.7rem;
+    line-height: 1.35;
+  }
+  .section-erfahrung .subtitle { font-size: 1rem; }
+  .erfahrung-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 0.8rem;
+    padding: 1.5rem 0;
+  }
+  .erfahrung-item h3 { font-size: 1.4rem; text-align: center; }
+  .erfahrung-icon    { margin: 0 auto; }
+  .erfahrung-item p  { font-size: 1rem; }
+
+  /* ---- DREIWEGE ---- */
+  .section-dreiwege h2        { font-size: 1.8rem; }
+  .dreiwege-card-img-wrap h3  { font-size: 2.8rem; }
+  .dreiwege-card h4           { font-size: 1.6rem; margin-bottom: 1rem; }
+  .dreiwege-card p            { font-size: 1rem; }
+
+  /* ---- ZAHLEN (Section 7) ---- */
+  .section-zahlen-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .section-zahlen-left {
+    align-items: center;
+    text-align: center;
+  }
+  .section-zahlen h2        { text-align: center; font-size: 1.8rem; }
+  .section-zahlen .intro-text { text-align: center; font-size: 1rem; }
+  .zahlen-card              { padding: 1.2rem 1rem; }
+
+  /* ---- PARTNER (Section 8) ---- */
+  .section-partner h2 { font-size: 1.8rem; }
+  .section-partner p  { font-size: 1rem; }
+  .partner-track-wrap { width: 95%; }
+
+  /* ---- ZITAT (Section 2) ---- */
+  .section-quote blockquote { font-size: 1.6rem; }
+  .section-quote p          { font-size: 1rem; }
+  .signature-img            { height: 160px; margin-top: -30px; }
+
+  /* ---- KONTAKT ---- */
+  .section-contact blockquote { font-size: 1.5rem; }
 }
 
 /* ============================================================
@@ -1940,6 +2016,34 @@ footer ul li a:hover { opacity: 1; }
   /* Footer */
   .footer-inner { padding-bottom: 2rem; }
   footer { padding: 3rem 5% 1.5rem; }
+
+  /* ---- METHODE ---- */
+  .section-methode { padding: 3rem 1.2rem 4rem; }
+  .section-methode h2 { font-size: 1.5rem; }
+
+  /* ---- NATURGEWALT ---- */
+  .section-naturgewalt > h2 { font-size: 1.5rem; margin-bottom: 1.8rem; }
+  .naturgewalt-image        { max-height: 240px; }
+  .naturgewalt-text blockquote { font-size: 1.2rem; }
+
+  /* ---- ERFAHRUNG ---- */
+  .section-erfahrung blockquote { font-size: 1.4rem; }
+  .erfahrung-item h3            { font-size: 1.2rem; }
+
+  /* ---- DREIWEGE ---- */
+  .section-dreiwege h2       { font-size: 1.5rem; }
+  .dreiwege-card-img-wrap h3 { font-size: 2.2rem; }
+  .dreiwege-card h4          { font-size: 1.3rem; }
+
+  /* ---- ZAHLEN ---- */
+  .section-zahlen h2 { font-size: 1.5rem; }
+
+  /* ---- PARTNER ---- */
+  .section-partner h2 { font-size: 1.5rem; }
+  .partner-track img  { height: 28px; }
+
+  /* ---- SIGNATUR ---- */
+  .signature-img { height: 120px; margin-top: -20px; }
 }
 
 /* ============================================================
