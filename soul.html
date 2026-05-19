@@ -1117,7 +1117,12 @@
     <div class="soul-cards-grid">
 
       <!-- KACHEL 1: UNJANI -->
-      <div class="soul-card">
+      <div class="soul-card" style="position:relative;">
+        <div style="position:absolute;inset:0;background:rgba(250,247,242,0.82);z-index:10;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem;backdrop-filter:blur(2px);">
+          <span style="font-size:1.8rem;">🔧</span>
+          <p style="font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--brown);margin:0;">In Vorbereitung</p>
+          <p style="font-family:'Montserrat',sans-serif;font-size:0.78rem;color:rgba(74,59,40,0.6);margin:0;">Bald verfügbar</p>
+        </div>
         <div class="soul-card-header">
           <span class="soul-card-type">Retreat · 3 Tage</span>
           <span class="soul-card-badge soul-card-badge--date">29.–31. Aug 2026</span>
@@ -1135,12 +1140,17 @@
         </div>
         <div class="soul-card-footer">
           <p class="soul-card-location">📍 Villa Gückelsberg</p>
-          <button class="soul-card-btn" onclick="openModal('modal-unjani')">Mehr erfahren →</button>
+          <button class="soul-card-btn" style="pointer-events:none;opacity:0.4;cursor:default;">Mehr erfahren →</button>
         </div>
       </div>
 
       <!-- KACHEL 2: ALLES TARNUNG -->
-      <div class="soul-card">
+      <div class="soul-card" style="position:relative;">
+        <div style="position:absolute;inset:0;background:rgba(250,247,242,0.82);z-index:10;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem;backdrop-filter:blur(2px);">
+          <span style="font-size:1.8rem;">🔧</span>
+          <p style="font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--brown);margin:0;">In Vorbereitung</p>
+          <p style="font-family:'Montserrat',sans-serif;font-size:0.78rem;color:rgba(74,59,40,0.6);margin:0;">Bald verfügbar</p>
+        </div>
         <div class="soul-card-header">
           <span class="soul-card-type">Playshop · Tagesformat</span>
           <span class="soul-card-badge soul-card-badge--soon">Datum folgt</span>
@@ -1160,7 +1170,7 @@
         </div>
         <div class="soul-card-footer">
           <p class="soul-card-location">📍 Ort folgt</p>
-          <button class="soul-card-btn soul-card-btn--outline" onclick="openModal('modal-lebenslinien')">Vormerken lassen</button>
+          <button class="soul-card-btn soul-card-btn--outline" style="pointer-events:none;opacity:0.4;cursor:default;">Vormerken lassen</button>
         </div>
       </div>
 
