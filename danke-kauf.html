@@ -482,11 +482,9 @@
       }
     })();
 
-    // Newsletter — HubSpot Earth Child Community
+    // Newsletter — Eigener Backend (Earth Child Community)
     (function () {
-      const PORTAL_ID = '148241165';
-      const FORM_ID   = 'bdb6de41-7eec-49c4-a8cc-4eefa77bb549';
-      const API_URL   = 'https://api.hsforms.com/submissions/v3/integration/submit/' + PORTAL_ID + '/' + FORM_ID;
+      const API_URL = 'http://178.105.179.203/api/newsletter';
 
       document.getElementById('newsletterForm').addEventListener('submit', async function (e) {
         e.preventDefault();
@@ -501,10 +499,7 @@
           const res = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              fields: [{ name: 'email', value: email }],
-              context: { pageUri: window.location.href, pageName: 'Danke — Kauf' }
-            })
+            body: JSON.stringify({ email: email })
           });
 
           if (res.ok) {

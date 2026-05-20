@@ -1880,11 +1880,9 @@
       llObserver.observe(canvas);
     })();
 
-    // ===== LEBENSLINIEN Vormerkliste Formular =====
+    // ===== LEBENSLINIEN Vormerkliste Formular → Eigener Backend =====
     (function () {
-      const PORTAL_ID = '148241165';
-      const FORM_ID   = 'bdb6de41-7eec-49c4-a8cc-4eefa77bb549';
-      const API_URL   = 'https://api.hsforms.com/submissions/v3/integration/submit/' + PORTAL_ID + '/' + FORM_ID;
+      const API_URL = 'http://178.105.179.203/api/vormerkliste';
 
       const form    = document.getElementById('ll-form');
       const errEl   = document.getElementById('ll-error');
@@ -1909,13 +1907,7 @@
           const res = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              fields: [
-                { name: 'firstname', value: name },
-                { name: 'email', value: email }
-              ],
-              context: { pageUri: window.location.href, pageName: 'Soul — Lebenslinien Vormerkliste' }
-            })
+            body: JSON.stringify({ name: name, email: email, message: 'Lebenslinien Vormerkliste' })
           });
           if (res.ok) {
             form.style.display = 'none';
