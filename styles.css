@@ -2086,3 +2086,71 @@ footer ul li a:hover { opacity: 1; }
   .music-card-title  { font-size: 1rem; }
   .music-card-desc   { font-size: 0.8rem; }
 }
+
+/* ============================================================
+   KONTAKTFORMULAR MOBILE
+   ============================================================ */
+@media (max-width: 768px) {
+  .cf-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .section-contact-inner {
+    padding: 3rem 1.2rem !important;
+  }
+  .cf-submit-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #cf-submit-btn {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   ALLGEMEIN MOBILE — letzte Korrekturen
+   ============================================================ */
+@media (max-width: 480px) {
+  /* Buttons allgemein nicht abschneiden */
+  .btn {
+    white-space: normal;
+    text-align: center;
+  }
+
+  /* Erfahrung Icons zentriert */
+  .erfahrung-icon {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  /* Zahlen-Karten kleiner */
+  .stat-card {
+    padding: 1rem 0.7rem;
+  }
+
+  /* Partner-Track Logos */
+  .partner-track img {
+    height: 24px;
+    max-width: 80px;
+    object-fit: contain;
+  }
+
+  /* Chevron-Trenner */
+  .chevron-divider svg {
+    width: 28px !important;
+  }
+
+  /* Footer Links nicht abschneiden */
+  .footer-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .footer-links a {
+    font-size: 0.8rem;
+  }
+
+  /* Kontakt blockquote */
+  .section-contact blockquote {
+    font-size: 1.2rem !important;
+    line-height: 1.5;
+  }
+}

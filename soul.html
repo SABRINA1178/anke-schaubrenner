@@ -677,11 +677,28 @@
       background: var(--black);
       transform: translateY(-2px);
     }
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
+      .modal-backdrop { padding: 1rem 0.6rem; }
+      .modal-box { border-radius: 12px; }
       .modal-body { padding: 2rem 1.4rem 2.4rem; }
       .modal-title { font-size: 1.65rem; }
       .modal-kleeblatt-grid { grid-template-columns: 1fr; }
       .modal-pricing-grid { grid-template-columns: 1fr; }
+      .modal-hero-img { aspect-ratio: 16/9; }
+      .modal-section-title { font-size: 1rem; }
+    }
+
+    @media (max-width: 480px) {
+      .modal-backdrop { padding: 0.5rem 0; align-items: flex-end; }
+      .modal-box { border-radius: 16px 16px 0 0; max-height: 92vh; overflow-y: auto; }
+      .modal-body { padding: 1.6rem 1.1rem 2rem; }
+      .modal-title { font-size: 1.4rem; }
+      .modal-eyebrow { font-size: 0.7rem; }
+      .modal-desc { font-size: 0.85rem; }
+      .modal-hero-img { aspect-ratio: 4/3; }
+      .modal-close { top: 0.8rem; right: 0.8rem; width: 32px; height: 32px; }
+      .modal-ll-locations { grid-template-columns: 1fr 1fr !important; }
+      .modal-cta-btn { width: 100%; text-align: center; }
     }
 
     /* ---- Nav active state ---- */
@@ -699,6 +716,11 @@
       .soul-intro { padding: 5rem 1.2rem 2.5rem; }
       .footer-dark .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
       .footer-dark { padding: 3rem 1.2rem 2rem; }
+    }
+
+    @media (max-width: 480px) {
+      .soul-intro h1 { font-size: 1.6rem; }
+      .soul-intro-text p { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -1101,10 +1123,35 @@
         font-style: italic;
       }
       @media (max-width: 768px) {
-        .soul-cards-grid { grid-template-columns: 1fr; }
-        .soul-card-premium-inner { grid-template-columns: 1fr; padding: 2.2rem 1.6rem; gap: 2rem; }
-        .soul-card-premium-title { font-size: 1.85rem; }
+        .soul-products { padding: 3.5rem 1.2rem 4rem; }
         .soul-products-title { font-size: 1.7rem; }
+        .soul-products-subtitle { font-size: 0.85rem; }
+        .soul-cards-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto 2rem; }
+        .soul-card-premium-inner { grid-template-columns: 1fr; padding: 2.2rem 1.5rem; gap: 1.8rem; }
+        .soul-card-premium-title { font-size: 1.85rem; }
+        .soul-card-premium-right { align-items: stretch; }
+        .soul-premium-price-box { padding: 1.4rem 1.5rem; }
+        .soul-premium-price-amount { font-size: 2.2rem; }
+        .ll-journey { flex-wrap: wrap !important; gap: 0.4rem !important; }
+      }
+
+      @media (max-width: 480px) {
+        .soul-products { padding: 3rem 1rem 3.5rem; }
+        .soul-products-header { margin-bottom: 2rem; }
+        .soul-products-title { font-size: 1.5rem; }
+        .soul-cards-grid { max-width: 100%; }
+        .soul-card-body { padding: 1.3rem 1.3rem 0.8rem; }
+        .soul-card-footer { padding: 0.8rem 1.3rem 1.3rem; flex-direction: column; gap: 0.8rem; align-items: flex-start; }
+        .soul-card-btn { width: 100%; text-align: center; }
+        .soul-card-title { font-size: 1.3rem; }
+        .soul-card-image { height: 160px; }
+        .soul-card-premium-inner { padding: 1.8rem 1.2rem; }
+        .soul-card-premium-title { font-size: 1.5rem; }
+        .soul-card-premium-badge { font-size: 0.6rem; }
+        .soul-card-premium-desc { font-size: 0.83rem; }
+        .soul-premium-price-amount { font-size: 2rem; }
+        .soul-premium-btn { font-size: 0.72rem; padding: 0.9rem 1.2rem; }
+        .soul-premium-note { font-size: 0.65rem; }
       }
     </style>
 
