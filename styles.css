@@ -710,9 +710,17 @@ nav {
   color: var(--black);
 }
 
+.naturgewalt-text-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
 .naturgewalt-text p {
   font-size: 18px;
   line-height: 1.8;
+  margin: 0;
 }
 
 /* --- SECTION 4: Methode --- */
@@ -1914,6 +1922,7 @@ footer ul li a:hover { opacity: 1; }
   }
   .naturgewalt-text blockquote { font-size: 1.45rem; }
   .naturgewalt-text p          { font-size: 1rem; }
+  .naturgewalt-text-cols       { grid-template-columns: 1fr; gap: 1.2rem; }
   .naturgewalt-image           { min-height: auto; max-height: 300px; width: 100%; }
 
   /* ---- ERFAHRUNG ---- */
