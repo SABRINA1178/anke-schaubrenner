@@ -1917,13 +1917,27 @@ footer ul li a:hover { opacity: 1; }
   /* ---- NATURGEWALT ---- */
   .section-naturgewalt > h2 {
     font-size: 1.8rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.8rem;
     text-align: center;
+  }
+  .naturgewalt-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .naturgewalt-image {
+    min-height: auto;
+    max-height: 320px;
+    width: 100%;
+    object-fit: cover;
+    order: 1;
+  }
+  .naturgewalt-text {
+    padding: 2rem 0 0;
+    order: 2;
   }
   .naturgewalt-text blockquote { font-size: 1.45rem; }
   .naturgewalt-text p          { font-size: 1rem; }
   .naturgewalt-text-cols       { grid-template-columns: 1fr; gap: 1.2rem; }
-  .naturgewalt-image           { min-height: auto; max-height: 300px; width: 100%; }
 
   /* ---- ERFAHRUNG ---- */
   .section-erfahrung blockquote {
