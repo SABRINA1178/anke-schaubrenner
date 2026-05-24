@@ -1153,6 +1153,7 @@ nav {
   background: var(--cream);
   border-radius: 16px;
   padding: 4rem 3.5rem;
+  border: 1px solid rgba(26,26,26,0.15);
 }
 
 .section-contact blockquote {
