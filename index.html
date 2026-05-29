@@ -83,6 +83,8 @@
         <p class="hcnl-card-label">Earth Child Community</p>
         <p class="hcnl-card-sub">Neue Songs & Einladungen —<br>direkt von Anke.</p>
         <form class="hcnl-form" id="hcnl-form" novalidate>
+          <!-- Honeypot — für Bots unsichtbar -->
+          <input type="text" name="website" id="hcnl-website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0;pointer-events:none;">
           <input type="email" id="hcnl-email" placeholder="deine@email.de" required>
           <button type="submit" class="hcnl-submit">Dabei sein</button>
         </form>
@@ -427,6 +429,19 @@
         </div>
 
         <div class="cf-field">
+          <label for="cf-betreff">Betreff</label>
+          <select id="cf-betreff" name="betreff" required>
+            <option value="" disabled selected>Bitte wählen…</option>
+            <option value="Allgemeine Anfrage">Allgemeine Anfrage</option>
+            <option value="Workshop / Soul">Workshop / Soul</option>
+            <option value="Business Coaching">Business Coaching</option>
+            <option value="Lebenslinien">Lebenslinien</option>
+            <option value="Presse / Kooperation">Presse / Kooperation</option>
+            <option value="Sonstiges">Sonstiges</option>
+          </select>
+        </div>
+
+        <div class="cf-field">
           <label for="cf-message">Nachricht</label>
           <textarea id="cf-message" name="message" rows="5" placeholder="Was bewegt dich?" required></textarea>
         </div>
@@ -469,6 +484,8 @@
       <h2 class="newsletter-title">Earth Child Community</h2>
       <p class="newsletter-sub">Musik, die reguliert. Impulse, die bewegen. Einladungen, bevor sie öffentlich werden.<br>Sei als Erste dabei.</p>
       <form class="newsletter-row" id="nl-form" novalidate>
+        <!-- Honeypot — für Bots unsichtbar -->
+        <input type="text" name="website" id="nl-website" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;width:0;pointer-events:none;">
         <input type="email" id="nl-email" placeholder="deine@email.de" required>
         <button type="submit" class="btn btn-gold">Ja, ich bin dabei</button>
       </form>
@@ -512,7 +529,7 @@
         </div>
         <p class="footer-contact-name">Sabrina Meguellati</p>
         <p class="footer-contact-role">Assistentin</p>
-        <a href="mailto:info@anke-schaubrenner.com" class="email-btn">E-Mail senden</a>
+        <a href="mailto:kontakt@anke-schaubrenner.de" class="email-btn">E-Mail senden</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -642,7 +659,7 @@
   <!-- ===== Kontaktformular Submit → Eigener Backend ===== -->
   <script>
   (function () {
-    const API_URL = 'https://api.kalunafee.de/api/kontakt';
+    const API_URL = 'https://anke-schaubrenner.de/api/kontakt';
 
     const form      = document.getElementById('contact-form');
     const btn       = document.getElementById('cf-submit-btn');
@@ -669,6 +686,7 @@
 
       const nameVal    = document.getElementById('cf-name').value.trim();
       const emailVal   = document.getElementById('cf-email').value.trim();
+      const betreffVal = document.getElementById('cf-betreff').value;
       const messageVal = document.getElementById('cf-message').value.trim();
       const consent    = document.getElementById('cf-consent').checked;
 
@@ -684,6 +702,13 @@
           el.classList.remove('cf-invalid');
         }
       });
+
+      if (!betreffVal) {
+        document.getElementById('cf-betreff').classList.add('cf-invalid');
+        valid = false;
+      } else {
+        document.getElementById('cf-betreff').classList.remove('cf-invalid');
+      }
 
       const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
       if (emailVal && !emailOk) {
@@ -706,10 +731,13 @@
 
       setLoading(true);
 
+      const LEAD_BETREFFE = ['Workshop / Soul', 'Business Coaching', 'Lebenslinien'];
       const payload = {
         name: nameVal,
         email: emailVal,
-        message: messageVal
+        betreff: betreffVal,
+        message: messageVal,
+        isLead: LEAD_BETREFFE.includes(betreffVal)
       };
 
       try {
@@ -758,7 +786,7 @@
   <!-- ===== Newsletter — Eigener Backend (Earth Child Community) ===== -->
   <script>
   (function () {
-    const API_URL = 'https://api.kalunafee.de/api/newsletter';
+    const API_URL = 'https://anke-schaubrenner.de/api/newsletter';
 
     // Großer Newsletter-Block (Sektion vor Footer)
     (function() {
@@ -775,15 +803,30 @@
         const btn = f.querySelector('button');
         btn.disabled = true; btn.textContent = '…';
         try {
+          btn.textContent = 'Wird gesendet…';
+          const honeypot = document.getElementById('nl-website');
           const res = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email })
+            body: JSON.stringify({ email: email, website: honeypot ? honeypot.value : '' })
           });
           if (res.ok) {
+            btn.textContent = 'Weiterleitung…';
             window.location.href = 'check-email.html';
-          } else { btn.disabled = false; btn.textContent = 'Ja, ich bin dabei'; }
-        } catch(err) { btn.disabled = false; btn.textContent = 'Ja, ich bin dabei'; }
+          } else {
+            btn.disabled = false;
+            btn.textContent = 'Ja, ich bin dabei';
+            var note = document.getElementById('nl-note');
+            note.textContent = 'Etwas ist schiefgelaufen (Status ' + res.status + ') — bitte nochmal versuchen.';
+            note.style.color = '#c0392b';
+          }
+        } catch(err) {
+          btn.disabled = false;
+          btn.textContent = 'Ja, ich bin dabei';
+          var note = document.getElementById('nl-note');
+          note.textContent = 'Fehler: ' + err.message + ' — bitte auf anke-schaubrenner.de versuchen.';
+          note.style.color = '#c0392b';
+        }
       });
     })();
 
@@ -932,10 +975,11 @@
         btn.disabled = true; btn.textContent = '…';
 
         try {
+          var honeypot = document.getElementById('hcnl-website');
           var res = await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email })
+            body: JSON.stringify({ email: email, website: honeypot ? honeypot.value : '' })
           });
           if (res.ok) {
             launchFireworks();
