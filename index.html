@@ -975,21 +975,22 @@
         var btn = form.querySelector('.hcnl-submit');
         btn.disabled = true; btn.textContent = '…';
 
+        // Karte SOFORT weg — noch vor dem Fetch
+        widget.classList.remove('hcnl--open');
+        widget.classList.add('hcnl--success');
+        launchFireworks();
+
         try {
           var honeypot = document.getElementById('hcnl-website');
-          var res = await fetch(API_URL, {
+          await fetch(API_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email: email, website: honeypot ? honeypot.value : '' })
           });
-          if (res.ok) {
-            // Karte sofort weg — CSS-Klasse übernimmt
-            widget.classList.remove('hcnl--open');
-            widget.classList.add('hcnl--success');
-            launchFireworks();
-            setTimeout(function() { window.location.href = 'check-email.html'; }, 2200);
-          } else { btn.disabled = false; btn.textContent = 'Dabei sein'; }
-        } catch(err) { btn.disabled = false; btn.textContent = 'Dabei sein'; }
+          setTimeout(function() { window.location.href = 'check-email.html'; }, 2200);
+        } catch(err) {
+          setTimeout(function() { window.location.href = 'check-email.html'; }, 2200);
+        }
       });
     })();
 
