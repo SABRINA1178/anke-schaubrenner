@@ -983,11 +983,9 @@
             body: JSON.stringify({ email: email, website: honeypot ? honeypot.value : '' })
           });
           if (res.ok) {
-            // Karte sofort ausblenden damit Feuerwerk sichtbar ist
-            card.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-            card.style.opacity = '0';
-            card.style.transform = 'scale(0.85)';
-            setTimeout(function() { card.style.display = 'none'; }, 260);
+            // Karte sofort weg — CSS-Klasse übernimmt
+            widget.classList.remove('hcnl--open');
+            widget.classList.add('hcnl--success');
             launchFireworks();
             setTimeout(function() { window.location.href = 'check-email.html'; }, 2200);
           } else { btn.disabled = false; btn.textContent = 'Dabei sein'; }
