@@ -870,7 +870,7 @@
         var hero   = document.querySelector('.hero');
         var hRect  = hero.getBoundingClientRect();
         var canvas = document.createElement('canvas');
-        canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:50;';
+        canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:999;';
         hero.appendChild(canvas);
         var ctx = canvas.getContext('2d');
         canvas.width  = hero.offsetWidth;
@@ -975,10 +975,11 @@
         var btn = form.querySelector('.hcnl-submit');
         btn.disabled = true; btn.textContent = '…';
 
-        // Karte SOFORT weg — hart, kein Fade
-        card.style.display = 'none';
-        widget.classList.remove('hcnl--open');
-        widget.classList.add('hcnl--success');
+        // Ganzes Widget sofort weg — Feuerwerk läuft im Hero, braucht Widget nicht
+        widget.style.opacity = '0';
+        widget.style.pointerEvents = 'none';
+        widget.style.transition = 'opacity 0.15s';
+        setTimeout(function() { widget.style.visibility = 'hidden'; }, 160);
         launchFireworks();
 
         try {
