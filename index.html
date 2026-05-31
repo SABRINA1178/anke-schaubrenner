@@ -972,27 +972,20 @@
           emailEl.classList.add('cf-invalid'); return;
         }
         emailEl.classList.remove('cf-invalid');
-        var btn = form.querySelector('.hcnl-submit');
-        btn.disabled = true; btn.textContent = '…';
 
-        // Ganzes Widget sofort weg — Feuerwerk läuft im Hero, braucht Widget nicht
-        widget.style.opacity = '0';
-        widget.style.pointerEvents = 'none';
-        widget.style.transition = 'opacity 0.15s';
-        setTimeout(function() { widget.style.visibility = 'hidden'; }, 160);
+        // Widget sofort komplett weg
+        widget.style.display = 'none';
+
+        // Feuerwerk starten
         launchFireworks();
 
-        try {
-          var honeypot = document.getElementById('hcnl-website');
-          await fetch(API_URL, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email: email, website: honeypot ? honeypot.value : '' })
-          });
-          setTimeout(function() { window.location.href = 'check-email.html'; }, 2200);
-        } catch(err) {
-          setTimeout(function() { window.location.href = 'check-email.html'; }, 2200);
-        }
+        // API im Hintergrund — kein Redirect
+        var honeypot = document.getElementById('hcnl-website');
+        fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, website: honeypot ? honeypot.value : '' })
+        }).catch(function(){});
       });
     })();
 
