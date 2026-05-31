@@ -975,7 +975,8 @@
         var btn = form.querySelector('.hcnl-submit');
         btn.disabled = true; btn.textContent = '…';
 
-        // Karte SOFORT weg — noch vor dem Fetch
+        // Karte SOFORT weg — hart, kein Fade
+        card.style.display = 'none';
         widget.classList.remove('hcnl--open');
         widget.classList.add('hcnl--success');
         launchFireworks();
